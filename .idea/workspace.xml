@@ -1,0 +1,390 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+<<<<<<< Updated upstream
+    <list default="true" id="3abdff53-fed4-4009-a9bb-e23c437cc646" name="Default Changelist" comment="Modificacion de la vista de areas, integración de modales con ajax">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/PermissionController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/PermissionController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/PurchaseController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/PurchaseController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/PurchaseInvoiceController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/PurchaseInvoiceController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/PurchaseOrderController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/PurchaseOrderController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/RequisitionController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/RequisitionController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/ordenes/autorizadas/100639885_2837976736448447_1975275422438391808_n.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/ordenes/autorizadas/100683036_2569006496535187_4603944447250530304_n.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/ordenes/autorizadas/Orden de compra No.SMAPAC-CAF_OC1-2-2021.pdf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/ordenes/autorizadas/fbd8ad4e-fae8-41db-aba8-85607792829a.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/ordenes/facturas/100639885_2837976736448447_1975275422438391808_n.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/ordenes/facturas/100683036_2569006496535187_4603944447250530304_n.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/ordenes/facturas/153688.pdf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/ordenes/facturas/Modelo-factura-encima.xlsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/ordenes/facturas/Orden de compra No.SMAPAC-CAF_OC2-103-2021.pdf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/ordenes/facturas/REQ.CAF_TI_001_2021.pdf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/ordenes/facturas/REQ.CAF_TI_002_2021.pdf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/ordenes/facturas/modelo_factura.doc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/requisitions/autorizadas/SMAPAC-CAF_1_2021.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/requisitions/cotizadas/61062257857-1224568693-entrada.pdf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/requisitions/cotizadas/Documento de impresora redirigido de escritorio remoto.pdf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/requisitions/cotizadas/Formato_Cotización_PDF.pdf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/requisitions/cotizadas/Formato_Cotización_PDF.pdf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/requisitions/cotizadas/JURAM. ETICA 2020.ppt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/requisitions/cotizadas/cotizacion-3-59caea67aba9a.pdf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/requisitions/cotizadas/of 042_TI 3er InfFinanciero.docx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/compras/autorizadas/list.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/compras/autorizadas/list.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/compras/facturas/show.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/compras/facturas/show.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/compras/ordenes/list.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/compras/ordenes/list.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/compras/ordenes/show.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/compras/ordenes/show.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/cotizaciones/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/cotizaciones/create.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/cotizaciones/list.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/cotizaciones/list.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/permisos/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/permisos/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/requisitions/authorized.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/requisitions/authorized.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/requisitions/autorizadas.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/requisitions/autorizadas.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/requisitions/upload.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/requisitions/upload.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/storage/framework/views/5f36aec13e1e626b72ef58196fad7694c0908ec2.php" beforeDir="false" afterPath="$PROJECT_DIR$/storage/framework/views/5f36aec13e1e626b72ef58196fad7694c0908ec2.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/storage/framework/views/62ef79907d060cc376887fdf67d8221b085b5a4b.php" beforeDir="false" afterPath="$PROJECT_DIR$/storage/framework/views/62ef79907d060cc376887fdf67d8221b085b5a4b.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/storage/framework/views/821e4161cb46be829812706e0089219941c88283.php" beforeDir="false" afterPath="$PROJECT_DIR$/storage/framework/views/821e4161cb46be829812706e0089219941c88283.php" afterDir="false" />
+=======
+    <list default="true" id="3abdff53-fed4-4009-a9bb-e23c437cc646" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/storage/framework/views/36913d27ae5cd726b7fb0fc2fc600a3339bd514a.php" beforeDir="false" afterPath="$PROJECT_DIR$/storage/framework/views/36913d27ae5cd726b7fb0fc2fc600a3339bd514a.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/storage/framework/views/a0b3310ecddf4cd64a6fcedcd746b1c686a123f9.php" beforeDir="false" afterPath="$PROJECT_DIR$/storage/framework/views/a0b3310ecddf4cd64a6fcedcd746b1c686a123f9.php" afterDir="false" />
+>>>>>>> Stashed changes
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ComposerSettings" doNotAsk="true" synchronizationState="SYNCHRONIZE">
+    <pharConfigPath>$PROJECT_DIR$/composer.json</pharConfigPath>
+    <execution />
+  </component>
+  <component name="Git.Merge.Settings">
+    <option name="BRANCH" value="origin/master" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitSEFilterConfiguration">
+    <file-type-list>
+      <filtered-out-file-type name="LOCAL_BRANCH" />
+      <filtered-out-file-type name="REMOTE_BRANCH" />
+      <filtered-out-file-type name="TAG" />
+      <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
+    </file-type-list>
+  </component>
+  <component name="GithubPullRequestsUISettings">
+    <option name="hiddenUrls">
+      <set>
+        <option value="https://github.com/CantunB/urm" />
+      </set>
+    </option>
+  </component>
+  <component name="PackageJsonUpdateNotifier">
+    <dismissed value="$PROJECT_DIR$/package.json" />
+  </component>
+  <component name="PhpWorkspaceProjectConfiguration">
+    <include_path>
+      <path value="$PROJECT_DIR$/vendor/barryvdh/laravel-dompdf" />
+      <path value="$PROJECT_DIR$/vendor/dnoegel/php-xdg-base-dir" />
+      <path value="$PROJECT_DIR$/vendor/psy/psysh" />
+      <path value="$PROJECT_DIR$/vendor/laravel/framework" />
+      <path value="$PROJECT_DIR$/vendor/laravel/ui" />
+      <path value="$PROJECT_DIR$/vendor/laravel/tinker" />
+      <path value="$PROJECT_DIR$/vendor/vlucas/phpdotenv" />
+      <path value="$PROJECT_DIR$/vendor/fzaninotto/faker" />
+      <path value="$PROJECT_DIR$/vendor/filp/whoops" />
+      <path value="$PROJECT_DIR$/vendor/scrivo/highlight.php" />
+      <path value="$PROJECT_DIR$/vendor/nunomaduro/collision" />
+      <path value="$PROJECT_DIR$/vendor/tijsverkoyen/css-to-inline-styles" />
+      <path value="$PROJECT_DIR$/vendor/phenx/php-svg-lib" />
+      <path value="$PROJECT_DIR$/vendor/phenx/php-font-lib" />
+      <path value="$PROJECT_DIR$/vendor/swiftmailer/swiftmailer" />
+      <path value="$PROJECT_DIR$/vendor/monolog/monolog" />
+      <path value="$PROJECT_DIR$/vendor/league/flysystem" />
+      <path value="$PROJECT_DIR$/vendor/yajra/laravel-datatables-oracle" />
+      <path value="$PROJECT_DIR$/vendor/league/commonmark" />
+      <path value="$PROJECT_DIR$/vendor/sebastian/recursion-context" />
+      <path value="$PROJECT_DIR$/vendor/sebastian/resource-operations" />
+      <path value="$PROJECT_DIR$/vendor/sebastian/diff" />
+      <path value="$PROJECT_DIR$/vendor/hamcrest/hamcrest-php" />
+      <path value="$PROJECT_DIR$/vendor/sebastian/global-state" />
+      <path value="$PROJECT_DIR$/vendor/sebastian/object-enumerator" />
+      <path value="$PROJECT_DIR$/vendor/sebastian/exporter" />
+      <path value="$PROJECT_DIR$/vendor/sebastian/comparator" />
+      <path value="$PROJECT_DIR$/vendor/sebastian/environment" />
+      <path value="$PROJECT_DIR$/vendor/sebastian/version" />
+      <path value="$PROJECT_DIR$/vendor/dragonmantank/cron-expression" />
+      <path value="$PROJECT_DIR$/vendor/sebastian/object-reflector" />
+      <path value="$PROJECT_DIR$/vendor/sebastian/type" />
+      <path value="$PROJECT_DIR$/vendor/sebastian/code-unit-reverse-lookup" />
+      <path value="$PROJECT_DIR$/vendor/facade/ignition" />
+      <path value="$PROJECT_DIR$/vendor/phpspec/prophecy" />
+      <path value="$PROJECT_DIR$/vendor/facade/ignition-contracts" />
+      <path value="$PROJECT_DIR$/vendor/facade/flare-client-php" />
+      <path value="$PROJECT_DIR$/vendor/ramsey/uuid" />
+      <path value="$PROJECT_DIR$/vendor/nesbot/carbon" />
+      <path value="$PROJECT_DIR$/vendor/fideloper/proxy" />
+      <path value="$PROJECT_DIR$/vendor/doctrine/inflector" />
+      <path value="$PROJECT_DIR$/vendor/egulias/email-validator" />
+      <path value="$PROJECT_DIR$/vendor/doctrine/lexer" />
+      <path value="$PROJECT_DIR$/vendor/doctrine/instantiator" />
+      <path value="$PROJECT_DIR$/vendor/opis/closure" />
+      <path value="$PROJECT_DIR$/vendor/paragonie/random_compat" />
+      <path value="$PROJECT_DIR$/vendor/sabberworm/php-css-parser" />
+      <path value="$PROJECT_DIR$/vendor/phpunit/php-text-template" />
+      <path value="$PROJECT_DIR$/vendor/phpunit/php-token-stream" />
+      <path value="$PROJECT_DIR$/vendor/phpunit/php-file-iterator" />
+      <path value="$PROJECT_DIR$/vendor/symfony/polyfill-php73" />
+      <path value="$PROJECT_DIR$/vendor/phpunit/php-timer" />
+      <path value="$PROJECT_DIR$/vendor/symfony/error-handler" />
+      <path value="$PROJECT_DIR$/vendor/phpunit/phpunit" />
+      <path value="$PROJECT_DIR$/vendor/symfony/polyfill-mbstring" />
+      <path value="$PROJECT_DIR$/vendor/phpunit/php-code-coverage" />
+      <path value="$PROJECT_DIR$/vendor/symfony/polyfill-php72" />
+      <path value="$PROJECT_DIR$/vendor/symfony/polyfill-ctype" />
+      <path value="$PROJECT_DIR$/vendor/symfony/http-foundation" />
+      <path value="$PROJECT_DIR$/vendor/symfony/var-dumper" />
+      <path value="$PROJECT_DIR$/vendor/composer" />
+      <path value="$PROJECT_DIR$/vendor/laravelcollective/html" />
+      <path value="$PROJECT_DIR$/vendor/symfony/http-kernel" />
+      <path value="$PROJECT_DIR$/vendor/symfony/console" />
+      <path value="$PROJECT_DIR$/vendor/symfony/finder" />
+      <path value="$PROJECT_DIR$/vendor/symfony/translation-contracts" />
+      <path value="$PROJECT_DIR$/vendor/symfony/translation" />
+      <path value="$PROJECT_DIR$/vendor/phar-io/manifest" />
+      <path value="$PROJECT_DIR$/vendor/symfony/debug" />
+      <path value="$PROJECT_DIR$/vendor/phar-io/version" />
+      <path value="$PROJECT_DIR$/vendor/symfony/service-contracts" />
+      <path value="$PROJECT_DIR$/vendor/dompdf/dompdf" />
+      <path value="$PROJECT_DIR$/vendor/symfony/mime" />
+      <path value="$PROJECT_DIR$/vendor/phpdocumentor/reflection-docblock" />
+      <path value="$PROJECT_DIR$/vendor/symfony/process" />
+      <path value="$PROJECT_DIR$/vendor/phpdocumentor/type-resolver" />
+      <path value="$PROJECT_DIR$/vendor/psr/simple-cache" />
+      <path value="$PROJECT_DIR$/vendor/symfony/css-selector" />
+      <path value="$PROJECT_DIR$/vendor/psr/container" />
+      <path value="$PROJECT_DIR$/vendor/symfony/routing" />
+      <path value="$PROJECT_DIR$/vendor/caffeinated/shinobi" />
+      <path value="$PROJECT_DIR$/vendor/phpdocumentor/reflection-common" />
+      <path value="$PROJECT_DIR$/vendor/psr/log" />
+      <path value="$PROJECT_DIR$/vendor/nikic/php-parser" />
+      <path value="$PROJECT_DIR$/vendor/symfony/event-dispatcher-contracts" />
+      <path value="$PROJECT_DIR$/vendor/symfony/polyfill-iconv" />
+      <path value="$PROJECT_DIR$/vendor/symfony/event-dispatcher" />
+      <path value="$PROJECT_DIR$/vendor/symfony/polyfill-intl-idn" />
+      <path value="$PROJECT_DIR$/vendor/myclabs/deep-copy" />
+      <path value="$PROJECT_DIR$/vendor/jakub-onderka/php-console-color" />
+      <path value="$PROJECT_DIR$/vendor/mockery/mockery" />
+      <path value="$PROJECT_DIR$/vendor/theseer/tokenizer" />
+      <path value="$PROJECT_DIR$/vendor/jakub-onderka/php-console-highlighter" />
+      <path value="$PROJECT_DIR$/vendor/phpoption/phpoption" />
+      <path value="$PROJECT_DIR$/vendor/webmozart/assert" />
+      <path value="$PROJECT_DIR$/vendor/jenssegers/date" />
+      <path value="$PROJECT_DIR$/vendor/intervention/image" />
+      <path value="$PROJECT_DIR$/vendor/psr/http-message" />
+      <path value="$PROJECT_DIR$/vendor/league/mime-type-detection" />
+      <path value="$PROJECT_DIR$/vendor/spatie/laravel-permission" />
+      <path value="$PROJECT_DIR$/vendor/symfony/deprecation-contracts" />
+      <path value="$PROJECT_DIR$/vendor/symfony/polyfill-intl-normalizer" />
+      <path value="$PROJECT_DIR$/vendor/symfony/http-client-contracts" />
+      <path value="$PROJECT_DIR$/vendor/symfony/polyfill-php80" />
+      <path value="$PROJECT_DIR$/vendor/ralouphie/getallheaders" />
+      <path value="$PROJECT_DIR$/vendor/guzzlehttp/psr7" />
+    </include_path>
+  </component>
+  <component name="ProjectId" id="1b6EOK3ONVQBC83smM1Lp0oEb07" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="nodejs_package_manager_path" value="yarn" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
+    <property name="vue.rearranger.settings.migration" value="true" />
+  </component>
+  <component name="RunManager">
+    <configuration name="phpunit.xml" type="PHPUnitRunConfigurationType" factoryName="PHPUnit">
+      <TestRunner scope="XML" />
+      <method v="2" />
+    </configuration>
+  </component>
+  <component name="ServiceViewManager">
+    <option name="viewStates">
+      <list>
+        <serviceView>
+          <treeState>
+            <expand />
+            <select />
+          </treeState>
+        </serviceView>
+      </list>
+    </option>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="3abdff53-fed4-4009-a9bb-e23c437cc646" name="Default Changelist" comment="" />
+      <created>1590848653923</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1590848653923</updated>
+      <workItem from="1590848656335" duration="594000" />
+      <workItem from="1590849290814" duration="636000" />
+      <workItem from="1590855518071" duration="2678000" />
+      <workItem from="1590888850112" duration="11201000" />
+      <workItem from="1590932686068" duration="2909000" />
+      <workItem from="1590939914271" duration="7577000" />
+      <workItem from="1590972088046" duration="994000" />
+      <workItem from="1590983110629" duration="1777000" />
+      <workItem from="1591025037790" duration="19581000" />
+      <workItem from="1591112518970" duration="993000" />
+      <workItem from="1591113589095" duration="14688000" />
+      <workItem from="1591207598295" duration="4934000" />
+      <workItem from="1591219127336" duration="1787000" />
+      <workItem from="1591230631397" duration="16744000" />
+      <workItem from="1591298331951" duration="21644000" />
+      <workItem from="1591333944389" duration="3608000" />
+      <workItem from="1591372957302" duration="1902000" />
+      <workItem from="1591387967066" duration="936000" />
+      <workItem from="1591391606794" duration="5625000" />
+      <workItem from="1591403237460" duration="13683000" />
+      <workItem from="1591463289330" duration="11346000" />
+      <workItem from="1591504557516" duration="3715000" />
+      <workItem from="1591510997892" duration="4701000" />
+      <workItem from="1591546600506" duration="3801000" />
+      <workItem from="1591559355154" duration="1236000" />
+      <workItem from="1591623518892" duration="654000" />
+      <workItem from="1591662173321" duration="9125000" />
+      <workItem from="1591675360033" duration="14977000" />
+      <workItem from="1591709101054" duration="616000" />
+      <workItem from="1591711579021" duration="269000" />
+      <workItem from="1593722132115" duration="1106000" />
+      <workItem from="1593724687206" duration="8662000" />
+      <workItem from="1593828459928" duration="5027000" />
+      <workItem from="1593870951871" duration="19323000" />
+      <workItem from="1593917109598" duration="16554000" />
+      <workItem from="1593965431590" duration="2389000" />
+      <workItem from="1593985775369" duration="13953000" />
+      <workItem from="1594048207415" duration="1014000" />
+      <workItem from="1594052771741" duration="153000" />
+      <workItem from="1594052989012" duration="5000" />
+      <workItem from="1594053160533" duration="6000" />
+      <workItem from="1594090758010" duration="35000" />
+      <workItem from="1594091068108" duration="206000" />
+      <workItem from="1611670053560" duration="71253000" />
+      <workItem from="1611894233238" duration="21363000" />
+      <workItem from="1612040481278" duration="65797000" />
+      <workItem from="1612325314208" duration="12501000" />
+      <workItem from="1612409600236" duration="46267000" />
+      <workItem from="1612554903052" duration="3197000" />
+    </task>
+    <task id="LOCAL-00001" summary="Modificacion de la vista de areas, integración de modales con ajax">
+      <created>1612512157408</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1612512157408</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Modificacion de la vista de areas, integración de modales con ajax" />
+    <option name="LAST_COMMIT_MESSAGE" value="Modificacion de la vista de areas, integración de modales con ajax" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="php">
+          <url>file://$PROJECT_DIR$/resources/views/cotizaciones/index.blade.php</url>
+          <line>39</line>
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="php">
+          <url>file://$PROJECT_DIR$/resources/views/cotizaciones/index.blade.php</url>
+          <line>32</line>
+          <option name="timeStamp" value="3" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="php">
+          <url>file://$PROJECT_DIR$/resources/views/cotizaciones/index.blade.php</url>
+          <line>31</line>
+          <option name="timeStamp" value="4" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="php">
+          <url>file://$PROJECT_DIR$/resources/views/compras/show.blade.php</url>
+          <line>15</line>
+          <option name="timeStamp" value="6" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="php">
+          <url>file://$PROJECT_DIR$/resources/views/compras/show.blade.php</url>
+          <line>18</line>
+          <option name="timeStamp" value="7" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="php">
+          <url>file://$PROJECT_DIR$/resources/views/requisitions/partials/form.blade.php</url>
+          <line>152</line>
+          <option name="timeStamp" value="8" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="php">
+          <url>file://$PROJECT_DIR$/resources/views/requisitions/list.blade.php</url>
+          <line>60</line>
+          <option name="timeStamp" value="15" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="php">
+          <url>file://$PROJECT_DIR$/resources/views/compras/ordenes/show.blade.php</url>
+          <line>390</line>
+          <option name="timeStamp" value="17" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="php">
+          <url>file://$PROJECT_DIR$/resources/views/compras/ordenes/show.blade.php</url>
+          <line>396</line>
+          <option name="timeStamp" value="18" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="php">
+          <url>file://$PROJECT_DIR$/resources/views/compras/ordenes/show.blade.php</url>
+          <line>639</line>
+          <option name="timeStamp" value="19" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="php">
+          <url>file://$PROJECT_DIR$/resources/views/compras/ordenes/show.blade.php</url>
+          <line>428</line>
+          <option name="timeStamp" value="20" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="php">
+          <url>file://$PROJECT_DIR$/resources/views/compras/ordenes/details.blade.php</url>
+          <line>25</line>
+          <option name="timeStamp" value="21" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="php">
+          <url>file://$PROJECT_DIR$/resources/views/compras/ordenes/details.blade.php</url>
+          <line>45</line>
+          <option name="timeStamp" value="22" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+</project>

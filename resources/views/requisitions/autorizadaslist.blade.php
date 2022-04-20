@@ -1,0 +1,105 @@
+@extends('layouts.app')
+@section('content')
+<!-- start page title -->
+<div class="row">
+    <div class="col-12">
+        <div class="page-title-box">
+            <div class="page-title-right">
+                <ol class="breadcrumb m-0">
+                    <li class="breadcrumb-item"><a href="javascript: void(0);">{{ config('app.name','SMAPAC') }}</a></li>
+                    <li class="breadcrumb-item"><a href="javascript: void(0);">REQUISICIONES</a></li>
+                    <li class="breadcrumb-item active">AUTORIZADAS</li>
+                </ol>
+            </div>
+            <h4 class="page-title">Requisiciones Autorizadas del Departamento</h4>
+        </div>
+    </div>
+</div>
+<!-- end page title -->
+<div class="row">
+    <div class="col-lg-12">
+        <div class="card">
+            <div class="card-body">
+                <div class="row mb-2">
+                    <div class="col-sm-12">
+                        <div class="text-sm-right">
+                            <a href="{{ url()->previous() }}"
+                                class="btn btn-sm btn-danger waves-effect waves-light mb-2"><i class="fas fa-times"></i> Regresar</a>
+                        </div>
+                    </div><!-- end col-->
+                </div>
+                <div class="table-responsive">
+                    <table id="list-table" class="table dt-responsive nowrap w-100">
+                        <thead>
+                            <tr>
+                                <th scope="col" style="text-align: center; width:50px">No.Req.</th>
+                                <th scope="col" style="text-align: center">Solicitado</th>
+                                <th scope="col" style="text-align: center">Fecha para requerir</th>
+                                <th scope="col" style="text-align: center">Estado</th>
+                                <th scope="col" style="text-align: center;">&nbsp;</th>
+                            </tr>
+                            </thead>
+                             @foreach($requisitions as $requi)
+                                @foreach($requi as $key => $value)
+                                    <tbody>
+                                        <tr>
+                                            <td style="text-align: center"> {{ $value->folio }}</td>
+                                            <td style="text-align: center">{{ Carbon\Carbon::parse( $value->added_on)->format('Y/m/d') }}</td>
+                                            <td style="text-align: center">{{ Carbon\Carbon::parse($value->required_on)->format('Y/m/d') }}</td>
+                                            <td style="text-align: center">
+                                                @if( $value->status === 1)
+                                                    <span class="badge badge-info">Autorizada</span>
+                                                @endif
+                                            </td>
+                                            <td style="text-align: center">
+                                                @can('update_requisicion')
+                                                    @if( $value->status <= 1)
+                                                        <a href="{{route('cotizaciones.edit',$value->id)}}"
+                                                           title="Cotizar Requisicion"
+                                                           class="action-icon">
+                                                            <i class="mdi mdi-file-upload"></i></a>
+                                                        </a>
+                                                  <!--  @elseif($value->status === 2)
+                                                        <a href="{{route('requisiciones.edit',$value->id)}}"
+                                                           title="Editar Requisicion"
+                                                           class="action-icon">
+                                                            <i class="mdi mdi-square-edit-outline"></i></a>
+                                                    @endif -->
+                                                @endcan
+                                                @can('read_requisicion')
+                                                    @if( $value->status <= 1)
+                                                            <a href="{{route('requisiciones.authorized',$value->id)}}"
+                                                            title="Ver requisicion"
+                                                            class="action-icon">
+                                                                <i class="mdi mdi-monitor-eye"></i></a>
+                                                            </a>
+                                                    @elseif($value->status <= 2)
+                                                            <a href="{{route('requisiciones.show',$value->id)}}"
+                                                                class="action-icon">
+                                                                <i class="mdi mdi-monitor-eye"></i></a>
+                                                    @endif
+                                                @endcan
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                @endforeach
+                            @endforeach
+                    </table>
+                </div>
+            </div> <!-- end card-body-->
+        </div> <!-- end card-->
+    </div> <!-- end col -->
+</div>
+    <!-- end row -->
+@push('scripts')
+    <script>
+        $(document).ready(function() {
+            $('#list-table').DataTable({
+                language: {
+                    "url": "//cdn.datatables.net/plug-ins/1.10.20/i18n/Spanish.json"
+                },
+            });
+        } );
+    </script>
+@endpush
+@endsection
