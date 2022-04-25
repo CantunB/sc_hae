@@ -14,16 +14,14 @@ class CreateAssignedRequisitionsTable extends Migration
     public function up()
     {
         Schema::create('assigned_requisitions', function (Blueprint $table) {
-            $table->bigIncrements('id');
+            $table->id();
             $table->integer('accountant');
           /*  $table->integer('department_id')->unsigned();
             $table->foreign('department_id')->references('id')->on('departments')->onDelete('cascade'); */
-            $table->unsignedBigInteger('user_id')->index();
-            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->foreignId('user_id')->references('id')->on('users');
            // $table->integer('coordination_id')->unsigned();
            // $table->integer('department_id')->unsigned();
-            $table->unsignedBigInteger('requisition_id')->index();
-            $table->foreign('requisition_id')->references('id')->on('requisitions')->onDelete('cascade');
+            $table->foreignId('requisition_id')->references('id')->on('requisitions');
             $table->tinyInteger('status')->default('0');
             $table->timestamps();
         });

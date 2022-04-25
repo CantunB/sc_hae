@@ -1,14 +1,14 @@
 <?php
 
-namespace Smapac\Http\Controllers;
+namespace HAE\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Smapac\AssignedRequisition;
-use Smapac\Providers;
-use Smapac\Purchase;
-use Smapac\Quotesrequisitions;
+use HAE\AssignedRequisition;
+use HAE\Providers;
+use HAE\Purchase;
+use HAE\Quotesrequisitions;
 use Illuminate\Http\UploadedFile;
-use Smapac\Requisition;
+use HAE\Requisition;
 
 class QuotesrequisitionsController extends Controller
 {
@@ -111,12 +111,37 @@ class QuotesrequisitionsController extends Controller
     {
          //return $request->all();
         $cotizacion = Quotesrequisitions::create($request->all());
+        if ($request->has('quote_file')) {
+            $sf = $request->file('quote_file');
+            $file = $request->quote_file->getClientOriginalName();
+            $path = public_path('requisitions/cotizadas');
+            $sf->move($path, $file);
+            $cotizacion->quote_file = 'requisitions/cotizadas'. $file;
+            $cotizacion->save();
+        }
+        // if($request->hasFile('quote_file')){
+        //     $file = $request->file('quote_file');
+        //     foreach ($request->quote_file as $item=>$v ) {
+        //         $filename = $request->quote_file[$item]->getClientOriginalName();
+        //         $data2=array(
+        //             //'quote_file' => $request->quote_file[$item],
+        //             'department_id' => $request->department_id,
+        //             'requisition_id' => $request->requisition_id,
+        //             'provider_id' => $request->provider_id[$item],
+        //             'quote_file' => $filename,
+        //             'created_at' => now(),
+        //             //'quantity' => $request->quantity[$item],
+        //         );
+        //         $request->quote_file[$item]->move(public_path('requisitions/cotizadas'), $filename);
+        //         Quotesrequisitions::insert($data2);
+        //     }
+        // }
         return redirect()->route('cotizaciones.index')->with('success','Cotización nueva creada');
     }
     /**
      * Display the specified resource.
      *
-     * @param  \Smapac\Quotesrequisitions  $quotesrequisitions
+     * @param  \HAE\Quotesrequisitions  $quotesrequisitions
      * @return \Illuminate\Http\Response
      */
     public function show( $quotesrequisitions)
@@ -141,7 +166,7 @@ class QuotesrequisitionsController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \Smapac\Quotesrequisitions  $quotesrequisitions
+     * @param  \HAE\Quotesrequisitions  $quotesrequisitions
      * @return \Illuminate\Http\Response
      */
     public function edit($quotesrequisitions)
@@ -166,7 +191,7 @@ class QuotesrequisitionsController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \Smapac\Quotesrequisitions  $quotesrequisitions
+     * @param  \HAE\Quotesrequisitions  $quotesrequisitions
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request,  $quotesrequisitions)
@@ -179,7 +204,7 @@ class QuotesrequisitionsController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \Smapac\Quotesrequisitions  $quotesrequisitions
+     * @param  \HAE\Quotesrequisitions  $quotesrequisitions
      * @return \Illuminate\Http\Response
      */
     public function destroy($quotesrequisitions)

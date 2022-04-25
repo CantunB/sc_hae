@@ -1,10 +1,10 @@
 <?php
 
-namespace Smapac\Http\Controllers;
+namespace HAE\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Smapac\Http\Requests\PermissionRequest;
-use Smapac\User;
+use HAE\Http\Requests\PermissionRequest;
+use HAE\User;
 use Spatie\Permission\Models\Role;
 use Spatie\Permission\Models\Permission;
 use Illuminate\Support\Facades\Auth;

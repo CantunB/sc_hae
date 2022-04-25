@@ -14,7 +14,7 @@ class CreatePurOrderFeauturesTable extends Migration
     public function up()
     {
         Schema::create('pur_order_feautures', function (Blueprint $table) {
-            $table->bigIncrements('id')->nullable();
+            $table->id();
             $table->string('delivery_time')->nullable();
             $table->string('existence')->nullable();
             $table->string('payment_method')->nullable();

@@ -1,8 +1,8 @@
 <?php
 
-namespace Smapac\Http\Controllers;
+namespace HAE\Http\Controllers;
 
-use Smapac\Storehouse;
+use HAE\Storehouse;
 use Illuminate\Http\Request;
 
 class StorehouseController extends Controller
@@ -64,7 +64,7 @@ class StorehouseController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \Smapac\Storehouse  $storehouse
+     * @param  \HAE\Storehouse  $storehouse
      * @return \Illuminate\Http\Response
      */
     public function show(Storehouse $storehouse)
@@ -75,7 +75,7 @@ class StorehouseController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \Smapac\Storehouse  $storehouse
+     * @param  \HAE\Storehouse  $storehouse
      * @return \Illuminate\Http\Response
      */
     public function edit( $storehouse)
@@ -89,7 +89,7 @@ class StorehouseController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \Smapac\Storehouse  $storehouse
+     * @param  \HAE\Storehouse  $storehouse
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request,  $storehouse)
@@ -102,7 +102,7 @@ class StorehouseController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \Smapac\Storehouse  $storehouse
+     * @param  \HAE\Storehouse  $storehouse
      * @return \Illuminate\Http\Response
      */
     public function destroy($storehouse)

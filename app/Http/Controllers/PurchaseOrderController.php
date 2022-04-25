@@ -1,24 +1,24 @@
 <?php
 
-namespace Smapac\Http\Controllers;
+namespace HAE\Http\Controllers;
 
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
-use Smapac\AssignedRequesteds;
-use Smapac\AssignedUserAreas;
-use Smapac\AssignedAreas;
-use Smapac\Coordination;
-use Smapac\Providers;
-use Smapac\Purchase;
-use Smapac\PurchaseOrder;
-use Smapac\PurchaseOrderDetail;
-use Smapac\PurchaseOrderFeauture;
-use Smapac\PurchaseOrderMaterial;
+use HAE\AssignedRequesteds;
+use HAE\AssignedUserAreas;
+use HAE\AssignedAreas;
+use HAE\Coordination;
+use HAE\Providers;
+use HAE\Purchase;
+use HAE\PurchaseOrder;
+use HAE\PurchaseOrderDetail;
+use HAE\PurchaseOrderFeauture;
+use HAE\PurchaseOrderMaterial;
 use Spatie\Permission\Models\Role;
 use Spatie\Permission\Models\Permission;
 use Barryvdh\DomPDF\Facade as PDF;
 use Illuminate\Support\Facades\Storage;
-use Smapac\Quotesrequisitions;
+use HAE\Quotesrequisitions;
 
 class PurchaseOrderController extends Controller
 {
@@ -273,7 +273,7 @@ class PurchaseOrderController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param \Smapac\PurchaseOrder $purchaseOrder
+     * @param \HAE\PurchaseOrder $purchaseOrder
      * @return \Illuminate\Http\Response
      */
     public function show($purchaseOrder)
@@ -341,7 +341,7 @@ class PurchaseOrderController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \Smapac\PurchaseOrder  $purchaseOrder
+     * @param  \HAE\PurchaseOrder  $purchaseOrder
      * @return \Illuminate\Http\Response
      */
     public function edit($purchaseorder)
@@ -353,7 +353,7 @@ class PurchaseOrderController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \Smapac\PurchaseOrder  $purchaseOrder
+     * @param  \HAE\PurchaseOrder  $purchaseOrder
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $purchaseorder)
@@ -373,7 +373,7 @@ class PurchaseOrderController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \Smapac\PurchaseOrder  $purchaseOrder
+     * @param  \HAE\PurchaseOrder  $purchaseOrder
      * @return \Illuminate\Http\Response
      */
     public function destroy( $purchaseOrder)

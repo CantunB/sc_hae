@@ -1,6 +1,6 @@
 <?php
 
-namespace Smapac\Http\Middleware;
+namespace HAE\Http\Middleware;
 
 use Illuminate\Cookie\Middleware\EncryptCookies as Middleware;
 

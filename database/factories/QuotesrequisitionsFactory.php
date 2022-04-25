@@ -3,7 +3,7 @@
 /** @var \Illuminate\Database\Eloquent\Factory $factory */
 
 use Faker\Generator as Faker;
-use Smapac\Quotesrequisitions;
+use HAE\Quotesrequisitions;
 
 $factory->define(Quotesrequisitions::class, function (Faker $faker) {
     return [

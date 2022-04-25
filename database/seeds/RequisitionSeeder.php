@@ -18,14 +18,10 @@ class RequisitionSeeder extends Seeder
         Permission::create(['name' => 'update_requisicion']);
         Permission::create(['name' => 'delete_requisicion']);
 
-        $super_admin = Role::findByName('super-admin');
+        $super_admin = Role::findByName('Super-Admin');
         $super_admin->givePermissionTo(['create_requisicion',
                         'read_requisicion',
                         'update_requisicion',
                         'delete_requisicion']);
-
-        $titular = Role::findByName('titular');
-        $titular->givePermissionTo(['create_requisicion',
-                        'read_requisicion']);
     }
 }

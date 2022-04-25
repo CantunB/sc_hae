@@ -1,6 +1,6 @@
 <?php
 
-namespace Smapac;
+namespace HAE;
 
 use Illuminate\Database\Eloquent\Model;
 

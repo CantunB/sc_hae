@@ -1,27 +1,13 @@
 @extends('layouts.app')
 @section('content')
-<!-- start page title -->
-<div class="row">
-    <div class="col-12">
-        <div class="page-title-box">
-            <div class="page-title-right">
-                <ol class="breadcrumb m-0">
-                    <li class="breadcrumb-item"><a href="javascript: void(0);">{{ config('app.name','SMAPAC') }}</a></li>
-                    <li class="breadcrumb-item"><a href="javascript: void(0);">REQUISICIONES</a></li>
-                    <li class="breadcrumb-item active">LISTA</li>
-                </ol>
-            </div>
-            <h4 class="page-title"></h4>
-        </div>
-    </div>
-</div>
-<!-- end page title -->
+@component('layouts.partials.breadcrumb')
+@slot('title') {{ config('app.name', 'H.A.E') }} @endslot
+@slot('subtitle') requisiciones @endslot
+@slot('teme') autorizadas @endslot
+@endcomponent
 <div class="row">
     <div class="col-lg-12">
         <div class="card">
-            <div class="card-box"
-                <h2 style="text-transform:uppercase;" class="header-title"><strong>Requisiciones Autorizadas</strong></h2>
-            </div>
             <div class="card-body">
                 <div class="row mb-2">
                     <div class="col-sm-12">

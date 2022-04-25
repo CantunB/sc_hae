@@ -1,14 +1,14 @@
 <?php
 
-namespace Smapac\Http\Controllers;
+namespace HAE\Http\Controllers;
 use Illuminate\Support\Facades\DB;
-use Smapac\AssignedAreas;
+use HAE\AssignedAreas;
 use Illuminate\Http\Request;
-use Smapac\AssignedUserAreas;
-use Smapac\Coordination;
-use Smapac\Department;
-use Smapac\User;
-use Smapac\Http\Requests\UserRequest;
+use HAE\AssignedUserAreas;
+use HAE\Coordination;
+use HAE\Department;
+use HAE\User;
+use HAE\Http\Requests\UserRequest;
 use Spatie\Permission\Models\Role;
 use Spatie\Permission\Models\Permission;
 use Yajra\Datatables\Datatables;

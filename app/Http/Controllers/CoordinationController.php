@@ -1,12 +1,11 @@
 <?php
 
-namespace Smapac\Http\Controllers;
+namespace HAE\Http\Controllers;
 
-use Smapac\Coordination;
-use Smapac\Department;
-use Smapac\AssignedAreas;
+use HAE\Coordination;
+use HAE\Department;
+use HAE\AssignedAreas;
 use Illuminate\Http\Request;
-use Symfony\Component\Console\Input\Input;
 use Yajra\Datatables\Datatables;
 class CoordinationController extends Controller
 {
@@ -37,14 +36,10 @@ class CoordinationController extends Controller
                  <i class="fas fa-pencil-alt "></i>
                  </a>
 
-                <a href="' . route('coordinaciones.destroy', $coordinations->id) . '"
-                data-id="'.$coordinations->id.'"
-                class="btn btn-sm btn-danger"
-                title="Eliminar"
-                data-toggle="modal"
-                data-target="#confirm-delete">
+                <button onclick="btnDelete('.$coordinations->id.')"
+                class="btn btn-sm btn-danger">
                 <i class="fas fa-trash-alt"></i>
-                </a>';
+                </button>';
             })
             ->make(true);
             }
@@ -75,13 +70,14 @@ class CoordinationController extends Controller
         $coordinations = Coordination::create($request->all());
         $coordinations->departments()->sync( $request->get('departments') );
       //  $coordinations->save();
-        return redirect()->route('coordinaciones.index')->with('success','Coordinacion Creada');
+        return response()->json(['data' => 'Nueva coordinacion'], 201);
+        // return redirect()->route('coordinaciones.index')->with('success','Coordinacion Creada');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \Smapac\Coordination  $coordination
+     * @param  \HAE\Coordination  $coordination
      * @return \Illuminate\Http\Response
      */
     public function show(Coordination $coordination)
@@ -92,7 +88,7 @@ class CoordinationController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \Smapac\Coordination  $coordination
+     * @param  \HAE\Coordination  $coordination
      * @return \Illuminate\Http\Response
      */
     public function edit( $coordination)
@@ -159,7 +155,7 @@ class CoordinationController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \Smapac\Coordination  $coordination
+     * @param  \HAE\Coordination  $coordination
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
@@ -173,14 +169,24 @@ class CoordinationController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \Smapac\Coordination  $coordination
+     * @param  \HAE\Coordination  $coordination
      * @return \Illuminate\Http\Response
      */
     public function destroy($coordination)
     {
         $coordination = Coordination::findOrFail($coordination);
-        $coordination->delete();
-        return back()->with('destroy','Coordinacion Eliminada');
+        $co = $coordination->delete();
+        if ($co == 1){
+            $success = true;
+            $message = "Coordinación eliminada";
+        } else {
+            $success = true;
+            $message = "Coordinación no eliminada";
+        }
+        return response()->json([
+            'success' => $success,
+            'message' => $message
+        ], 200);
     }
 
     public function areas(Request $request)

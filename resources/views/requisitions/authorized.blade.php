@@ -1,20 +1,10 @@
 @extends('layouts.app')
 @section('content')
-<div class="row">
-    <div class="col-12">
-        <div class="page-title-box">
-            <div class="page-title-right">
-                <ol class="breadcrumb m-0">
-                    <li class="breadcrumb-item"><a href="javascript: void(0);">{{ config('app.name','SMAPAC') }}</a></li>
-                    <li class="breadcrumb-item"><a href="javascript: void(0);">REQUISICIONES</a></li>
-                    <li class="breadcrumb-item active">AUTORIZADAS</li>
-                </ol>
-            </div>
-            <h4 class="page-title"></h4>
-        </div>
-    </div>
-</div>
-<!-- end page title -->
+@component('layouts.partials.breadcrumb')
+@slot('title') {{ config('app.name', 'H.A.E') }} @endslot
+@slot('subtitle') requisicion @endslot
+@slot('teme') autorizada @endslot
+@endcomponent
 <div class="row">
     <div class="col-12">
         <div class="card">
@@ -34,9 +24,12 @@
              <!--   <p class="sub-header">
                     Override your input files with style. Your so fresh input file — Default version.
                 </p> -->
-
-                <input type="file" class="dropify" data-default-file="{{asset('requisitions/autorizadas/'.$requisitions->requisition->file_req  ) }}"
-                    disabled="disabled"/>
+                <br>
+                <iframe src="{{asset('requisitions/autorizadas/'.$requisitions->requisition->file_req  ) }}" width="100%" height="500px">
+                {{-- <iframe src="{{asset('requisitions/autorizadas/'.$requisitions->requisition->file_req  ) }}#toolbar=0" width="100%" height="500px"> --}}
+                </iframe>
+                {{-- <input type="file" class="dropify" data-default-file="{{asset('requisitions/autorizadas/'.$requisitions->requisition->file_req  ) }}"
+                    disabled="disabled"/> --}}
                 <p class="text-muted text-center mt-2 mb-0">{{ $requisitions->requisition->file_req }}</p>
                 <br>
                 <br>
@@ -45,10 +38,6 @@
                     <a  href="{{asset('requisitions/autorizadas/'.$requisitions->requisition->file_req  ) }}"
                         type="submit" class="btn btn-soft-primary waves-effect waves-light btn-descargar"  download>
                         Descargar<span class="btn-label-right"><i class="mdi mdi-download"></i></span>
-                    </a>&nbsp;
-                    <a  href="{{asset('requisitions/autorizadas/'.$requisitions->requisition->file_req  ) }}" target="__blank"
-                        class="btn btn-soft-primary waves-effect waves-light">
-                        Ver<span class="btn-label-right"><i class="mdi mdi-file"></i></span>
                     </a>&nbsp;
                     @endcan
                     @can('create_quotes')

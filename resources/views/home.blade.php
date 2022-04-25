@@ -43,7 +43,7 @@
                                         </div>
                                         <div class="col-6">
                                             <div class="text-right">
-                                                <h3 class="mt-1">$<span data-plugin="counterup">{{ $total }}</span></h3>
+                                                <h3 class="mt-1">$<span data-plugin="counterup"></span></h3>
                                                 <p class="text-muted mb-1 text-truncate">Total Salida</p>
                                             </div>
                                         </div>
@@ -61,7 +61,7 @@
                                         </div>
                                         <div class="col-6">
                                             <div class="text-right">
-                                                <h3 class="text-dark mt-1"><span data-plugin="counterup">{{ $count_ordenes }}</span></h3>
+                                                <h3 class="text-dark mt-1"><span data-plugin="counterup"></span></h3>
                                                 <p class="text-muted mb-1 text-truncate">Ventas de Hoy</p>
                                             </div>
                                         </div>
@@ -108,7 +108,7 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            @foreach($ordenes as $orden)
+                                            {{-- @foreach($ordenes as $orden)
                                                 <tr>
                                                     <td><input type="checkbox" name="chk[]" value="{{ $orden->id }}"></td>
                                                     <td>{{ $orden->department->name }}</td>
@@ -130,7 +130,7 @@
                                                         </a>
                                                     </td>
                                                 </tr>
-                                                @endforeach
+                                                @endforeach --}}
                                         </tbody>
                                     </table>
 

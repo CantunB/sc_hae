@@ -2,7 +2,7 @@
 <div class="container">
     <div class="form-row">
         <div class="form-group col-md-4">
-            <label for="">Nombre(s)</label>
+            <label for="">Nombre</label>
             <input type="text" name="name" class="form-control" value="{{ old('name') ?: $department->name }}">
             @if ($errors->has('name'))
                 <p style="color:red">  {{$errors->first('name')}} </p>

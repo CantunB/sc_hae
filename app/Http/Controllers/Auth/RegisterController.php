@@ -1,10 +1,10 @@
 <?php
 
-namespace Smapac\Http\Controllers\Auth;
+namespace HAE\Http\Controllers\Auth;
 
-use Smapac\Http\Controllers\Controller;
-use Smapac\Providers\RouteServiceProvider;
-use Smapac\User;
+use HAE\Http\Controllers\Controller;
+use HAE\Providers\RouteServiceProvider;
+use HAE\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
@@ -60,7 +60,7 @@ class RegisterController extends Controller
      * Create a new user instance after a valid registration.
      *
      * @param  array  $data
-     * @return \Smapac\User
+     * @return \HAE\User
      */
     protected function create(array $data)
     {

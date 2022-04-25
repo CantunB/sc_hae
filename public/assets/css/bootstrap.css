@@ -27,9 +27,9 @@ File: Custom Bootstrap Css File
   --white: #fff;
   --gray: #98a6ad;
   --gray-dark: #343a40;
-  --primary: #6658dd;
+  --primary: #f6993f;
   --secondary: #6c757d;
-  --success: #1abc9c;
+  --success: #20d489;
   --info: #4fc6e1;
   --warning: #f7b84b;
   --danger: #f1556c;
@@ -143,7 +143,7 @@ sup {
   top: -.5em; }
 
 a {
-  color: #6658dd;
+  color: #f6993f;
   text-decoration: none;
   background-color: transparent; }
   a:hover {
@@ -1844,16 +1844,16 @@ fieldset:disabled a.btn {
 
 .btn-primary {
   color: #fff;
-  background-color: #6658dd;
-  border-color: #6658dd; }
+  background-color: #FF7F50;
+  border-color: #FF7F50; }
   .btn-primary:hover {
     color: #fff;
-    background-color: #4938d7;
-    border-color: #3f2ed4; }
+    background-color: #FF7F50;
+    border-color: #FF7F50; }
   .btn-primary:focus, .btn-primary.focus {
     color: #fff;
-    background-color: #4938d7;
-    border-color: #3f2ed4;
+    background-color: #FF7F50;
+    border-color: #FF7F50;
     box-shadow: 0 0 0 0.15rem rgba(125, 113, 226, 0.5); }
   .btn-primary.disabled, .btn-primary:disabled {
     color: #fff;
@@ -2103,7 +2103,7 @@ fieldset:disabled a.btn {
       box-shadow: 0 0 0 0.15rem rgba(101, 148, 218, 0.5); }
 
 .btn-outline-primary {
-  color: #6658dd;
+  color: #FFA07A	;
   border-color: #6658dd; }
   .btn-outline-primary:hover {
     color: #fff;

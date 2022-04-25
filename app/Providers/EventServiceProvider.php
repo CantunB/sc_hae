@@ -1,6 +1,6 @@
 <?php
 
-namespace Smapac\Providers;
+namespace HAE\Providers;
 
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Auth\Listeners\SendEmailVerificationNotification;

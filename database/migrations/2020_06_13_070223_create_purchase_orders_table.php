@@ -14,16 +14,12 @@ class CreatePurchaseOrdersTable extends Migration
     public function up()
     {
         Schema::create('purchase_orders', function (Blueprint $table) {
-            $table->bigIncrements('id');
+            $table->id();
             $table->integer('accountant');
-            $table->integer('department_id')->unsigned();
-            $table->foreign('department_id')->references('id')->on('departments')->onDelete('cascade');
-            $table->unsignedBigInteger('pur_order_details_id')->index();
-            $table->foreign('pur_order_details_id')->references('id')->on('pur_order_details')->onDelete('cascade');
-            $table->unsignedBigInteger('pur_order_material_id')->index();
-            $table->foreign('pur_order_material_id')->references('id')->on('pur_order_material')->onDelete('cascade');
-            $table->unsignedBigInteger('pur_order_features_id')->index();
-            $table->foreign('pur_order_features_id')->references('id')->on('pur_order_feautures')->onDelete('cascade');
+            $table->foreignId('department_id')->references('id')->on('departments');
+            $table->foreignId('pur_order_details_id')->references('id')->on('pur_order_details');
+            $table->foreignId('pur_order_material_id')->references('id')->on('pur_order_material');
+            $table->foreignId('pur_order_features_id')->references('id')->on('pur_order_feautures');
             $table->string('observation')->nullable();
             $table->tinyInteger('status')->default('0');
             $table->timestamps();

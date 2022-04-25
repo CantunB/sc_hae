@@ -1,6 +1,6 @@
 <?php
 
-namespace Smapac\Console;
+namespace HAE\Console;
 
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;

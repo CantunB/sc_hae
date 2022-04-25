@@ -1,13 +1,13 @@
 <?php
 
-namespace Smapac\Http\Controllers;
+namespace HAE\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Smapac\Providers;
+use HAE\Providers;
 use Image;
-use Smapac\Purchase;
-use Smapac\PurchaseOrderDetail;
-use Smapac\Quotesrequisitions;
+use HAE\Purchase;
+use HAE\PurchaseOrderDetail;
+use HAE\Quotesrequisitions;
 
 class ProvidersController extends Controller
 {
@@ -49,7 +49,7 @@ class ProvidersController extends Controller
     public function store(Request $request)
     {
         //$proveedore  = new Providers;
-        $proveedor  = Providers::create($request->all());
+        $proveedor = new Providers($request->all());
   /*       if($request->hasFile('provider_file')){
             $provider_file = $request->file("provider_file");
             $provider_filename = $provider_file->getClientOriginalName();
@@ -80,8 +80,8 @@ class ProvidersController extends Controller
 
            // $user->update($request->all());
             $proveedor->provider_file = $filename;
-            $proveedor->save();
         }
+        $proveedor->save();
 
         if ($proveedor == true){
             $success = true;
@@ -101,7 +101,7 @@ class ProvidersController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \Smapac\Providers  $providers
+     * @param  \HAE\Providers  $providers
      * @return \Illuminate\Http\Response
      */
     public function show(Providers $providers)
@@ -112,7 +112,7 @@ class ProvidersController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \Smapac\Providers  $providers
+     * @param  \HAE\Providers  $providers
      * @return \Illuminate\Http\Response
      */
     public function edit($providers)
@@ -126,7 +126,7 @@ class ProvidersController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \Smapac\Providers  $providers
+     * @param  \HAE\Providers  $providers
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $providers)
@@ -148,7 +148,7 @@ class ProvidersController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \Smapac\Providers  $providers
+     * @param  \HAE\Providers  $providers
      * @return \Illuminate\Http\Response
      */
     public function destroy($providers)

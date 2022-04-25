@@ -14,7 +14,7 @@ class   CreateRequestedsTable extends Migration
     public function up()
     {
         Schema::create('requesteds', function (Blueprint $table) {
-            $table->bigIncrements('id');
+            $table->id();
             $table->string('departure');
             $table->string('quantity');
             $table->string('unit');

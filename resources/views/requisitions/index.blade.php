@@ -2,20 +2,11 @@
 @section('title','Requisicones')
 @section('content')
 <!-- start page title -->
-<div class="row">
-    <div class="col-12">
-        <div class="page-title-box">
-            <div class="page-title-right">
-                <ol class="breadcrumb m-0">
-                    <li class="breadcrumb-item"><a href="javascript: void(0);">{{ config('app.name','SMAPAC') }}</a></li>
-                    <li class="breadcrumb-item"><a href="javascript: void(0);">REQUISICIONES</a></li>
-                    <li class="breadcrumb-item active">LISTA</li>
-                </ol>
-            </div>
-            <h4 class="page-title"></h4>
-        </div>
-    </div>
-</div>
+    @component('layouts.partials.breadcrumb')
+    @slot('title') {{ config('app.name', 'H.A.E') }} @endslot
+    @slot('subtitle') {{Request::path()}} @endslot
+    @slot('teme') Lista @endslot
+    @endcomponent
 <!-- end page title -->
 <div class="row">
     <div class="col-lg-12">

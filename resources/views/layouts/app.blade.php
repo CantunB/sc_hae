@@ -2,11 +2,12 @@
 <html lang="en">
     <head>
         <meta charset="utf-8" />
-        <title>{{ config('app.name', 'SMAPAC URM') }}</title>
+        <title>{{ config('app.name', 'H.A.E') }}</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta content="A fully featured admin theme which can be used to build CRM, CMS, etc." name="description" />
         <meta content="Coderthemes" name="author" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="csrf-token" content="{{ csrf_token() }}" />
         <!-- App favicon -->
         <link rel="shortcut icon" href="{{ asset('assets/images/favicon.ico') }}">
 
@@ -24,17 +25,35 @@
         <link href="{{asset('assets/libs/dropify/css/dropify.min.css')}}" rel="stylesheet" type="text/css" />
         <link href="{{asset('assets/libs/flatpickr/flatpickr.min.css')}}" rel="stylesheet" type="text/css" />
         <link href="{{asset('assets/libs/selectize/css/selectize.bootstrap3.css')}}" rel="stylesheet" type="text/css" />
+        <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+
         <!-- App css -->
-        <link href="{{ asset('assets/css/bootstrap.min.css') }}" rel="stylesheet" type="text/css" id="bs-default-stylesheet" />
-        <link href="{{ asset('assets/css/app.min.css') }}" rel="stylesheet" type="text/css" id="app-default-stylesheet" />
 
-        <link href="{{ asset('assets/css/bootstrap-dark.min.css') }}" rel="stylesheet" type="text/css" id="bs-dark-stylesheet" />
-        <link href="{{ asset('assets/css/app-dark.min.css') }}" rel="stylesheet" type="text/css" id="app-dark-stylesheet" />
+        <link href="{{ asset('assets/css/bootstrap.css') }}" rel="stylesheet" type="text/css" id="bs-default-stylesheet" />
+        <link href="{{ asset('assets/css/app.css') }}" rel="stylesheet" type="text/css" id="app-default-stylesheet" />
+
         <link href="{{ asset('assets/libs/bootstrap-select/css/bootstrap-select.min.css') }}" rel="stylesheet" type="text/css" />
-
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/11.4.8/sweetalert2.min.css" integrity="sha512-y4S4cBeErz9ykN3iwUC4kmP/Ca+zd8n8FDzlVbq5Nr73gn1VBXZhpriQ7avR+8fQLpyq4izWm0b8s6q4Vedb9w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
         <!-- icons -->
         <link href="{{ asset('assets/css/icons.min.css') }}" rel="stylesheet" type="text/css" />
+        <style>
+            .btn-primary{
+                background-color: #FF7F50
+            }
+            .custom-checkbox .custom-control-input:checked ~ .custom-control-label::before {
+                background-color: green!important;
+            }
 
+            .custom-checkbox .custom-control-input:checked:focus ~ .custom-control-label::before {
+                box-shadow: 0 0 0 1px #fff, 0 0 0 0.2rem rgba(0, 255, 0, 0.25)
+            }
+            .custom-checkbox .custom-control-input:focus ~ .custom-control-label::before {
+                box-shadow: 0 0 0 1px #fff, 0 0 0 0.2rem rgba(0, 0, 0, 0.25)
+            }
+            .custom-checkbox .custom-control-input:active ~ .custom-control-label::before {
+                background-color: #C8FFC8;
+            }
+        </style>
     </head>
 
     <body class="loading" data-layout='{"mode": "light", "width": "fluid", "menuPosition": "fixed", "sidebar": { "color": "light", "size": "default", "showuser": false}, "topbar": {"color": "dark"}, "showRightSidebarOnPageLoad": true}'>
@@ -75,7 +94,7 @@
                     <div class="container-fluid">
                         <div class="row">
                             <div class="col-md-12">
-                                &copy;{{date('Y') }}{{ config('app.name') }}. Sistema Municipal de Agua Potable y Alcantarillado de Carmen (SMAPAC). H. Ayuntamiento de Carmen. All rights reserved.
+                                &copy;{{date('Y') }}{{ config('app.name') }}. H. Ayuntamiento de Escárcega. All rights reserved.
                             </div>
                         </div>
                     </div>
@@ -108,7 +127,16 @@
         <!-- App js-->
         <script src="{{ asset('assets/js/app.min.js') }}"></script>
         <script src="{{asset('js/alerts.js')}}" defer></script>
-        @stack('scripts')
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/11.4.8/sweetalert2.min.js" integrity="sha512-7x7HoEikRZhV0FAORWP+hrUzl75JW/uLHBbg2kHnPdFmScpIeHY0ieUVSacjusrKrlA/RsA2tDOBvisFmKc3xw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+        <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+        <script>
+            $('.dropify').dropify();
+        </script>
+        <script>
+            $(document).ready(function() {
+                $('.select2').select2();
+            });
+        </script>
 
         <!-- SELECTPICKER -->
         <script src="{{ asset('assets/libs/multiselect/js/jquery.multi-select.js') }}"></script>
@@ -131,10 +159,7 @@
         <script src="{{ asset('assets/libs/pdfmake/build/pdfmake.min.js') }}"></script>
         <script src="{{ asset('assets/libs/pdfmake/build/vfs_fonts.js') }}"></script>
         <script src="{{ asset('assets/js/pages/datatables.init.js') }}"></script>
-        <!-- Bootstrap Tables js -->
-        <script src="{{ asset('assets/libs/bootstrap-table/bootstrap-table.min.js') }}"></script>
-        <script src="https://unpkg.com/tableexport.jquery.plugin/libs/jsPDF/jspdf.min.js"></script>
-        <script src="https://unpkg.com/tableexport.jquery.plugin/libs/jsPDF-AutoTable/jspdf.plugin.autotable.js"></script>
-        <script src="https://unpkg.com/bootstrap-table@1.18.1/dist/extensions/export/bootstrap-table-export.min.js"></script>
+        @stack('scripts')
+
     </body>
 </html>

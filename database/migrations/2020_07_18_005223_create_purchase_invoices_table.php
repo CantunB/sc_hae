@@ -16,10 +16,8 @@ class CreatePurchaseInvoicesTable extends Migration
         Schema::create('purchase_invoices', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('type')->nullable();
-            $table->integer('department_id')->unsigned();
-            $table->foreign('department_id')->references('id')->on('departments')->onDelete('cascade');
-            $table->unsignedBigInteger('purchase_id')->index();
-            $table->foreign('purchase_id')->references('id')->on('purchases')->onDelete('cascade');
+            $table->foreignId('department_id')->references('id')->on('departments');
+            $table->foreignId('purchase_id')->references('id')->on('purchases');
             $table->string('invoice_file')->nullable();
             $table->decimal('amount',10,2);
             $table->string('observation')->nullable();

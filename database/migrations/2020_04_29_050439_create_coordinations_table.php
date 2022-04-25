@@ -14,11 +14,10 @@ class CreateCoordinationsTable extends Migration
     public function up()
     {
         Schema::create('coordinations', function (Blueprint $table) {
-            $table->integer('id')->unsigned();
-            $table->primary('id');
-            $table->string('name', 128)->default('N/A');
+            $table->id();
+            $table->string('name');
             $table->string('slug', 128)->default('N/A');
-            $table->tinyInteger('status')->default('0');
+            $table->tinyInteger('status')->default('1');
             $table->timestamps();
         });
     }

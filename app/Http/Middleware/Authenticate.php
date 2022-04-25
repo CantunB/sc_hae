@@ -1,6 +1,6 @@
 <?php
 
-namespace Smapac\Http\Middleware;
+namespace HAE\Http\Middleware;
 
 use Illuminate\Auth\Middleware\Authenticate as Middleware;
 

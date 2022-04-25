@@ -1,8 +1,8 @@
 <?php
 
-namespace Smapac\Http\Controllers\Auth;
+namespace HAE\Http\Controllers\Auth;
 
-use Smapac\Http\Controllers\Controller;
+use HAE\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\SendsPasswordResetEmails;
 
 class ForgotPasswordController extends Controller

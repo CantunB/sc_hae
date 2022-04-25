@@ -18,7 +18,7 @@ class PurchaseSeeder extends Seeder
         Permission::create(['name' => 'update_compras']);
         Permission::create(['name' => 'delete_compras']);
 
-        $super_admin = Role::findByName('super-admin');
+        $super_admin = Role::findByName('Super-Admin');
         $super_admin->givePermissionTo(['create_compras',
                         'read_compras',
                         'update_compras',

@@ -1,4 +1,5 @@
-<div class="navbar-custom">
+{{--  <div class="navbar-custom" style="background-color: #FF7F50;">  --}}
+<div class="navbar-custom" style="background-color: #FF8C00;">
     <div class="container-fluid">
         <ul class="list-unstyled topnav-menu float-right mb-0">
 
@@ -7,12 +8,12 @@
                     <i class="fe-maximize noti-icon"></i>
                 </a>
             </li>
-            <li class="dropdown notification-list topbar-dropdown">
+            {{--  <li class="dropdown notification-list topbar-dropdown">
                 <a class="nav-link dropdown-toggle waves-effect waves-light" data-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
                     <i class="fe-bell noti-icon"></i>
-                    <span class="badge badge-danger rounded-circle noti-icon-badge">{{auth()->user()->count()}}</span>
+                    <span class="badge badge-danger rounded-circle noti-icon-badge">{{Auth::user()->count()}}</span>
                 </a>
-            </li>
+            </li>  --}}
 
             <li class="dropdown notification-list topbar-dropdown">
                 <a class="nav-link dropdown-toggle nav-user mr-0 waves-effect waves-light" data-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
@@ -44,23 +45,28 @@
 
         <!-- LOGO -->
         <div class="logo-box">
-            <a href="index.html" class="logo logo-dark text-center">
+            <a href="" class="logo logo-dark text-center">
                 <span class="logo-sm">
-                    <img src="{{ asset('assets/images/logo-sm.png') }}" alt="" height="22">
-                    <!-- <span class="logo-lg-text-light">UBold</span> -->
+                    {{--  H.Ayuntamiento de Escárcega  --}}
+                    {{--  <img src="{{ asset('assets/images/logo-sm.png') }}" alt="" height="35">  --}}
+                    <span class="logo-lg-text-light">H.A.E</span>
                 </span>
                 <span class="logo-lg">
-                    <img src="{{ asset('assets/images/logo-dark.png') }}" alt="" height="20">
-                    <!-- <span class="logo-lg-text-light">U</span> -->
+                    {{--  H.Ayuntamiento de Escárcega  --}}
+                    {{--  <img src="{{ asset('assets/images/logo-dark.png') }}" alt="" height="50">  --}}
+                    <span class="logo-lg-text-light">Escárcega</span>
                 </span>
             </a>
 
-            <a href="index.html" class="logo logo-light text-center">
+            <a href="" class="logo logo-light text-center">
                 <span class="logo-sm">
-                    <img src="{{ asset('assets/images/logo-sm.png') }}" alt="" height="22">
+                    <span class="logo-lg-text-light">H.A.E</span>
+                    {{--  <img src="{{ asset('assets/images/logo_ayuntamiento.png') }}" alt="" height="35">  --}}
                 </span>
                 <span class="logo-lg">
-                    <img src="{{ asset('assets/images/logo-light.png') }}" alt="" height="20">
+                    <span class="logo-lg-text-light">Escárcega</span>
+
+                    {{--  <img src="{{ asset('assets/images/logo_ayuntamiento.png') }}" alt="" height="50">  --}}
                 </span>
             </a>
         </div>

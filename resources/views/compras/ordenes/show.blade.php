@@ -1,20 +1,11 @@
 @extends('layouts.app')
 @section('content')
 <!-- start page title -->
-<div class="row">
-    <div class="col-12">
-        <div class="page-title-box">
-            <div class="page-title-right">
-                <ol class="breadcrumb m-0">
-                    <li class="breadcrumb-item"><a href="javascript: void(0);">{{ config('app.name','SMAPAC') }}</a></li>
-                    <li class="breadcrumb-item"><a href="javascript: void(0);">COTIZACIONES</a></li>
-                    <li class="breadcrumb-item active">CREAR</li>
-                </ol>
-            </div>
-            <h4 class="page-title">Generar Orden de Compra</h4>
-        </div>
-    </div>
-</div>
+    @component('layouts.partials.breadcrumb')
+    @slot('title') {{ config('app.name', 'H.A.E') }} @endslot
+    @slot('subtitle') cotizaciones @endslot
+    @slot('teme') nueva @endslot
+    @endcomponent
 <!-- end page title -->
 <div class="row">
     <div class="col-lg-12">
@@ -36,7 +27,7 @@
                                                         <div class="form-group">
                                                             <label for=""><strong>ORDEN DE COMPRA</strong></label>
                                                             <div class="input-group" >
-                                                                <input name="folio_or" id="folio_or" type="text" required class="form-control" value="SMAPAC-CAF/">
+                                                                <input name="folio_or" id="folio_or" type="text" required class="form-control" value="{{config('app.name', 'H.A.E')}}">
                                                                 <select name="type_or" id="type_or" type="text" required class="form-control" >
                                                                     <option value="OC1">OC1</option>
                                                                     <option value="OC2">OC2</option>
@@ -63,7 +54,11 @@
                                                         <br>
                                                         <br>
                                                         <div class="input-group" >
-                                                            <input name="folio_analysis" id="folio_analysis" type="text"  class="form-control analysis" placeholder="SMAPAC-{{ auth()->user()->asignado->areas->coordinations->slug}}" style="display:none">
+                                                            <input name="folio_analysis" id="folio_analysis" type="text"  class="form-control analysis" placeholder="
+                                                            {{
+                                                                config('app.name', 'H.A.E')
+                                                            }}
+                                                            " style="display:none">
                                                             <input name="type_anaylysis" id="type_anaylysis" type="text" class="form-control analysis" value="" style="display:none">
                                                             <span class="input-group-addon">-</span>
                                                             <input name="count_analysis" id="count_analysis" type="number" class="form-control analysis" style="display:none" >
@@ -78,7 +73,7 @@
                                             <div class="col-md-4">
                                                 <label class="col-form-label">
                                                     <strong>Proveedor:
-                                                        <select class="form-control col sel" id="prov1"  name="provider_id" required>
+                                                        <select class="form-control col sel select2" id="prov1"  name="provider_id" required>
                                                             <option selected disabled>Proveedor</option>
                                                             @foreach($providers as $provider)
                                                                 <option data-rfc="{{$provider->rfc}}" value="{{$provider->id}}">{{$provider->name}}</option>

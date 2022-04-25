@@ -14,13 +14,10 @@ class CreateQuotesrequisitionsTable extends Migration
     public function up()
     {
         Schema::create('quotesrequisitions', function (Blueprint $table) {
-            $table->bigIncrements('id');
-            $table->integer('department_id')->unsigned()->nullable();
-            $table->foreign('department_id')->references('id')->on('departments')->onDelete('cascade');
-            $table->unsignedBigInteger('requisition_id')->index();
-            $table->foreign('requisition_id')->references('id')->on('requisitions')->onDelete('cascade');
-            $table->unsignedBigInteger('provider_id')->index();
-            $table->foreign('provider_id')->references('id')->on('providers')->onDelete('cascade');
+            $table->id();
+            $table->foreignId('department_id')->references('id')->on('departments');
+            $table->foreignId('requisition_id')->references('id')->on('requisitions');
+            $table->foreignId('provider_id')->references('id')->on('providers');
             $table->string('quote_file')->nullable();
             $table->tinyInteger('status')->default('0');
             $table->timestamps();

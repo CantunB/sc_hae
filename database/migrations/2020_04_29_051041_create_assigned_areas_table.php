@@ -14,13 +14,11 @@ class CreateAssignedAreasTable extends Migration
     public function up()
     {
         Schema::create('assigned_areas', function (Blueprint $table) {
-            $table->bigIncrements('id')->unsigned();
-            $table->integer('coordination_id')->unsigned()->nullable();
-            $table->foreign('coordination_id')->references('id')->on('coordinations')->onDelete('cascade');
-            $table->integer('department_id')->unsigned()->nullable();
-            $table->foreign('department_id')->references('id')->on('departments')->onDelete('cascade');
+            $table->id();
+            $table->foreignId('coordination_id')->references('id')->on('coordinations');
+            $table->foreignId('department_id')->references('id')->on('departments');
             $table->string('slug', 128)->nullable();
-            $table->tinyInteger('status')->default('0');
+            $table->tinyInteger('status')->default('1');
             $table->timestamps();
         });
     }

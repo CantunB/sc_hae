@@ -1,19 +1,10 @@
 @extends('layouts.app')
 @section('content')
-<div class="row">
-    <div class="col-12">
-        <div class="page-title-box">
-            <div class="page-title-right">
-                <ol class="breadcrumb m-0">
-                    <li class="breadcrumb-item"><a href="javascript: void(0);">{{ config('app.name','SMAPAC') }}</a></li>
-                    <li class="breadcrumb-item"><a href="javascript: void(0);">REQUISICIONES</a></li>
-                    <li class="breadcrumb-item active">AUTORIZACIÓN</li>
-                </ol>
-            </div>
-            <h4 class="page-title"></h4>
-        </div>
-    </div>
-</div>
+@component('layouts.partials.breadcrumb')
+@slot('title') {{ config('app.name', 'H.A.E') }} @endslot
+@slot('subtitle') COMPRAS @endslot
+@slot('teme') AUTORIZAR @endslot
+@endcomponent
 <!-- end page title -->
 <div class="row">
     <div class="col-lg-12">
@@ -28,7 +19,7 @@
                                 <i class="mdi mdi-menu-left-outline"></i> Regresar
                             </a>
                         </div>
-                    </div><!-- end col-->
+                    </div>
                 </div>
                 <div class="container">
                     <div class="card-body">
@@ -67,13 +58,14 @@
                                                 </div>
                                         </form>
                     </div>
+
+
                 </div>
             </div> <!-- end card-body-->
         </div> <!-- end card-->
     </div> <!-- end col -->
 </div>
 @push('scripts')
-
 <script type="application/javascript">
     $('input[type="file"]').change(function(e){
         var invoice_file = e.target.files[0].name;
@@ -107,46 +99,5 @@
         };
     }
     </script>
-<script>
-  const fileSelector = document.getElementById('invoice_file');
-  fileSelector.addEventListener('change', (event) => {
-    const fileList = event.target.files;
-    console.log(fileList);
-  });
-</script>
-<script>
-    const imagePreview = document.getElementById('img-preview');
-    const imageUploader = document.getElementById('img-uploader');
-    const imageUploadbar = document.getElementById('img-upload-bar');
-
-    const CLOUDINARY_URL = ``
-    const CLOUDINARY_UPLOAD_PRESET = '';
-
-    imageUploader.addEventListener('change', async (e) => {
-        // console.log(e);
-        const file = e.target.files[0];
-        const formData = new FormData();
-        formData.append('file', file);
-        formData.append('upload_preset', CLOUDINARY_UPLOAD_PRESET);
-
-        // Send to cloudianry
-        const res = await axios.post(
-            CLOUDINARY_URL,
-            formData,
-            {
-                headers: {
-                    'Content-Type': 'multipart/form-data'
-                },
-                onUploadProgress (e) {
-                    let progress = Math.round((e.loaded * 100.0) / e.total);
-                    console.log(progress);
-                    imageUploadbar.setAttribute('value', progress);
-                }
-            }
-        );
-        console.log(res);
-        imagePreview.src = res.data.secure_url;
-    });
-</script>
 @endpush
 @endsection

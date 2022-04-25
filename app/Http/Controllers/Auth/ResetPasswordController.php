@@ -1,9 +1,9 @@
 <?php
 
-namespace Smapac\Http\Controllers\Auth;
+namespace HAE\Http\Controllers\Auth;
 
-use Smapac\Http\Controllers\Controller;
-use Smapac\Providers\RouteServiceProvider;
+use HAE\Http\Controllers\Controller;
+use HAE\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\ResetsPasswords;
 
 class ResetPasswordController extends Controller

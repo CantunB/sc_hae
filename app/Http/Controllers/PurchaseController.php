@@ -1,21 +1,21 @@
 <?php
 
-namespace Smapac\Http\Controllers;
+namespace HAE\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Intervention\Image\File;
 use NunoMaduro\Collision\Provider;
-use Smapac\AssignedRequesteds;
-use Smapac\AssignedRequisition;
-use Smapac\Providers;
-use Smapac\Purchase;
-use Smapac\PurchaseOrder;
-use Smapac\PurchaseOrderDetail;
-use Smapac\Requested;
+use HAE\AssignedRequesteds;
+use HAE\AssignedRequisition;
+use HAE\Providers;
+use HAE\Purchase;
+use HAE\PurchaseOrder;
+use HAE\PurchaseOrderDetail;
+use HAE\Requested;
 use Barryvdh\DomPDF\Facade as PDF;
-use Smapac\Requisition;
-use Smapac\Storehouse;
+use HAE\Requisition;
+use HAE\Storehouse;
 
 class PurchaseController extends Controller
 {
@@ -90,7 +90,7 @@ class PurchaseController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \Smapac\Purchase  $purchase
+     * @param  \HAE\Purchase  $purchase
      * @return \Illuminate\Http\Response
      */
     public function show($purchase)
@@ -108,7 +108,7 @@ class PurchaseController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \Smapac\Purchase  $purchase
+     * @param  \HAE\Purchase  $purchase
      * @return \Illuminate\Http\Response
      */
     public function edit( $purchase)
@@ -126,12 +126,13 @@ class PurchaseController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \Smapac\Purchase  $purchase
+     * @param  \HAE\Purchase  $purchase
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request,  $purchaseorder)
     {
-       // return $request->all();
+
+    // return $request->all();
     $purchaseorder = PurchaseOrder::where('id',$purchaseorder)->first();
     $folio = PurchaseOrderDetail::where('id',$purchaseorder->pur_order_details_id)->get();
 
@@ -170,7 +171,7 @@ class PurchaseController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \Smapac\Purchase  $purchase
+     * @param  \HAE\Purchase  $purchase
      * @return \Illuminate\Http\Response
      */
     public function destroy( $purchase)

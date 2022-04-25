@@ -3,7 +3,7 @@
 <input type="hidden" class="form-control" name="department_id" value="{{$requisition->requisition->department_id}}">
 <div class="form-group col-md-4 ">
     <label for="inputState">Proveedor</label>
-    <select id="prov1"  name="provider_id" class="form-control sel " required>
+    <select id="prov1"  name="provider_id" class="form-control sel select2" required>
         <option disabled selected>Selecciona un proveedor</option>
         @foreach($providers as $prov)
             <option   data-name="{{$prov->address}}" data-rfc="{{$prov->rfc}}" value="{{$prov->id }}">{{$prov->name}}</option>
@@ -28,10 +28,10 @@
     <div class="form-group">
         <label for="inputEmail3" class="col-form-label">Cotización</label>
         <div class="custom-file">
-            <input type="file" class="custom-file-input file-input1" id="file1" name="quote_file" required>
-            <label class="custom-file-label form-control-file">Seleccionar un archivo</label>
+            <input type="file" class="dropify" id="file2" name="quote_file" data-max-file-size="3M" />
+            <p class="text-muted text-center mt-2 mb-0">Max File size</p>
             @if ($errors->has('prov_one_img'))
-                <p style="color:red"> <strong>{{$errors->first('prov_one_img')}}</strong> </p>
+            <p style="color:red"> <strong>{{$errors->first('prov_one_img')}}</strong> </p>
             @endif
         </div>
     </div>

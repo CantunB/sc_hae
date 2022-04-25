@@ -1,6 +1,6 @@
 <?php
 
-namespace Smapac\Console\Commands;
+namespace HAE\Console\Commands;
 
 use Illuminate\Console\Command;
 use Illuminate\Support\Composer;

@@ -68,7 +68,7 @@ return [
     'providers' => [
         'users' => [
             'driver' => 'eloquent',
-            'model' => Smapac\User::class,
+            'model' => HAE\User::class,
         ],
 
         // 'users' => [

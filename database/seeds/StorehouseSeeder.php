@@ -18,7 +18,7 @@ class StorehouseSeeder extends Seeder
         Permission::create(['name' => 'update_almacen']);
         Permission::create(['name' => 'delete_almacen']);
 
-        $super_admin = Role::findByName('super-admin');
+        $super_admin = Role::findByName('Super-Admin');
         $super_admin->givePermissionTo(['create_almacen',
                         'read_almacen',
                         'update_almacen',

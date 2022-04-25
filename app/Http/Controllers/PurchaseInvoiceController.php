@@ -1,12 +1,12 @@
 <?php
 
-namespace Smapac\Http\Controllers;
+namespace HAE\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
-use Smapac\PurchaseOrder;
-use Smapac\Purchase;
-use Smapac\PurchaseInvoice;
+use HAE\PurchaseOrder;
+use HAE\Purchase;
+use HAE\PurchaseInvoice;
 
 class PurchaseInvoiceController extends Controller
 {
@@ -69,7 +69,7 @@ class PurchaseInvoiceController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \Smapac\Models\PurchaseInvoice  $purchaseInvoice
+     * @param  \HAE\Models\PurchaseInvoice  $purchaseInvoice
      * @return \Illuminate\Http\Response
      */
     public function show($purchaseInvoice)
@@ -83,7 +83,7 @@ class PurchaseInvoiceController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \Smapac\Models\PurchaseInvoice  $purchaseInvoice
+     * @param  \HAE\Models\PurchaseInvoice  $purchaseInvoice
      * @return \Illuminate\Http\Response
      */
     public function edit( $purchaseInvoice)
@@ -100,7 +100,7 @@ class PurchaseInvoiceController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \Smapac\Models\PurchaseInvoice  $purchaseInvoice
+     * @param  \HAE\Models\PurchaseInvoice  $purchaseInvoice
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request,  $purchaseorder)
@@ -190,7 +190,7 @@ class PurchaseInvoiceController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \Smapac\Models\PurchaseInvoice  $purchaseInvoice
+     * @param  \HAE\Models\PurchaseInvoice  $purchaseInvoice
      * @return \Illuminate\Http\Response
      */
     public function destroy($purchaseInvoice)

@@ -1,8 +1,8 @@
 <?php
 
-namespace Smapac\Http\Middleware;
+namespace HAE\Http\Middleware;
 
-use Smapac\Providers\RouteServiceProvider;
+use HAE\Providers\RouteServiceProvider;
 use Closure;
 use Illuminate\Support\Facades\Auth;
 

@@ -1,19 +1,19 @@
 <?php
 
-namespace Smapac\Http\Controllers;
+namespace HAE\Http\Controllers;
 
 use Illuminate\Support\Facades\DB;
-use Smapac\AssignedRequisition;
-use Smapac\AssignedRequesteds;
-use Smapac\Coordination;
-use Smapac\Requisition;
-use Smapac\User;
-use Smapac\AssignedUserAreas;
-use Smapac\AssignedAreas;
-use Smapac\Requested;
+use HAE\AssignedRequisition;
+use HAE\AssignedRequesteds;
+use HAE\Coordination;
+use HAE\Requisition;
+use HAE\User;
+use HAE\AssignedUserAreas;
+use HAE\AssignedAreas;
+use HAE\Requested;
 use Illuminate\Http\Request;
-use Smapac\Http\Requests\RequisitionRequest;
-use Smapac\Http\Requests\RequisitionUploadRequest;
+use HAE\Http\Requests\RequisitionRequest;
+use HAE\Http\Requests\RequisitionUploadRequest;
 use Spatie\Permission\Models\Role;
 use Spatie\Permission\Models\Permission;
 use Barryvdh\DomPDF\Facade as PDF;
@@ -196,7 +196,7 @@ $counts;
     /**
      * Display the specified resource.
      *
-     * @param  \Smapac\Requisition  $requisition
+     * @param  \HAE\Requisition  $requisition
      * @return \Illuminate\Http\Response
      */
     public function show( $id)
@@ -212,7 +212,7 @@ $counts;
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \Smapac\Requisition  $requisition
+     * @param  \HAE\Requisition  $requisition
      * @return \Illuminate\Http\Response
      */
     public function edit( $requisition)
@@ -243,7 +243,7 @@ $counts;
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \Smapac\Requisition  $requisition
+     * @param  \HAE\Requisition  $requisition
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request,  $requisition)
@@ -305,7 +305,7 @@ $counts;
 
     /*
     *Expor PDF
-    * @param  \Smapac\Requisition  $requisition
+    * @param  \HAE\Requisition  $requisition
     * Barryvdh\DomPDF\Facade as PDF
     */
     public  function requisitionspdf( $id)
@@ -340,7 +340,7 @@ $counts;
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \Smapac\Requisition  $requisition
+     * @param  \HAE\Requisition  $requisition
      * @return \Illuminate\Http\Response
      */
     public function destroy($requisition)

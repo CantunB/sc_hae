@@ -1,6 +1,6 @@
 <?php
 
-namespace Smapac\Providers;
+namespace HAE\Providers;
 
 use Carbon\Carbon;
 use Illuminate\Support\ServiceProvider;

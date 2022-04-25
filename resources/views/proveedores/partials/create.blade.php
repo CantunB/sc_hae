@@ -7,13 +7,13 @@
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
             </div>
             <div class="modal-body p-4">
-                <form id="form-create" enctype="multipart/form-data">
+                <form id="form-create" enctype="multipart/form-data" autocomplete="off">
                     @csrf
                     <div class="row">
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="name" class="control-label">Nombre o razon social</label>
-                                <input required type="text" class="form-control" id="name" name="name">
+                                <input required type="text" class="form-control" id="name" name="name" autocomplete="off">
                             </div>
                         </div>
                         <div class="col-md-6">

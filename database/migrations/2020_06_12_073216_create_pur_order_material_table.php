@@ -14,7 +14,7 @@ class CreatePurOrderMaterialTable extends Migration
     public function up()
     {
         Schema::create('pur_order_material', function (Blueprint $table) {
-            $table->bigIncrements('id');
+            $table->id();
             $table->string('departure');
             $table->string('quantity');
             $table->string('unit');

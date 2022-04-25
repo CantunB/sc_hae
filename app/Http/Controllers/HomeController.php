@@ -1,12 +1,12 @@
 <?php
 
-namespace Smapac\Http\Controllers;
+namespace HAE\Http\Controllers;
 
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Smapac\PurchaseInvoice;
-use Smapac\PurchaseOrder;
+use HAE\PurchaseInvoice;
+use HAE\PurchaseOrder;
 use Spatie\Permission\Models\Role;
 use Spatie\Permission\Models\Permission;
 use Yajra\DataTables\Facades\DataTables;

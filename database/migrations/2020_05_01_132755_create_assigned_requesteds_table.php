@@ -14,11 +14,9 @@ class CreateAssignedRequestedsTable extends Migration
     public function up()
     {
         Schema::create('assigned_requesteds', function (Blueprint $table) {
-            $table->bigIncrements('id');
-            $table->unsignedBigInteger('requisition_id')->index();
-            $table->foreign('requisition_id')->references('id')->on('requisitions')->onDelete('cascade');
-            $table->unsignedBigInteger('requested_id')->index();
-            $table->foreign('requested_id')->references('id')->on('requesteds')->onDelete('cascade');
+            $table->id();
+            $table->foreignId('requisition_id')->references('id')->on('requisitions');
+            $table->foreignId('requested_id')->references('id')->on('requesteds');
             $table->tinyInteger('status')->default('0');
             $table->timestamps();
         });

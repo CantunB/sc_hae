@@ -18,7 +18,7 @@ class QuotesrequisitionsSeeder extends Seeder
         Permission::create(['name' => 'update_quotes']);
         Permission::create(['name' => 'delete_quotes']);
 
-        $super_admin = Role::findByName('super-admin');
+        $super_admin = Role::findByName('Super-Admin');
         $super_admin->givePermissionTo(['create_quotes',
                         'read_quotes',
                         'update_quotes',

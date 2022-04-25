@@ -1,20 +1,11 @@
 @extends('layouts.app')
 @section('content')
 <!-- start page title -->
-<div class="row">
-    <div class="col-12">
-        <div class="page-title-box">
-            <div class="page-title-right">
-                <ol class="breadcrumb m-0">
-                    <li class="breadcrumb-item"><a href="javascript: void(0);">{{ config('app.name','SMAPAC') }}</a></li>
-                    <li class="breadcrumb-item"><a href="javascript: void(0);">COORDINACIONES</a></li>
-                    <li class="breadcrumb-item active">LISTA </li>
-                </ol>
-            </div>
-            <h4 class="page-title">LISTA DE COORDINACIONES</h4>
-        </div>
-    </div>
-</div>
+@component('layouts.partials.breadcrumb')
+@slot('title') {{ config('app.name', 'H.A.E') }} @endslot
+@slot('subtitle') Coordinaciones @endslot
+@slot('teme') Lista @endslot
+@endcomponent
 <!-- end page title -->
 <div class="row">
     <div class="col-lg-12">
@@ -24,8 +15,11 @@
                     <div class="col-sm-12">
                         <div class="text-sm-right">
                             @can('create_coordinaciones')
-                            <a href="{{ route('coordinaciones.create') }}"
-                                class="btn btn-sm btn-success waves-effect waves-light mb-2 float-right">Crear nueva coordinación</a>
+                            <button type="button" class="btn btn-sm btn-success waves-effect waves-light mb-2 float-right" data-toggle="modal" data-target="#newModal">
+                                Nueva coordinacion
+                            </button>
+                            {{-- <a href="{{ route('coordinaciones.create') }}"
+                                class="btn btn-sm btn-success waves-effect waves-light mb-2 float-right">Crear nueva coordinación</a> --}}
                             @endcan
                         </div>
                     </div><!-- end col-->
@@ -37,8 +31,6 @@
                                 <th scope="col">#</th>
                                 <th scope="col">Nombre</th>
                                 <th scope="col">Slug</th>
-                                <th scope="col">Fecha de registro</th>
-                                <th scope="col">Fecha de actualizacion</th>
                                 <th>Accciones</th>
                             </tr>
                         </thead>
@@ -49,27 +41,113 @@
     </div> <!-- end col -->
 </div>
     <!-- end row -->
-
+@include('coordinaciones.partials.new_modal')
 @push('scripts')
-   <script>
+    <script>
         $(document).ready( function () {
-      $('#coordinations-table').DataTable( {
-        processing: true,
-        serverSide : true,
-        language: {
-            "url": "//cdn.datatables.net/plug-ins/1.10.20/i18n/Spanish.json"
-        },
-        ajax: '{!! route('coordinaciones.index') !!}',
-        columns:[
-            {data: 'id', name: 'id'},
-            {data: 'name', name: 'name'},
-            {data: 'slug', name: 'slug'},
-            {data: 'created_at', name: 'created_at'},
-            {data: 'updated_at', name: 'updated_at'},
-            {data: 'action', name: 'action', orderable: false, searchable: false}
-        ]
-      } );
-    } );
+            $('#coordinations-table').DataTable( {
+                processing: true,
+                serverSide : true,
+                language: {
+                    "url": "//cdn.datatables.net/plug-ins/1.10.20/i18n/Spanish.json"
+                },
+                ajax: '{!! route('coordinaciones.index') !!}',
+                columns:[
+                    {data: 'id', name: 'id'},
+                    {data: 'name', name: 'name'},
+                    {data: 'slug', name: 'slug'},
+                    {data: 'action', name: 'action', orderable: false, searchable: false}
+                ]
+            });
+        });
+    </script>
+    <script>
+        $("#form_coordination").submit(function(stay) {
+            stay.preventDefault();
+            var formData = new FormData(this);
+            $.ajax({
+                type: "POST",
+                url: "{!! route('coordinaciones.store') !!}",
+                data: formData,
+                dataType: "json",
+                processData: false,
+                contentType: false,
+                success: function(response){
+                    console.log(response);
+                    Swal.fire({
+                        title: "Registro creado!",
+                        text: response.data,
+                        icon: "success",
+                        timer: 5000
+                    });
+                    $('#form_coordination')[0].reset();
+                    $('#form_coordination').parsley().destroy();
+                    $('#coordinations-table').DataTable().ajax.reload();
+                    $("#newModal").modal('hide');
+                },
+                error: function(response){
+                    //console.log(response);
+                    var errors = response.responseJSON;
+                    errorsHtml = '<div id="errors-alert" class="container"><div class="alert alert-danger" role="alert"> ';
+                    $.each(errors.errors,function (k,v) {
+                    errorsHtml +='<ul> <li>'+ v + '</li></ul>';
+                    });
+                    errorsHtml += '</div></div>';
+                    $('#errors').html(errorsHtml);
+                }
+            });
+            stay.preventDefault();
+        });
+    </script>
+    <script>
+        /** DESTROY UNIT*/
+        function btnDelete(id) {
+            Swal.fire({
+                title: "Desea eliminar?",
+                text: "Por favor asegúrese y luego confirme!",
+                icon: 'warning',
+                showCancelButton: !0,
+                confirmButtonText: "¡Sí, borrar!",
+                cancelButtonText: "¡No, cancelar!",
+                reverseButtons: !0
+            }).then(function (e) {
+                if (e.value === true) {
+                    $.ajax({
+                        type: 'DELETE',
+                        url: "/coordinaciones/" + id,
+                        data: {
+                            id: id,
+                            _token: '{!! csrf_token() !!}'
+                        },
+                        dataType: 'JSON',
+                        success: function (response) {
+                            console.log(response);
+                            if (response.success === true) {
+                                Swal.fire({
+                                    title: "Hecho!",
+                                    text: response.message,
+                                    icon: "success",
+                                    confirmButtonText: "Hecho!",
+                                });
+                                $('#coordinations-table').DataTable().ajax.reload();
+                            } else {
+                                Swal.fire({
+                                    title: "Error!",
+                                    text: response.message,
+                                    icon: "error",
+                                    confirmButtonText: "Cancelar!",
+                                });
+                            }
+                        }
+                    });
+                } else {
+                    e.dismiss;
+                }
+            }, function (dismiss) {
+                return false;
+            })
+        }
+        /** DESTROY UNIT*/
     </script>
 @endpush
 

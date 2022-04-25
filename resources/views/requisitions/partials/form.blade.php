@@ -4,8 +4,11 @@
     <div class="form-group row col-md-12">
         <label for="folio" class="col-md-2 offset-md-7 col-form-label"><strong>REQ. NO.</strong></label>
         <div class="col-md-3">
-          <input type="text" name="folio" required readonly class="form-control text-right @error('folio') is-invalid @enderror" id="folio"
-          value="{{'SMAPAC-CAF/'.$countreq.'/'.date('Y')}}">
+            <input type="text" name="folio" required readonly class="form-control text-right @error('folio') is-invalid @enderror" id="folio"
+            value="{{
+                config('app.name', 'H.A.E') .
+                '/'.$countreq.'/'.date('Y')
+            }}">
             @error('folio')
             <span class="invalid-feedback" role="alert">
                          <strong>{{ $message }}</strong>
@@ -36,7 +39,7 @@
         <label for="inputEmail3" class="col-md-2 col-form-label">Direccion</label>
         <div class="col-md-4">
             <input type="text" name="management"
-                   class="form-control @error('management') is-invalid @enderror" id="inputEmail3" placeholder="SMAPAC" value="SMAPAC" readonly>
+                   class="form-control @error('management') is-invalid @enderror" id="inputEmail3"  value="{{  config('app.name', 'H. Ayuntamiento de Escarcega') }}" readonly>
             @error('management')
             <span class="invalid-feedback" role="alert">
                          <strong>{{ $message }}</strong>
@@ -47,8 +50,8 @@
     <div class="form-group row col-md-12">
         <label for="inputEmail3" class="col-md-2 col-form-label">Coordinación</label>
         <div class="col-md-6">
-            @if(Auth::user()->hasRole('super-admin') or Auth::user()->hasRole('admin'))
-                <select class="form-control" name="coordination_id" id="coordinacion" required >
+            @if(Auth::user()->hasRole('Super-Admin') or Auth::user()->hasRole('admin'))
+                <select class="form-control select2" name="coordination_id" id="coordinacion" required >
                     <option disabled selected>Selecciona una coordinacion</option>
                 @foreach($coordinaciones as $i => $coordinacion)
                     <option value="{{$coordinacion->id}}">{{$coordinacion->name}}</option>
@@ -69,8 +72,8 @@
     <div class="form-group row col-md-12">
         <label for="inputEmail3" class="col-md-2 col-form-label">Departamento</label>
         <div class="col-md-6">
-            @if(Auth::user()->hasRole('super-admin') or Auth::user()->hasRole('admin'))
-                <select class="form-control" name="department_id" id="departamento">
+            @if(Auth::user()->hasRole('Super-Admin') or Auth::user()->hasRole('admin'))
+                <select class="form-control select2" name="department_id" id="departamento">
                     <option disabled selected>Selecciona un departamento</option>
                 </select>
             @else
@@ -134,8 +137,8 @@
                     <tbody class="field_wrapper">
                 <input class="form-control col-md-12" type="text" name="cont" id="cont" hidden>
                 <tr>
-                    <td ><input type="number" min="0" name="departure[]" id="departure" required
-                      class="form-control @error('departure') is-invalid @enderror">
+                    <td ><input readonly min="0" name="departure[]" id="departure" required
+                      class="form-control @error('departure') is-invalid @enderror text-center">
                       @error('departure[]')
                       <span class="invalid-feedback" role="alert">
                           <strong>{{ $message }}</strong>

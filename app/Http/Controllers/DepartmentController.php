@@ -1,10 +1,10 @@
 <?php
 
-namespace Smapac\Http\Controllers;
+namespace HAE\Http\Controllers;
 
-use Smapac\Department;
+use HAE\Department;
 use Illuminate\Http\Request;
-use Smapac\Http\Requests\DepartmentRequest;
+use HAE\Http\Requests\DepartmentRequest;
 use Yajra\Datatables\Datatables;
 class DepartmentController extends Controller
 {
@@ -37,14 +37,11 @@ class DepartmentController extends Controller
                  <i class="fas fa-pencil-alt "></i>
                  </a>
 
-                <a href="' . route('departamentos.destroy', $departments->id) . '"
-                data-id="'.$departments->id.'"
-                class="btn btn-sm btn-danger"
-                title="Eliminar"
-                data-toggle="modal"
-                data-target="#confirm-delete">
+                <button type="button"
+                onclick="btnDelete('.$departments->id.')"
+                class="btn btn-sm btn-danger">
                 <i class="fas fa-trash-alt"></i>
-                </a>';
+                </button>';
             })
             ->make(true);
             }
@@ -72,16 +69,16 @@ class DepartmentController extends Controller
     public function store(Request $request)
     {
 
-         $departamento = Department::create($request->all());
+        $departamento = Department::create($request->all());
         //  $coordinations->save();
-        //return response()->json(['success'=>'Departamento creado correctamente!']);
-        return redirect()->route('departamentos.index')->with('success','Departamento Creado');
+        return response()->json(['data'=>'Departamento creado!']);
+        // return redirect()->route('departamentos.index')->with('success','Departamento Creado');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \Smapac\Department  $department
+     * @param  \HAE\Department  $department
      * @return \Illuminate\Http\Response
      */
     public function show(Department $department)
@@ -92,7 +89,7 @@ class DepartmentController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \Smapac\Department  $department
+     * @param  \HAE\Department  $department
      * @return \Illuminate\Http\Response
      */
     public function edit($department)
@@ -106,7 +103,7 @@ class DepartmentController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \Smapac\Department  $department
+     * @param  \HAE\Department  $department
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request,  $id)
@@ -120,7 +117,7 @@ class DepartmentController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \Smapac\Department  $department
+     * @param  \HAE\Department  $department
      * @return \Illuminate\Http\Response
 
     public function destroy( $department)
@@ -131,9 +128,20 @@ class DepartmentController extends Controller
     }*/
     public function destroy($id)
     {
-        Department::find($id)->delete();
+        // Department::find($id)->delete();
 
-
-        return response()->json(['success'=>'Departamento eliminado!']);
+        $departamento = Department::findOrFail($id);
+        $dep = $departamento->delete();
+        if ($dep == 1){
+            $success = true;
+            $message = "Departamento eliminado";
+        } else {
+            $success = true;
+            $message = "Departamento no eliminado";
+        }
+        return response()->json([
+            'success' => $success,
+            'message' => $message
+        ], 200);
     }
 }

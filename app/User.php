@@ -1,6 +1,6 @@
 <?php
 
-namespace Smapac;
+namespace HAE;
 
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Notifications\Notifiable;

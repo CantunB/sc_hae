@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8" />
-    <title>{{config('app.name','SMAPAC URM')}}</title>
+    <title>{{ config('app.name', 'H.A.E') }}</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta content="A fully featured admin theme which can be used to build CRM, CMS, etc." name="description" />
     <meta content="Coderthemes" name="author" />
@@ -17,7 +17,28 @@
     <link href="{{asset('assets/css/app-dark.min.css')}}" rel="stylesheet" type="text/css" id="app-dark-stylesheet" />
     <!-- icons -->
     <link href="{{asset('assets/css/icons.min.css')}}" rel="stylesheet" type="text/css" />
+    <style>
+        .btn-primary{
+            background-color: #FF7F50;
+            border-bottom-color : #FF7F50;
+            border-left-color : #FF7F50;
+            border-right-color : #FF7F50;
+            border-top-color : #FF7F50;
+        }
+        .custom-checkbox .custom-control-input:checked ~ .custom-control-label::before {
+            background-color: green!important;
+          }
 
+          .custom-checkbox .custom-control-input:checked:focus ~ .custom-control-label::before {
+            box-shadow: 0 0 0 1px #fff, 0 0 0 0.2rem rgba(0, 255, 0, 0.25)
+          }
+          .custom-checkbox .custom-control-input:focus ~ .custom-control-label::before {
+            box-shadow: 0 0 0 1px #fff, 0 0 0 0.2rem rgba(0, 0, 0, 0.25)
+          }
+          .custom-checkbox .custom-control-input:active ~ .custom-control-label::before {
+            background-color: #C8FFC8;
+          }
+    </style>
 </head>
 
 <body class="loading authentication-bg authentication-bg-pattern">
@@ -34,17 +55,16 @@
                             <div class="auth-logo">
                                 <a class="logo logo-dark text-center">
                                             <span class="logo-lg">
-                                                <img src="{{asset('assets/images/logo-dark.png')}}" alt="" height="22">
+                                                <img src="{{asset('assets/images/logo_ayuntamiento.png')}}" alt="" height="150">
                                             </span>
                                 </a>
 
                                 <a class="logo logo-light text-center">
                                             <span class="logo-lg">
-                                                <img src="{{asset('assets/images/logo-light.png')}}" alt="" height="22">
+                                                <img src="{{asset('assets/images/logo_ayuntamiento.png')}}" alt="" height="22">
                                             </span>
                                 </a>
                             </div>
-                            <p class="text-muted mb-4 mt-3">Ingresa tu número de empleado y tu contraseaña para acceder.</p>
                         </div>
 
                         <form id="form" method="POST" action="{{ route('login') }}">
@@ -79,26 +99,18 @@
 
                             <div class="form-group mb-3">
                                 <div class="custom-control custom-checkbox">
-                                    <input type="checkbox" class="custom-control-input" id="checkbox-signin" checked>
+                                    <input type="checkbox" class="custom-control-input" style="background-color: #FF7F50" id="checkbox-signin" checked>
                                     <label class="custom-control-label" for="checkbox-signin">Remember me</label>
                                 </div>
                             </div>
 
                             <div class="form-group mb-0 text-center">
-                                <button class="btn btn-primary btn-block" type="submit"> Log In </button>
+                                <button class="btn  btn-block text-white" style="background-color: #FF7F50" type="submit"> Log In </button>
                             </div>
                         </form>
                     </div> <!-- end card-body -->
                 </div>
                 <!-- end card -->
-
-                <div class="row mt-3">
-                    <div class="col-12 text-center">
-                        <p> <a href="{{route('password.update')}}" class="text-white-50 ml-1">Olvidaste tu contraseña?</a></p>
-                    </div> <!-- end col -->
-                </div>
-                <!-- end row -->
-
             </div> <!-- end col -->
         </div>
         <!-- end row -->
@@ -107,7 +119,7 @@
 </div>
 <!-- end page -->
 <footer class="footer footer-alt">
-    <script>document.write(new Date().getFullYear())</script> &copy;<a href="" class="text-white-50">SMAPAC</a>
+    <script>document.write(new Date().getFullYear())</script> &copy;<a href="" class="text-dark-50">CANTUN</a>
 </footer>
 
 <!-- Vendor js -->

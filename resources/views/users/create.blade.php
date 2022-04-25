@@ -47,7 +47,7 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="NoEmpleado">No. Empleado</label>
-                                    <input type="text" class="form-control @error('NoEmpleado') is-invalid @enderror" id="NoEmpleado" name="NoEmpleado" placeholder="SMAXXX"
+                                    <input type="text" class="form-control @error('NoEmpleado') is-invalid @enderror" id="NoEmpleado" name="NoEmpleado" placeholder="HAEXXX"
                                            value="{{old('NoEmpleado')}}" required>
                                     @error('NoEmpleado')
                                     <span class="invalid-feedback" role="alert">

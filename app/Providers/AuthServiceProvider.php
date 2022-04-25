@@ -1,6 +1,6 @@
 <?php
 
-namespace Smapac\Providers;
+namespace HAE\Providers;
 
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 use Illuminate\Support\Facades\Gate;
@@ -13,7 +13,7 @@ class AuthServiceProvider extends ServiceProvider
      * @var array
      */
     protected $policies = [
-        // 'Smapac\Model' => 'Smapac\Policies\ModelPolicy',
+        // 'HAE\Model' => 'HAE\Policies\ModelPolicy',
     ];
 
     /**

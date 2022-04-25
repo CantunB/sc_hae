@@ -1,21 +1,12 @@
 @extends('layouts.app')
 @section('content')
-<!-- start page title -->
-<div class="row">
-    <div class="col-12">
-        <div class="page-title-box">
-            <div class="page-title-right">
-                <ol class="breadcrumb m-0">
-                    <li class="breadcrumb-item"><a href="javascript: void(0);">{{ config('app.name','SMAPAC') }}</a></li>
-                    <li class="breadcrumb-item"><a href="javascript: void(0);">COTIZACIONES</a></li>
-                    <li class="breadcrumb-item active">CREAR</li>
-                </ol>
-            </div>
-            <h4 class="page-title">Subir Cotización de Requisición No.{{$requisition->requisition->folio}}</h4>
-        </div>
-    </div>
-</div>
-<!-- end page title -->
+
+    @component('layouts.partials.breadcrumb')
+    @slot('title') {{ config('app.name', 'H.A.E') }} @endslot
+    @slot('subtitle') cotizar @endslot
+    @slot('teme') Subir Cotización de Requisición @endslot
+    {{-- <h4 class="page-title">Subir Cotización de Requisición No.{{$requisition->requisition->folio}}</h4> --}}
+    @endcomponent
 <div class="row">
     <div class="col-lg-12">
         <div class="card">
@@ -34,7 +25,7 @@
                         <div class="row contenedor">
                             <div class="form-group col-md-4">
                                 <label for="inputState">Proveedor #1</label>
-                                <select id="prov1"  name="provider_id[]" class="form-control " required>
+                                <select id="prov1"  name="provider_id[]" class="form-control select2 " required>
                                     <option disabled selected value="null">Selecciona un proveedor</option>
                                     @foreach($providers as $item => $prov)
                                         <option   data-name="{{$prov->address}}" data-rfc="{{$prov->rfc}}" value="{{$prov->id }}">{{ $prov->name}}</option>
@@ -68,7 +59,7 @@
                             </div>
                             <div class="form-group col-md-4">
                                 <label for="inputState">Proveedor #2</label>
-                                <select id="prov2" name="provider_id[]" class="form-control sel">
+                                <select id="prov2" name="provider_id[]" class="form-control sel select2">
                                     <option disabled selected>Selecciona un proveedor</option>
                                     @foreach($providers as $prov)
                                         <option data-name2="{{$prov->address}}"  data-rfc2="{{$prov->rfc}}"  value="{{$prov->id}}">{{$prov->name}}</option>
@@ -96,7 +87,7 @@
                             </div>
                             <div class="form-group col-md-4">
                                 <label for="inputState">Proveedor #3</label>
-                                <select id="prov3" name="provider_id[]" class="form-control sel">
+                                <select id="prov3" name="provider_id[]" class="form-control sel select2">
                                     <option  disabled selected>Selecciona un proveedor</option>
                                     @foreach($providers as $prov)
                                         <option data-name3="{{$prov->address}}"  data-rfc3="{{$prov->rfc}}"  value="{{$prov->id}}">{{$prov->name}}</option>
@@ -189,8 +180,6 @@
         $('#prov3_rfc').val(rfc);
     });
 </script>
-<script>
-    $('.dropify').dropify();
-</script>
+
 @endpush
 @endsection

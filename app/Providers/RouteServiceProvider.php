@@ -1,6 +1,6 @@
 <?php
 
-namespace Smapac\Providers;
+namespace HAE\Providers;
 
 use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
 use Illuminate\Support\Facades\Route;
@@ -14,7 +14,7 @@ class RouteServiceProvider extends ServiceProvider
      *
      * @var string
      */
-    protected $namespace = 'Smapac\Http\Controllers';
+    protected $namespace = 'HAE\Http\Controllers';
 
     /**
      * The path to the "home" route for your application.

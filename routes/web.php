@@ -19,21 +19,24 @@ Route::put('/areas/{area}/update', 'CoordinationController@updateareas')->name('
 
 /* Requisiciones */
 
-//Listar requisiciones dependiendo el departamento
-Route::get('requisiciones/{requisicione}/list', 'RequisitionController@list')->name('requisiciones.list');
-Route::get('requisiciones/{requisicione}/autorizadas-list', 'RequisitionController@autorizadaslist')->name('requisiciones.autorizadaslist');
-Route::get('requisiciones/autorizadas', 'RequisitionController@autorizadas')->name('requisiciones.autorizadas');
-Route::get('requisiciones/{requisicione}/list', 'RequisitionController@list')->name('requisiciones.list');
-//Generar PDF de requiscion
-Route::get('requisiciones/{requisicione}/requisition-pdf', 'RequisitionController@requisitionspdf')->name('requisiciones.reqpdf');
-//Subir Autorizacion (view)
-Route::get('requisiciones/{requisicione}/upload', 'RequisitionController@upload')->name('requisiciones.upload');
-//Guardar Autorizacion
-Route::put('requisiciones/{requisicione}/file_upload', 'RequisitionController@file_upload')->name('requisiciones.file_upload');//Guardar Autorizacion
-//ELIMINAR AUTORIZACION
-Route::get('requisiciones/{requisicione}/eliminar/autorizacion', 'RequisitionController@deleteautorizacion')->name('requisiciones.deleteautorizacion');
-//Ver Requisicion Autorizada (view)
-Route::get('requisiciones/autorizadas/{requisicione}', 'RequisitionController@requisitionauthorized')->name('requisiciones.authorized');
+Route::group(['prefix' => 'requisiciones'], function() {
+    //Listar requisiciones dependiendo el departamento
+    Route::get('/{requisicione}/list', 'RequisitionController@list')->name('requisiciones.list');
+    Route::get('/{requisicione}/autorizadas-list', 'RequisitionController@autorizadaslist')->name('requisiciones.autorizadaslist');
+    Route::get('/autorizadas', 'RequisitionController@autorizadas')->name('requisiciones.autorizadas');
+    Route::get('/{requisicione}/list', 'RequisitionController@list')->name('requisiciones.list');
+    //Generar PDF de requiscion
+    Route::get('/{requisicione}/requisition-pdf', 'RequisitionController@requisitionspdf')->name('requisiciones.reqpdf');
+    //Subir Autorizacion (view)
+    Route::get('/{requisicione}/upload', 'RequisitionController@upload')->name('requisiciones.upload');
+    //Guardar Autorizacion
+    Route::put('/{requisicione}/file_upload', 'RequisitionController@file_upload')->name('requisiciones.file_upload');//Guardar Autorizacion
+    //ELIMINAR AUTORIZACION
+    Route::get('/{requisicione}/eliminar/autorizacion', 'RequisitionController@deleteautorizacion')->name('requisiciones.deleteautorizacion');
+    //Ver Requisicion Autorizada (view)
+    Route::get('/autorizadas/{requisicione}', 'RequisitionController@requisitionauthorized')->name('requisiciones.authorized');
+
+});
 
 /* Cotizaciones */
 

@@ -169,11 +169,11 @@ return [
         /*
          * Application Service Providers...
          */
-        Smapac\Providers\AppServiceProvider::class,
-        Smapac\Providers\AuthServiceProvider::class,
-        // Smapac\Providers\BroadcastServiceProvider::class,
-        Smapac\Providers\EventServiceProvider::class,
-        Smapac\Providers\RouteServiceProvider::class,
+        HAE\Providers\AppServiceProvider::class,
+        HAE\Providers\AuthServiceProvider::class,
+        // HAE\Providers\BroadcastServiceProvider::class,
+        HAE\Providers\EventServiceProvider::class,
+        HAE\Providers\RouteServiceProvider::class,
         Collective\Html\HtmlServiceProvider::class,
         Barryvdh\DomPDF\ServiceProvider::class,
         Yajra\DataTables\DataTablesServiceProvider::class,

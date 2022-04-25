@@ -2,7 +2,7 @@
 
 /** @var \Illuminate\Database\Eloquent\Factory $factory */
 
-use Smapac\Coordination;
+use HAE\Coordination;
 use Faker\Generator as Faker;
 
 $factory->define(Coordination::class, function (Faker $faker) {

@@ -3,7 +3,7 @@
 /** @var \Illuminate\Database\Eloquent\Factory $factory */
 
 use Faker\Generator as Faker;
-use Smapac\PurchaseOrder;
+use HAE\PurchaseOrder;
 
 $factory->define(PurchaseOrder::class, function (Faker $faker) {
     return [

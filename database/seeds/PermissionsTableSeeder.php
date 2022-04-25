@@ -4,7 +4,7 @@ use Illuminate\Database\Seeder;
 use Spatie\Permission\Models\Permission;
 use Spatie\Permission\Models\Role;
 use Spatie\Permission\PermissionRegistrar;
-use Smapac\User;
+use HAE\User;
 
 class PermissionsTableSeeder extends Seeder
 {
@@ -34,17 +34,14 @@ class PermissionsTableSeeder extends Seeder
     Permission::create(['name' => 'delete_permisos']);
 
     // create roles and assign existing permissions
-    $titular = Role::create(['name' => 'titular']);
-    $invitado = Role::create(['name' => 'invitado']);
-    $admin = Role::create(['name' => 'admin']);
 
-    $administrador = Role::create(['name' => 'super-admin']);
+    $administrador = Role::create(['name' => 'Super-Admin']);
     $administrador->givePermissionTo(Permission::all());
     // gets all permissions via Gate::before rule; see AuthServiceProvider
 
     // create demo users
     $user_berna = User::create([
-        'NoEmpleado' => 'SMA000',
+        'NoEmpleado' => 'HAE000',
         'name' => 'Bernabe Cantun Dominguez',
         'no_seg_soc' => 'N/A',
         'categoria' => 'N/A',
@@ -53,43 +50,10 @@ class PermissionsTableSeeder extends Seeder
         'curp' => 'N/A',
         'fe_nacimiento' => 'N/A',
         'fe_ingreso' => 'N/A',
-        'email' => 'berna@gmail.com',
-        'password' => bcrypt('CantunDominguez97.-'),
+        'email' => 'cantunberna@gmail.com',
+        'password' => bcrypt('Cantun97.-'),
         'status' => '2'
     ]);
-  /*  $user_veronica = UserSeeder::create([
-        'NoEmpleado' => 'SMA001',
-        'name' => 'Veronica',
-        'no_seg_soc' => 'N/A',
-        'categoria' => 'N/A',
-        'coordinacion' => 'N/A',
-        'depto' => 'N/A',
-        'nivel' => 'N/A',
-        'rfc' => 'N/A',
-        'curp' => 'N/A',
-        'fe_nacimiento' => 'N/A',
-        'fe_ingreso' => 'N/A',
-        'email' => 'veronica@gmail.com',
-        'password' => bcrypt('1234')
-    ]);
-    $user_victor = UserSeeder::create([
-        'NoEmpleado' => 'SMA002',
-        'name' => 'Victor',
-        'no_seg_soc' => 'N/A',
-        'categoria' => 'N/A',
-        'coordinacion' => 'N/A',
-        'depto' => 'N/A',
-        'nivel' => 'N/A',
-        'rfc' => 'N/A',
-        'curp' => 'N/A',
-        'fe_nacimiento' => 'N/A',
-        'fe_ingreso' => 'N/A',
-        'email' => 'victor@gmail.com',
-        'password' => bcrypt('1234')
-    ]); */
-
     $user_berna->assignRole($administrador);
-   // $user_victor->assignRole($titular);
-
     }
 }

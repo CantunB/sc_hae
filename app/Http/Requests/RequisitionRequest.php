@@ -1,6 +1,6 @@
 <?php
 
-namespace Smapac\Http\Requests;
+namespace HAE\Http\Requests;
 
 use Carbon\Carbon;
 use Illuminate\Foundation\Http\FormRequest;

@@ -14,12 +14,14 @@ class CreateAssignedUserAreasTable extends Migration
     public function up()
     {
         Schema::create('assigned_user_areas', function (Blueprint $table) {
-            $table->bigIncrements('id');
-            $table->unsignedBigInteger('user_id')->index();
-            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
-            $table->unsignedBigInteger('areas_id')->unsigned();
-            $table->foreign('areas_id')->references('id')->on('assigned_areas')->onDelete('cascade');
-            $table->tinyInteger('status')->default('0');
+            $table->id();
+            $table->foreignId('areas_id')->references('id')->on('assigned_areas');
+            $table->foreignId('user_id')->references('id')->on('users');
+            // $table->unsignedBigInteger('user_id')->index();
+            // $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            // $table->unsignedBigInteger('areas_id')->unsigned();
+            // $table->foreign('areas_id')->references('id')->on('assigned_areas')->onDelete('cascade');
+            $table->tinyInteger('status')->default('1');
             $table->timestamps();
         });
     }

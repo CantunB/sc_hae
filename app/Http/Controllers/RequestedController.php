@@ -1,8 +1,8 @@
 <?php
 
-namespace Smapac\Http\Controllers;
+namespace HAE\Http\Controllers;
 
-use Smapac\Requested;
+use HAE\Requested;
 use Illuminate\Http\Request;
 
 class RequestedController extends Controller
@@ -41,7 +41,7 @@ class RequestedController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \Smapac\Requested  $requested
+     * @param  \HAE\Requested  $requested
      * @return \Illuminate\Http\Response
      */
     public function show(Requested $requested)
@@ -52,7 +52,7 @@ class RequestedController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \Smapac\Requested  $requested
+     * @param  \HAE\Requested  $requested
      * @return \Illuminate\Http\Response
      */
     public function edit(Requested $requested)
@@ -64,7 +64,7 @@ class RequestedController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \Smapac\Requested  $requested
+     * @param  \HAE\Requested  $requested
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, Requested $requested)
@@ -75,7 +75,7 @@ class RequestedController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \Smapac\Requested  $requested
+     * @param  \HAE\Requested  $requested
      * @return \Illuminate\Http\Response
      */
     public function destroy(Requested $requested)

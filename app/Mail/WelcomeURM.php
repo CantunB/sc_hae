@@ -1,6 +1,6 @@
 <?php
 
-namespace Smapac\Mail;
+namespace HAE\Mail;
 
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;

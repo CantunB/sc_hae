@@ -18,7 +18,7 @@ class ProvidersSeeder extends Seeder
         Permission::create(['name' => 'update_proveedores']);
         Permission::create(['name' => 'delete_proveedores']);
 
-        $super_admin = Role::findByName('super-admin');
+        $super_admin = Role::findByName('Super-Admin');
         $super_admin->givePermissionTo(['create_proveedores',
                         'read_proveedores',
                         'update_proveedores',
