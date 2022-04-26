@@ -125,12 +125,12 @@
                         <ul class="nav-second-level">
                             @can('read_requisicion')
                                 <li>
-                                    <a href="{{ route('requisiciones.index') }}">Requisiciones</a>
+                                    <a href="{{ route('request.index') }}">Requisiciones</a>
                                 </li>
                             @endcan
                             @can('update_requisicion')
                                 <li>
-                                    <a href="{{ route('requisiciones.autorizadas') }}">Requisiciones Autorizadads</a>
+                                    <a href="{{ route('authorized.index') }}">Requisiciones Autorizadads</a>
                                 </li>
                             @endcan
                         </ul>

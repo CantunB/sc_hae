@@ -14,7 +14,7 @@
 
                     </strong>
                 </label> <a href="<?php echo e(url()->previous()); ?>"
-                    class="btn btn-sm btn-primary waves-effect waves-light mb-2 float-right"><i class="mdi mdi-chevron-left"></i> Regresar</a></h4>
+                    class="btn btn-sm btn-secondary waves-effect waves-light mb-2 float-right"><i class="mdi mdi-chevron-left"></i> Regresar</a></h4>
                 <div class="row mb-2">
                     <div class="col-sm-12">
                         <div class="text-sm-right">
@@ -59,4 +59,4 @@
 <?php $__env->stopPush(); ?>
 <?php $__env->stopSection(); ?>
 
-<?php echo $__env->make('layouts.app', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH /Users/bernacantun/Documents/Proyectos/Laravel/sc_hae/resources/views/requisitions/authorized.blade.php ENDPATH**/ ?>
+<?php echo $__env->make('layouts.app', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH /Users/bernacantun/Documents/Proyectos/Laravel/sc_hae/resources/views/requisitions/authorized/show.blade.php ENDPATH**/ ?>

@@ -2,7 +2,9 @@
 
 namespace HAE\Http\Controllers\Requisiciones;
 
+use HAE\AssignedRequisition;
 use HAE\Http\Controllers\Controller;
+use HAE\Requisition;
 use Illuminate\Http\Request;
 
 class AuthorizeController extends Controller
@@ -14,7 +16,11 @@ class AuthorizeController extends Controller
      */
     public function index()
     {
-        //
+        if (auth()->user()->hasPermissionTo('update_requisicion'))
+        {
+          $requisitions = AssignedRequisition::where('status','1')->get();
+            return view('requisitions.authorized.index', compact('requisitions'));
+        }
     }
 
     /**
@@ -46,7 +52,17 @@ class AuthorizeController extends Controller
      */
     public function show($id)
     {
-        //
+        $requisitions = AssignedRequisition::findOrFail($id);
+        if (is_null($requisitions->requisition->file_req)) {
+            $requisitions = AssignedRequisition::findOrFail($id);
+            // AssignedUserAreas::all();
+            return view('requisitions.request.edit', compact('requisitions'));
+        }else{
+            $requisitions = AssignedRequisition::findOrFail($id);
+            return view('requisitions.authorized.show', compact('requisitions'));
+            //      return view('requisitions.load', compact('requisitions'));
+        }
+
     }
 
     /**
@@ -80,6 +96,9 @@ class AuthorizeController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $requisicion = Requisition::where('id',$id)->update(['file_req' => null, 'status' => '0']);
+        $requisition = AssignedRequisition::where('requisition_id',$id)->update(['status' => '0']);
+
+        return redirect()->route('authorize.index');
     }
 }

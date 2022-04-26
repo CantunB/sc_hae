@@ -19,6 +19,11 @@ class Requisition extends Model
         'remark',
         'dep_use'
     ];
+    // public function getCreatedAtAttribute($value)
+    // {
+    //     return $value->format('M d Y');
+    // }
+
     public  function asignado()
     {
         return $this->HasMany(AssignedRequisition::class);

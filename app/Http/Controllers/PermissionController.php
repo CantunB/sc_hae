@@ -15,14 +15,14 @@ use Jenssegers\Date\Date;
 
 class PermissionController extends Controller
 {
-    public function __construct()
-    {
-        $this->middleware('auth');
-        $this->middleware('role_or_permission:create_permisos')->only(['create','store']);
-        $this->middleware('role_or_permission:read_permisos')->only(['index','show']);
-        $this->middleware('role_or_permission:update_permisos')->only(['edit','update']);
-        $this->middleware('role_or_permission:delete_permisos')->only(['destroy']);
-    }
+    // public function __construct()
+    // {
+    //     $this->middleware('auth');
+    //     $this->middleware('role_or_permission:create_permisos')->only(['create','store']);
+    //     $this->middleware('role_or_permission:read_permisos')->only(['index','show']);
+    //     $this->middleware('role_or_permission:update_permisos')->only(['edit','update']);
+    //     $this->middleware('role_or_permission:delete_permisos')->only(['destroy']);
+    // }
     /**
      * Display a listing of the resource.
      *

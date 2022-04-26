@@ -11,14 +11,14 @@ use HAE\Quotesrequisitions;
 
 class ProvidersController extends Controller
 {
-    public function __construct()
-    {
-        $this->middleware('auth');
-        $this->middleware('role_or_permission:create_proveedores')->only(['create','store']);
-        $this->middleware('role_or_permission:read_proveedores')->only(['index','show']);
-        $this->middleware('role_or_permission:update_proveedores')->only(['edit','update']);
-        $this->middleware('role_or_permission:delete_proveedores')->only(['destroy']);
-    }
+    // public function __construct()
+    // {
+    //     $this->middleware('auth');
+    //     $this->middleware('role_or_permission:create_proveedores')->only(['create','store']);
+    //     $this->middleware('role_or_permission:read_proveedores')->only(['index','show']);
+    //     $this->middleware('role_or_permission:update_proveedores')->only(['edit','update']);
+    //     $this->middleware('role_or_permission:delete_proveedores')->only(['destroy']);
+    // }
     /**
      * Display a listing of the resource.
      *

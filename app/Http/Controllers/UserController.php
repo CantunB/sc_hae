@@ -15,14 +15,14 @@ use Yajra\Datatables\Datatables;
 class UserController extends Controller
 {
 
-    public function __construct()
-    {
-        $this->middleware('auth');
-        $this->middleware('role_or_permission:create_users')->only(['create','store']);
-        $this->middleware('role_or_permission:read_users')->only(['index','show']);
-        $this->middleware('role_or_permission:update_users')->only(['edit','update']);
-        $this->middleware('role_or_permission:delete_users')->only(['destroy']);
-    }
+    // public function __construct()
+    // {
+    //     $this->middleware('auth');
+    //     $this->middleware('role_or_permission:create_users')->only(['create','store']);
+    //     $this->middleware('role_or_permission:read_users')->only(['index','show']);
+    //     $this->middleware('role_or_permission:update_users')->only(['edit','update']);
+    //     $this->middleware('role_or_permission:delete_users')->only(['destroy']);
+    // }
     /**
      * Display a listing of the resource.
      *

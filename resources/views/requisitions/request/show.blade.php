@@ -42,16 +42,14 @@
                                             </i> Editar</a>
                                     @endcan --}}
                                 @elseif($requisition[0]->requisition->status >= 2)
-                                        <a class="btn btn-sm btn-danger waves-effect waves-light mb-2"
-                                            href="{{url()->previous()}}">
-                                            Requisicion No Autorizada</a>
+                                        <h4><span class="badge badge-xl badge-outline-danger">Requisicion No Autorizada</span></h4>
                                 @endif
                         </div>
                     </div>
                     <div class="col-sm-6">
                         <div class="text-sm-right">
-                            <a class="btn btn-sm btn-danger waves-effect waves-light mb-2" href="{{ url()->previous() }}">
-                                                        <i class="fas fa-times-circle" ></i> Regresar</a>
+                            <a class="btn btn-sm btn-secondary waves-effect waves-light mb-2" href="{{ url()->previous() }}">
+                                                        <i class="mdi mdi-chevron-left" ></i> Regresar</a>
                         </div>
                     </div>
                                     <div class="container">

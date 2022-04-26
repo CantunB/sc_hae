@@ -2,8 +2,8 @@
 @section('content')
 @component('layouts.partials.breadcrumb')
 @slot('title') {{ config('app.name', 'H.A.E') }} @endslot
-@slot('subtitle') NUEVA @endslot
-@slot('teme') Lista @endslot
+@slot('subtitle') requisicion @endslot
+@slot('teme') solicitar @endslot
 @endcomponent
 <!-- end page title -->
 
@@ -17,9 +17,9 @@
                         </div>
                     </div><!-- end col-->
                 </div>
-                <form id="form" method="POST" action="{{ route('requisiciones.store') }}">
+                <form id="form" method="POST" action="{{ route('request.store') }}">
                     @method('POST')
-                    @include('requisitions.partials.form',
+                    @include('requisitions.request.partials.form',
                     ['btnText'=>'Guardar',
                     'user']
                     )

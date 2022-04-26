@@ -1,5 +1,6 @@
 <?php
 // Ruta de inicio welcome con funcion para retornar directo a login a home
+
 Route::get('/', function () {
     if(auth()->check()){
         return view('home');
@@ -13,28 +14,31 @@ Auth::routes(['register' => false]);
 Route::get('/home', 'HomeController@index')->name('home');
 Route::post('/home/daterange', 'HomeController@daterange')->name('home.daterange');
 /* Route areas devuelve las relaciones de las coordinaciones y departamentos*/
-Route::get('/areas', 'CoordinationController@areas')->name('areas.index');
-Route::get('/areas/{area}/edit', 'CoordinationController@editareas')->name('areas.edit');
-Route::put('/areas/{area}/update', 'CoordinationController@updateareas')->name('areas.update');
+
+
+/** AREAS */
+
+Route::group(['prefix' => 'dependencias'], function() {
+    Route::apiResource('areas', Areas\GeneralController::class)->only(['index','edit','update']);
+    Route::resource('coordinaciones', Areas\CoordinationController::class);
+    Route::resource('departamentos', Areas\DepartmentController::class);
+    Route::post('coordinaciones/departamentos', 'Areas\CoordinationController@getDepartments')->name('coordinaciones.getDepartments');
+    Route::get('departamentos/data', 'Areas\DepartmentController@anyData')->name('departamentos.data');
+});
+
 
 /* Requisiciones */
-
 Route::group(['prefix' => 'requisiciones'], function() {
     //Listar requisiciones dependiendo el departamento
-    Route::get('/{requisicione}/list', 'RequisitionController@list')->name('requisiciones.list');
-    Route::get('/{requisicione}/autorizadas-list', 'RequisitionController@autorizadaslist')->name('requisiciones.autorizadaslist');
-    Route::get('/autorizadas', 'RequisitionController@autorizadas')->name('requisiciones.autorizadas');
-    Route::get('/{requisicione}/list', 'RequisitionController@list')->name('requisiciones.list');
+    Route::resource('request', Requisiciones\RequestController::class);
+    Route::resource('authorized', Requisiciones\AuthorizeController::class)->only(['index','show','destroy']);
+
     //Generar PDF de requiscion
     Route::get('/{requisicione}/requisition-pdf', 'RequisitionController@requisitionspdf')->name('requisiciones.reqpdf');
     //Subir Autorizacion (view)
     Route::get('/{requisicione}/upload', 'RequisitionController@upload')->name('requisiciones.upload');
     //Guardar Autorizacion
     Route::put('/{requisicione}/file_upload', 'RequisitionController@file_upload')->name('requisiciones.file_upload');//Guardar Autorizacion
-    //ELIMINAR AUTORIZACION
-    Route::get('/{requisicione}/eliminar/autorizacion', 'RequisitionController@deleteautorizacion')->name('requisiciones.deleteautorizacion');
-    //Ver Requisicion Autorizada (view)
-    Route::get('/autorizadas/{requisicione}', 'RequisitionController@requisitionauthorized')->name('requisiciones.authorized');
 
 });
 
@@ -87,8 +91,6 @@ Route::get('compras/facturas/{facturas}/list', 'PurchaseInvoiceController@list')
 
 Route::get('usuarios/data', 'UserController@anyData')->name('usuarios.data');
 Route::get('permisos/data', 'PermissionController@anyData')->name('permisos.data');
-Route::post('coordinaciones/departamentos', 'CoordinationController@getDepartments')->name('coordinaciones.getDepartments');
-Route::get('departamentos/data', 'DepartmentController@anyData')->name('departamentos.data');
 Route::get('roles/data', 'RoleController@anyData')->name('roles.data');
 Route::get('proveedores/data', 'ProvidersController@anyData')->name('proveedores.data');
 Route::get('cotizaciones/data', 'QuotesrequisitionsController@anyData')->name('cotizaciones.data');
@@ -96,11 +98,9 @@ Route::get('cotizaciones/data', 'QuotesrequisitionsController@anyData')->name('c
 Route::resources([
     //'empleados' => 'EmpleadosController',
     'usuarios' => 'UserController',
-    'coordinaciones' => 'CoordinationController',
-    'departamentos' => 'DepartmentController',
+
     'permisos' => 'PermissionController',
     'roles' => 'RoleController',
-    'requisiciones' => 'RequisitionController',
     'almacen' => 'StorehouseController',
     'proveedores' => 'ProvidersController',
     'cotizaciones' => 'QuotesrequisitionsController',

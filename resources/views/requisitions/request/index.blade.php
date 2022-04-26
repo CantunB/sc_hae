@@ -4,7 +4,7 @@
 <!-- start page title -->
     @component('layouts.partials.breadcrumb')
     @slot('title') {{ config('app.name', 'H.A.E') }} @endslot
-    @slot('subtitle') {{Request::path()}} @endslot
+    @slot('subtitle') requisiciones @endslot
     @slot('teme') Lista @endslot
     @endcomponent
 <!-- end page title -->
@@ -16,8 +16,8 @@
                     <div class="col-sm-12">
                         <div class="text-sm-right">
                             @can('create_requisicion')
-                            <a href="{{ route('requisiciones.create') }}"
-                                class="btn btn-sm btn-info waves-effect waves-light mb-2 float-right"><i class="fas fa-plus-square" ></i> Nueva requisición</a>
+                            <a href="{{ route('request.create') }}"
+                                class="btn btn-sm btn-success waves-effect waves-light mb-2 float-right"><i class="fas fa-plus-square" ></i> Nueva requisición</a>
                             @endcan
                         </div>
                     </div><!-- end col-->
@@ -52,7 +52,7 @@
                                 <td style="text-align: center">
                                     @can('update_requisicion')
                                         @if( $r->requisition->status <= 0)
-                                            <a href="{{route('requisiciones.edit',$r->id)}}"
+                                            <a href="{{route('request.edit',$r->id)}}"
                                                title="Editar Requisicion"
                                                class="action-icon">
                                                 <i class="mdi mdi-square-edit-outline"></i></a>
@@ -62,7 +62,7 @@
                                                 <i class="mdi mdi-file-upload"></i></a>
                                             </a>
                                         @elseif($r->requisition->status === 2)
-                                            <a href="{{route('requisiciones.edit',$r->id)}}"
+                                            <a href="{{route('request.edit',$r->id)}}"
                                                title="Editar Requisicion"
                                                class="action-icon">
                                                 <i class="mdi mdi-square-edit-outline"></i></a>
@@ -70,27 +70,27 @@
                                     @endcan
                                     @can('read_requisicion')
                                         @if( $r->requisition->status <= 0)
-                                            <a href="{{route('requisiciones.show',$r->id)}}"
+                                            <a href="{{route('request.show',$r->id)}}"
                                                title="Ver requisicion"
                                                class="action-icon">
                                                 <i class="mdi mdi-monitor-eye"></i></a>
                                             </a>
                                         @elseif($r->requisition->status <= 1)
-                                            <a href="{{route('requisiciones.authorized',$r->id)}}"
+                                            <a href="{{route('authorized.show',$r->id)}}"
                                                class="action-icon">
                                                 <i  class="mdi mdi-monitor-eye"></i></a>
                                         @elseif($r->requisition->status <= 2)
-                                            <a href="{{route('requisiciones.show',$r->id)}}"
+                                            <a href="{{route('request.show',$r->id)}}"
                                                class="action-icon">
                                                 <i class="mdi mdi-monitor-eye"></i></a>
                                         @endif
                                     @endcan
                                     @can('delete_requisicion')
-                                        <a href="{{route('requisiciones.destroy',$r->requisition->id)}}" class="action-icon" onclick="event.preventDefault();
+                                        <a href="{{route('request.destroy',$r->requisition->id)}}" class="action-icon" onclick="event.preventDefault();
                                         document.getElementById('delete-form').submit();">
                                             <i class="mdi mdi-trash-can"></i>
                                         </a>
-                                        <form id="delete-form" action="{{ route('requisiciones.destroy', $r->requisition->id) }}" method="POST" style="display: none;">
+                                        <form id="delete-form" action="{{ route('request.destroy', $r->requisition->id) }}" method="POST" style="display: none;">
                                             @csrf
                                             @method('DELETE')
                                         </form>

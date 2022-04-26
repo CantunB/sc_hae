@@ -125,12 +125,12 @@
                         <ul class="nav-second-level">
                             <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('read_requisicion')): ?>
                                 <li>
-                                    <a href="<?php echo e(route('requisiciones.index')); ?>">Requisiciones</a>
+                                    <a href="<?php echo e(route('request.index')); ?>">Requisiciones</a>
                                 </li>
                             <?php endif; ?>
                             <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('update_requisicion')): ?>
                                 <li>
-                                    <a href="<?php echo e(route('requisiciones.autorizadas')); ?>">Requisiciones Autorizadads</a>
+                                    <a href="<?php echo e(route('authorized.index')); ?>">Requisiciones Autorizadads</a>
                                 </li>
                             <?php endif; ?>
                         </ul>

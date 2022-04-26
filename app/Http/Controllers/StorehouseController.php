@@ -7,15 +7,15 @@ use Illuminate\Http\Request;
 
 class StorehouseController extends Controller
 {
-    public function __construct()
-    {
-        $this->middleware('auth');
-        $this->middleware('role_or_permission:create_almacen')->only(['create','store']);
-        $this->middleware('role_or_permission:read_almacen')->only(['index','show']);
-        $this->middleware('role_or_permission:update_almacen')->only(['edit','update']);
-        $this->middleware('role_or_permission:delete_almacen')->only(['destroy']);
+    // public function __construct()
+    // {
+    //     $this->middleware('auth');
+    //     $this->middleware('role_or_permission:create_almacen')->only(['create','store']);
+    //     $this->middleware('role_or_permission:read_almacen')->only(['index','show']);
+    //     $this->middleware('role_or_permission:update_almacen')->only(['edit','update']);
+    //     $this->middleware('role_or_permission:delete_almacen')->only(['destroy']);
 
-    }
+    // }
     /**
      * Display a listing of the resource.
      *

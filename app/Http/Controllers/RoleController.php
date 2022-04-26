@@ -8,14 +8,14 @@ use Spatie\Permission\Models\Permission;
 use Yajra\Datatables\Datatables;
 class RoleController extends Controller
 {
-    public function __construct()
-    {
-        $this->middleware('auth');
-        $this->middleware('role_or_permission:create_roles')->only(['create','store']);
-        $this->middleware('role_or_permission:read_roles')->only(['index','show']);
-        $this->middleware('role_or_permission:update_roles')->only(['edit','update']);
-        $this->middleware('role_or_permission:delete_roles')->only(['destroy']);
-    }
+    // public function __construct()
+    // {
+    //     $this->middleware('auth');
+    //     $this->middleware('role_or_permission:create_roles')->only(['create','store']);
+    //     $this->middleware('role_or_permission:read_roles')->only(['index','show']);
+    //     $this->middleware('role_or_permission:update_roles')->only(['edit','update']);
+    //     $this->middleware('role_or_permission:delete_roles')->only(['destroy']);
+    // }
 
     /**
      * Display a listing of the resource.

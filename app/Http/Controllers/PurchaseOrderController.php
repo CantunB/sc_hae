@@ -23,15 +23,15 @@ use HAE\Quotesrequisitions;
 class PurchaseOrderController extends Controller
 {
 
-  public function __construct()
-  {
-    $this->middleware('auth');
-    $this->middleware('role_or_permission:create_compras')->only(['create','store']);
-    $this->middleware('role_or_permission:read_compras')->only(['index','show']);
-    $this->middleware('role_or_permission:update_compras')->only(['edit','update']);
-    $this->middleware('role_or_permission:delete_compras')->only(['destroy']);
+//   public function __construct()
+//   {
+//     $this->middleware('auth');
+//     $this->middleware('role_or_permission:create_compras')->only(['create','store']);
+//     $this->middleware('role_or_permission:read_compras')->only(['index','show']);
+//     $this->middleware('role_or_permission:update_compras')->only(['edit','update']);
+//     $this->middleware('role_or_permission:delete_compras')->only(['destroy']);
 
-  }
+//   }
     /**
      * Display a listing of the resource.
      *

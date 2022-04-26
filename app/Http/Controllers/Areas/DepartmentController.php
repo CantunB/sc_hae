@@ -1,22 +1,23 @@
 <?php
 
-namespace HAE\Http\Controllers;
+namespace HAE\Http\Controllers\Areas;
 
+use HAE\Http\Controllers\Controller;
 use HAE\Department;
 use Illuminate\Http\Request;
 use HAE\Http\Requests\DepartmentRequest;
 use Yajra\Datatables\Datatables;
 class DepartmentController extends Controller
 {
-    public function __construct()
-    {
-        $this->middleware('auth');
-        $this->middleware('role_or_permission:create_departamentos')->only(['create','store']);
-        $this->middleware('role_or_permission:read_departamentos')->only(['index','show']);
-        $this->middleware('role_or_permission:update_departamentos')->only(['edit','update']);
-        $this->middleware('role_or_permission:delete_departamentos')->only(['destroy']);
+    // public function __construct()
+    // {
+    //     $this->middleware('auth');
+    //     $this->middleware('role_or_permission:create_departamentos')->only(['create','store']);
+    //     $this->middleware('role_or_permission:read_departamentos')->only(['index','show']);
+    //     $this->middleware('role_or_permission:update_departamentos')->only(['edit','update']);
+    //     $this->middleware('role_or_permission:delete_departamentos')->only(['destroy']);
 
-    }
+    // }
 
     /**
      * Display a listing of the resource.
