@@ -26,8 +26,9 @@ class CoordinationController extends Controller
     public function index(Request $request)
     {
         if ($request->ajax()) {
-            $coordinations = Coordination::select(['id', 'name', 'slug', 'created_at', 'updated_at']);
+            $coordinations = Coordination::all();
             return Datatables::of($coordinations)
+            ->addIndexColumn()
             ->addColumn('action', function ($coordinations) {
                 return '
                 <a href="' . route('coordinaciones.edit', $coordinations->id) . '"
@@ -44,7 +45,7 @@ class CoordinationController extends Controller
             })
             ->make(true);
             }
-        return view('coordinaciones.index');
+        return view('areas.coordinaciones.index');
     }
 
     /**
@@ -55,7 +56,7 @@ class CoordinationController extends Controller
     public function create()
     {
         $deps = Department::all();
-        return view('coordinaciones.create', compact('deps'));
+        return view('areas.coordinaciones.create', compact('deps'));
         //  $departments = Department::pluck('name', 'id');
     }
 
@@ -69,7 +70,7 @@ class CoordinationController extends Controller
     {
      //   return  $request->all();
         $coordinations = Coordination::create($request->all());
-        $coordinations->departments()->sync( $request->get('departments') );
+        // $coordinations->departments()->sync( $request->get('departments') );
       //  $coordinations->save();
         return response()->json(['data' => 'Nueva coordinacion'], 201);
         // return redirect()->route('coordinaciones.index')->with('success','Coordinacion Creada');
@@ -137,7 +138,7 @@ class CoordinationController extends Controller
 
         ///$departments = Department::pluck('name', 'id');
         $deps = Department::all();
-        return view('coordinaciones.edit', compact('coordination','deps'));
+        return view('areas.coordinaciones.edit', compact('coordination','deps'));
     }
 
     function getDepartments(Request $request)
@@ -164,7 +165,7 @@ class CoordinationController extends Controller
         $coordination = Coordination::findOrFail($id);
         $coordination->update($request->all());
         $coordination->departments()->sync($request->get('departments'));
-        return redirect('coordinaciones')->with('update', 'Coordinacion actualizada');
+        return redirect()->route('coordinaciones.index')->with('update', 'Coordinacion Actualizada');
     }
 
     /**

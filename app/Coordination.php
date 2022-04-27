@@ -6,10 +6,13 @@ use Illuminate\Database\Eloquent\Model;
 
 class Coordination extends Model
 {
+    protected $table = 'coordinations';
+
     protected $fillable = [
         'name',
         'slug'
     ];
+    public $timestamps = false;
 
     public function departments()
     {

@@ -117,6 +117,7 @@
         <script src="{{asset('assets/libs/selectize/js/standalone/selectize.min.js')}}"></script>
         <!-- Sweet Alerts js -->
         <script src="{{asset('assets/libs/sweetalert2/sweetalert2.min.js')}}"></script>
+        <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
         <!-- Sweet alert init js-->
         <script src="{{asset('assets/js/pages/sweet-alerts.init.js')}}"></script>
         <!-- Plugins js -->
@@ -159,6 +160,175 @@
         <script src="{{ asset('assets/libs/pdfmake/build/pdfmake.min.js') }}"></script>
         <script src="{{ asset('assets/libs/pdfmake/build/vfs_fonts.js') }}"></script>
         <script src="{{ asset('assets/js/pages/datatables.init.js') }}"></script>
+
+        @toastr_js
+        @toastr_render
+        @if ($dependencies <= 0)
+            <script type="text/javascript">
+                toastr.options = {
+                    "closeButton": true,
+                    "debug": true,
+                    "newestOnTop": false,
+                    "progressBar": false,
+                    "preventDuplicates": true,
+                    "onclick": false,
+                    "showDuration": 0,
+                    "hideDuration": 0,
+                    "timeOut": 0,
+                    "extendedTimeOut": 0,
+                    "showEasing": "swing",
+                    "hideEasing": "linear",
+                    "showMethod": "show",
+                    "hideMethod": "hide"
+                }
+                toastr.error("No se ha registrado ninguna dependencia");
+            </script>
+        @endif
+        @if ($coordinations <= 0)
+            <script type="text/javascript">
+                toastr.options = {
+                    "closeButton": true,
+                    "debug": true,
+                    "newestOnTop": false,
+                    "progressBar": false,
+                    "preventDuplicates": true,
+                    "onclick": false,
+                    "showDuration": 0,
+                    "hideDuration": 0,
+                    "timeOut": 0,
+                    "extendedTimeOut": 0,
+                    "showEasing": "swing",
+                    "hideEasing": "linear",
+                    "showMethod": "show",
+                    "hideMethod": "hide"
+                }
+                toastr.error("No se ha registrado ninguna coordinacion");
+            </script>
+        @endif
+        @if ($departments <= 0)
+            <script type="text/javascript">
+                toastr.options = {
+                    "closeButton": true,
+                    "debug": true,
+                    "newestOnTop": false,
+                    "progressBar": false,
+                    "preventDuplicates": true,
+                    "onclick": false,
+                    "showDuration": 0,
+                    "hideDuration": 0,
+                    "timeOut": 0,
+                    "extendedTimeOut": 0,
+                    "showEasing": "swing",
+                    "hideEasing": "linear",
+                    "showMethod": "show",
+                    "hideMethod": "hide"
+                }
+                toastr.error("No se ha registrado ningun departamento");
+            </script>
+        @endif
+        @if ($areas <= 0)
+            <script type="text/javascript">
+                toastr.options = {
+                    "closeButton": true,
+                    "debug": true,
+                    "newestOnTop": false,
+                    "progressBar": false,
+                    "preventDuplicates": true,
+                    "onclick": false,
+                    "showDuration": 0,
+                    "hideDuration": 0,
+                    "timeOut": 0,
+                    "extendedTimeOut": 0,
+                    "showEasing": "swing",
+                    "hideEasing": "linear",
+                    "showMethod": "show",
+                    "hideMethod": "hide"
+                }
+                toastr.error("No se han asignado las areas");
+            </script>
+        @endif
+        @if ($providers <= 0)
+            <script type="text/javascript">
+                toastr.options = {
+                    "closeButton": true,
+                    "debug": true,
+                    "newestOnTop": false,
+                    "progressBar": false,
+                    "preventDuplicates": true,
+                    "onclick": false,
+                    "showDuration": 0,
+                    "hideDuration": 0,
+                    "timeOut": 0,
+                    "extendedTimeOut": 0,
+                    "showEasing": "swing",
+                    "hideEasing": "linear",
+                    "showMethod": "show",
+                    "hideMethod": "hide"
+                }
+                toastr.error("No hay proveedores");
+            </script>
+        @endif
+    <script>
+        @if(Session::has('message'))
+        toastr.options =
+        {
+            "closeButton" : true,
+            "progressBar" : true
+        }
+                toastr.success("{{ session('message') }}");
+        @endif
+
+        @if(Session::has('error'))
+        toastr.options =
+        {
+            "closeButton" : true,
+            "progressBar" : true
+        }
+                toastr.error("{{ session('error') }}");
+        @endif
+
+        @if(Session::has('info'))
+        toastr.options =
+        {
+            "closeButton" : true,
+            "progressBar" : true
+        }
+                toastr.info("{{ session('info') }}");
+        @endif
+
+        @if(Session::has('update'))
+        toastr.options =
+        {
+            "closeButton" : true,
+            "progressBar" : true
+        }
+                toastr.success("{{ session('update') }}");
+        @endif
+    </script>
+        {{--  <script type="text/javascript">
+
+            toastr.options = {
+                "closeButton": true,
+                "debug": true,
+                "newestOnTop": false,
+                "progressBar": false,
+                "preventDuplicates": true,
+                "onclick": false,
+                "showDuration": 0,
+                {{-- "showDuration": "100", --}}
+                {{--  "hideDuration": 0,  --}}
+                {{-- "hideDuration": "1000", --}}
+                {{-- "timeOut": "5000", --}}
+                {{--  "timeOut": 0,  --}}
+                {{-- "extendedTimeOut": "1000", --}}
+                {{--  "extendedTimeOut": 0,
+                "showEasing": "swing",
+                "hideEasing": "linear",
+                "showMethod": "show",
+                "hideMethod": "hide"  --}}
+            {{--  };
+            toastr.error('hola');
+        </script>  --}}  --}}
         @stack('scripts')
 
     </body>

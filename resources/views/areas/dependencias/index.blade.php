@@ -1,10 +1,11 @@
-<?php $__env->startSection('content'); ?>
+@extends('layouts.app')
+@section('content')
 <!-- start page title -->
-<?php $__env->startComponent('layouts.partials.breadcrumb'); ?>
-<?php $__env->slot('title'); ?> <?php echo e(config('app.name', 'H.A.E')); ?> <?php $__env->endSlot(); ?>
-<?php $__env->slot('subtitle'); ?> Coordinaciones <?php $__env->endSlot(); ?>
-<?php $__env->slot('teme'); ?> Lista <?php $__env->endSlot(); ?>
-<?php echo $__env->renderComponent(); ?>
+@component('layouts.partials.breadcrumb')
+@slot('title') {{ config('app.name', 'H.A.E') }} @endslot
+@slot('subtitle') dependencias @endslot
+@slot('teme') Lista @endslot
+@endcomponent
 <!-- end page title -->
 <div class="row">
     <div class="col-lg-12">
@@ -13,22 +14,20 @@
                 <div class="row mb-2">
                     <div class="col-sm-12">
                         <div class="text-sm-right">
-                            <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('create_coordinaciones')): ?>
+                            {{--  @can('create_dependencias')  --}}
                             <button type="button" class="btn btn-sm btn-success waves-effect waves-light mb-2 float-left" data-toggle="modal" data-target="#newModal">
-                                Nueva coordinacion
+                                Nueva dependencia
                             </button>
-                            
-                            <?php endif; ?>
+                            {{--  @endcan  --}}
                         </div>
                     </div><!-- end col-->
                 </div>
                 <div class="table-responsive">
-                    <table id="coordinations-table" class="table dt-responsive nowrap w-100">
+                    <table id="dependency-table" class="table dt-responsive nowrap w-100">
                         <thead>
                             <tr>
                                 <th scope="col">#</th>
                                 <th scope="col">Nombre</th>
-                                <th scope="col">Slug</th>
                                 <th>Accciones</th>
                             </tr>
                         </thead>
@@ -39,33 +38,32 @@
     </div> <!-- end col -->
 </div>
     <!-- end row -->
-<?php echo $__env->make('coordinaciones.partials.new_modal', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
-<?php $__env->startPush('scripts'); ?>
+@include('areas.dependencias.partials.new_modal')
+@push('scripts')
     <script>
         $(document).ready( function () {
-            $('#coordinations-table').DataTable( {
+            $('#dependency-table').DataTable( {
                 processing: true,
                 serverSide : true,
                 language: {
                     "url": "//cdn.datatables.net/plug-ins/1.10.20/i18n/Spanish.json"
                 },
-                ajax: '<?php echo route('coordinaciones.index'); ?>',
+                ajax: '{!! route('dependencias.index') !!}',
                 columns:[
-                    {data: 'id', name: 'id'},
-                    {data: 'name', name: 'name'},
-                    {data: 'slug', name: 'slug'},
-                    {data: 'action', name: 'action', orderable: false, searchable: false}
+                    {data: 'DT_RowIndex', name: 'DT_RowIndex'},
+                    {data: 'fullname', name: 'fullname'},
+                    {data: 'options', name: 'options', orderable: false, searchable: false}
                 ]
             });
         });
     </script>
     <script>
-        $("#form_coordination").submit(function(stay) {
+        $("#form_dependency").submit(function(stay) {
             stay.preventDefault();
             var formData = new FormData(this);
             $.ajax({
                 type: "POST",
-                url: "<?php echo route('coordinaciones.store'); ?>",
+                url: "{!! route('dependencias.store') !!}",
                 data: formData,
                 dataType: "json",
                 processData: false,
@@ -78,9 +76,9 @@
                         icon: "success",
                         timer: 5000
                     });
-                    $('#form_coordination')[0].reset();
-                    $('#form_coordination').parsley().destroy();
-                    $('#coordinations-table').DataTable().ajax.reload();
+                    $('#form_dependency')[0].reset();
+                    $('#form_dependency').parsley().destroy();
+                    $('#dependency-table').DataTable().ajax.reload();
                     $("#newModal").modal('hide');
                 },
                 error: function(response){
@@ -97,7 +95,7 @@
             stay.preventDefault();
         });
     </script>
-    <script>
+    {{--  <script>
         /** DESTROY UNIT*/
         function btnDelete(id) {
             Swal.fire({
@@ -115,7 +113,7 @@
                         url: "/coordinaciones/" + id,
                         data: {
                             id: id,
-                            _token: '<?php echo csrf_token(); ?>'
+                            _token: '{!! csrf_token() !!}'
                         },
                         dataType: 'JSON',
                         success: function (response) {
@@ -146,9 +144,7 @@
             })
         }
         /** DESTROY UNIT*/
-    </script>
-<?php $__env->stopPush(); ?>
+    </script>  --}}
+@endpush
 
-<?php $__env->stopSection(); ?>
-
-<?php echo $__env->make('layouts.app', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH /Users/bernacantun/Documents/Proyectos/Laravel/sc_hae/resources/views/coordinaciones/index.blade.php ENDPATH**/ ?>
+@endsection

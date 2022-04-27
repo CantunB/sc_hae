@@ -13,7 +13,7 @@
                     <div class="col-sm-12">
                         <div class="text-sm-right">
                             <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('create_departamentos')): ?>
-                            <button type="button" class="btn btn-sm btn-success waves-effect waves-light mb-2 float-right" data-toggle="modal" data-target="#newModal">
+                            <button type="button" class="btn btn-sm btn-success waves-effect waves-light mb-2 float-left" data-toggle="modal" data-target="#newModal">
                                 Nuevo departamento
                             </button>
                             

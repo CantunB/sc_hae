@@ -1,5 +1,4 @@
-@extends('layouts.app')
-@section('content')
+<?php $__env->startSection('content'); ?>
 <!-- Start Content-->
 <div class="container-fluid">
     <!-- start page title -->
@@ -8,7 +7,7 @@
             <div class="page-title-box">
                 <div class="page-title-right">
                     <ol class="breadcrumb m-0">
-                        <li class="breadcrumb-item"><a href="javascript: void(0);">{{ config('app.name', 'SMAPAC') }}</a></li>
+                        <li class="breadcrumb-item"><a href="javascript: void(0);"><?php echo e(config('app.name', 'SMAPAC')); ?></a></li>
                         <li class="breadcrumb-item"><a href="javascript: void(0);">PERMISOS</a></li>
                         <li class="breadcrumb-item active">LISTA</li>
                     </ol>
@@ -24,10 +23,10 @@
                     <div class="row mb-2">
                         <div class="col-sm-12">
                             <div class="text-sm-right">
-                                @can('create_permisos')
-                                <a href="{{ route('permisos.create') }}"
-                                    class="btn btn-sm btn-success disabled waves-effect waves-light mb-2 float-right">Crear permisos</a>
-                                @endcan
+                                <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('create_permisos')): ?>
+                                <a href="<?php echo e(route('permisos.create')); ?>"
+                                    class="btn btn-sm btn-success disabled waves-effect waves-light mb-2 float-left">Crear permisos</a>
+                                <?php endif; ?>
                             </div>
                         </div><!-- end col-->
                     </div>
@@ -48,7 +47,7 @@
     <!-- end page title -->
 
 </div> <!-- container -->
-@push('scripts')
+<?php $__env->startPush('scripts'); ?>
 <script>
     $(document).ready( function () {
       $('#permisos-table').DataTable( {
@@ -57,7 +56,7 @@
         language: {
             "url": "//cdn.datatables.net/plug-ins/1.10.20/i18n/Spanish.json"
         },
-        ajax: '{!! route('permisos.index') !!}',
+        ajax: '<?php echo route('permisos.index'); ?>',
         columns:[
             {data: 'NoEmpleado', name: 'NoEmpleado'},
             {data: 'name', name : 'name'},
@@ -68,5 +67,7 @@
       } );
     } );
 </script>
-@endpush
-@endsection
+<?php $__env->stopPush(); ?>
+<?php $__env->stopSection(); ?>
+
+<?php echo $__env->make('layouts.app', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH /Users/bernacantun/Documents/Proyectos/Laravel/sc_hae/resources/views/settings/permisos/index.blade.php ENDPATH**/ ?>

@@ -117,6 +117,7 @@
         <script src="<?php echo e(asset('assets/libs/selectize/js/standalone/selectize.min.js')); ?>"></script>
         <!-- Sweet Alerts js -->
         <script src="<?php echo e(asset('assets/libs/sweetalert2/sweetalert2.min.js')); ?>"></script>
+        <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
         <!-- Sweet alert init js-->
         <script src="<?php echo e(asset('assets/js/pages/sweet-alerts.init.js')); ?>"></script>
         <!-- Plugins js -->
@@ -159,6 +160,159 @@
         <script src="<?php echo e(asset('assets/libs/pdfmake/build/pdfmake.min.js')); ?>"></script>
         <script src="<?php echo e(asset('assets/libs/pdfmake/build/vfs_fonts.js')); ?>"></script>
         <script src="<?php echo e(asset('assets/js/pages/datatables.init.js')); ?>"></script>
+
+        <?php echo toastr_js(); ?>
+        <?php echo app('toastr')->render(); ?>
+        <?php if($dependencies <= 0): ?>
+            <script type="text/javascript">
+                toastr.options = {
+                    "closeButton": true,
+                    "debug": true,
+                    "newestOnTop": false,
+                    "progressBar": false,
+                    "preventDuplicates": true,
+                    "onclick": false,
+                    "showDuration": 0,
+                    "hideDuration": 0,
+                    "timeOut": 0,
+                    "extendedTimeOut": 0,
+                    "showEasing": "swing",
+                    "hideEasing": "linear",
+                    "showMethod": "show",
+                    "hideMethod": "hide"
+                }
+                toastr.error("No se ha registrado ninguna dependencia");
+            </script>
+        <?php endif; ?>
+        <?php if($coordinations <= 0): ?>
+            <script type="text/javascript">
+                toastr.options = {
+                    "closeButton": true,
+                    "debug": true,
+                    "newestOnTop": false,
+                    "progressBar": false,
+                    "preventDuplicates": true,
+                    "onclick": false,
+                    "showDuration": 0,
+                    "hideDuration": 0,
+                    "timeOut": 0,
+                    "extendedTimeOut": 0,
+                    "showEasing": "swing",
+                    "hideEasing": "linear",
+                    "showMethod": "show",
+                    "hideMethod": "hide"
+                }
+                toastr.error("No se ha registrado ninguna coordinacion");
+            </script>
+        <?php endif; ?>
+        <?php if($departments <= 0): ?>
+            <script type="text/javascript">
+                toastr.options = {
+                    "closeButton": true,
+                    "debug": true,
+                    "newestOnTop": false,
+                    "progressBar": false,
+                    "preventDuplicates": true,
+                    "onclick": false,
+                    "showDuration": 0,
+                    "hideDuration": 0,
+                    "timeOut": 0,
+                    "extendedTimeOut": 0,
+                    "showEasing": "swing",
+                    "hideEasing": "linear",
+                    "showMethod": "show",
+                    "hideMethod": "hide"
+                }
+                toastr.error("No se ha registrado ningun departamento");
+            </script>
+        <?php endif; ?>
+        <?php if($areas <= 0): ?>
+            <script type="text/javascript">
+                toastr.options = {
+                    "closeButton": true,
+                    "debug": true,
+                    "newestOnTop": false,
+                    "progressBar": false,
+                    "preventDuplicates": true,
+                    "onclick": false,
+                    "showDuration": 0,
+                    "hideDuration": 0,
+                    "timeOut": 0,
+                    "extendedTimeOut": 0,
+                    "showEasing": "swing",
+                    "hideEasing": "linear",
+                    "showMethod": "show",
+                    "hideMethod": "hide"
+                }
+                toastr.error("No se han asignado las areas");
+            </script>
+        <?php endif; ?>
+        <?php if($providers <= 0): ?>
+            <script type="text/javascript">
+                toastr.options = {
+                    "closeButton": true,
+                    "debug": true,
+                    "newestOnTop": false,
+                    "progressBar": false,
+                    "preventDuplicates": true,
+                    "onclick": false,
+                    "showDuration": 0,
+                    "hideDuration": 0,
+                    "timeOut": 0,
+                    "extendedTimeOut": 0,
+                    "showEasing": "swing",
+                    "hideEasing": "linear",
+                    "showMethod": "show",
+                    "hideMethod": "hide"
+                }
+                toastr.error("No hay proveedores");
+            </script>
+        <?php endif; ?>
+    <script>
+        <?php if(Session::has('message')): ?>
+        toastr.options =
+        {
+            "closeButton" : true,
+            "progressBar" : true
+        }
+                toastr.success("<?php echo e(session('message')); ?>");
+        <?php endif; ?>
+
+        <?php if(Session::has('error')): ?>
+        toastr.options =
+        {
+            "closeButton" : true,
+            "progressBar" : true
+        }
+                toastr.error("<?php echo e(session('error')); ?>");
+        <?php endif; ?>
+
+        <?php if(Session::has('info')): ?>
+        toastr.options =
+        {
+            "closeButton" : true,
+            "progressBar" : true
+        }
+                toastr.info("<?php echo e(session('info')); ?>");
+        <?php endif; ?>
+
+        <?php if(Session::has('update')): ?>
+        toastr.options =
+        {
+            "closeButton" : true,
+            "progressBar" : true
+        }
+                toastr.success("<?php echo e(session('update')); ?>");
+        <?php endif; ?>
+    </script>
+        
+                
+                
+                
+                
+                
+                
+              --}}
         <?php echo $__env->yieldPushContent('scripts'); ?>
 
     </body>

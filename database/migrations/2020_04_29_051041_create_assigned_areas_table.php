@@ -13,14 +13,15 @@ class CreateAssignedAreasTable extends Migration
      */
     public function up()
     {
-        Schema::create('assigned_areas', function (Blueprint $table) {
-            $table->id();
+        Schema::create('dependency_coordination', function (Blueprint $table) {
+            $table->foreignId('dependency_id')->references('id')->on('dependencies');
+            $table->foreignId('coordination_id')->references('id')->on('coordinations');
+        });
+        Schema::create('coordination_department', function (Blueprint $table) {
             $table->foreignId('coordination_id')->references('id')->on('coordinations');
             $table->foreignId('department_id')->references('id')->on('departments');
-            $table->string('slug', 128)->nullable();
-            $table->tinyInteger('status')->default('1');
-            $table->timestamps();
         });
+
     }
 
     /**
@@ -30,6 +31,7 @@ class CreateAssignedAreasTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('assigned_areas');
+        Schema::dropIfExists('dependency_coordination');
+        Schema::dropIfExists('coordination_department');
     }
 }

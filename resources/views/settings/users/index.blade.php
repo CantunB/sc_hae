@@ -3,7 +3,7 @@
 <!-- start page title -->
 @component('layouts.partials.breadcrumb')
 @slot('title') {{ config('app.name', 'H.A.E') }} @endslot
-@slot('subtitle') {{Request::path()}} @endslot
+@slot('subtitle') usuarios @endslot
 @slot('teme') Lista @endslot
 @endcomponent
 <!-- end page title -->
@@ -16,7 +16,7 @@
                         <div class="text-sm-right">
                             @can('create_users')
                             <a href="{{ route('usuarios.create') }}"
-                                class="btn btn-sm btn-success waves-effect waves-light mb-2 float-right">Crear nuevo usuario</a>
+                                class="btn btn-sm btn-success waves-effect waves-light mb-2 float-left">Crear nuevo usuario</a>
                             @endcan
                         </div>
                     </div><!-- end col-->

@@ -1,12 +1,11 @@
 @extends('layouts.app')
 @section('content')
 <!-- start page title -->
-@component('layouts.partials.breadcrumb')
-@slot('title') {{ config('app.name', 'H.A.E') }} @endslot
-@slot('subtitle') Coordinaciones @endslot
-@slot('teme') Lista @endslot
-@endcomponent
-<!-- end page title -->
+    @component('layouts.partials.breadcrumb')
+    @slot('title') {{ config('app.name', 'H.A.E') }} @endslot
+    @slot('subtitle') departamentos @endslot
+    @slot('teme') Lista @endslot
+    @endcomponent
 <div class="row">
     <div class="col-lg-12">
         <div class="card">
@@ -14,18 +13,16 @@
                 <div class="row mb-2">
                     <div class="col-sm-12">
                         <div class="text-sm-right">
-                            @can('create_coordinaciones')
-                            <button type="button" class="btn btn-sm btn-success waves-effect waves-light mb-2 float-right" data-toggle="modal" data-target="#newModal">
-                                Nueva coordinacion
-                            </button>
-                            {{-- <a href="{{ route('coordinaciones.create') }}"
-                                class="btn btn-sm btn-success waves-effect waves-light mb-2 float-right">Crear nueva coordinación</a> --}}
-                            @endcan
+                            @can('create_departamentos')
+                                <button type="button" class="btn btn-sm btn-success waves-effect waves-light mb-2 float-left" data-toggle="modal" data-target="#newModal">
+                                    Nuevo departamento
+                                </button>
+                            @endcan</h6>
                         </div>
                     </div><!-- end col-->
                 </div>
                 <div class="table-responsive">
-                    <table id="coordinations-table" class="table dt-responsive nowrap w-100">
+                    <table id="departments-table" class="ui celled table data-table">
                         <thead>
                             <tr>
                                 <th scope="col">#</th>
@@ -40,34 +37,33 @@
         </div> <!-- end card-->
     </div> <!-- end col -->
 </div>
-    <!-- end row -->
-@include('coordinaciones.partials.new_modal')
+@include('areas.departamentos.partials.new_modal')
 @push('scripts')
     <script>
         $(document).ready( function () {
-            $('#coordinations-table').DataTable( {
-                processing: true,
-                serverSide : true,
-                language: {
-                    "url": "//cdn.datatables.net/plug-ins/1.10.20/i18n/Spanish.json"
-                },
-                ajax: '{!! route('coordinaciones.index') !!}',
-                columns:[
-                    {data: 'id', name: 'id'},
-                    {data: 'name', name: 'name'},
-                    {data: 'slug', name: 'slug'},
-                    {data: 'action', name: 'action', orderable: false, searchable: false}
-                ]
-            });
-        });
+    $('#departments-table').DataTable( {
+        processing: true,
+        serverSide : true,
+        language: {
+            "url": "//cdn.datatables.net/plug-ins/1.10.20/i18n/Spanish.json"
+        },
+        ajax: '{!! route('departamentos.index') !!}',
+        columns:[
+            {data: 'DT_RowIndex', name: 'DT_RowIndex'},
+            {data: 'name', name: 'name'},
+            {data: 'slug', name: 'slug'},
+            {data: 'action', name: 'action', orderable: false, searchable: false}
+        ]
+    } );
+    } );
     </script>
     <script>
-        $("#form_coordination").submit(function(stay) {
+        $("#form_departamentos").submit(function(stay) {
             stay.preventDefault();
             var formData = new FormData(this);
             $.ajax({
                 type: "POST",
-                url: "{!! route('coordinaciones.store') !!}",
+                url: "{!! route('departamentos.store') !!}",
                 data: formData,
                 dataType: "json",
                 processData: false,
@@ -80,9 +76,9 @@
                         icon: "success",
                         timer: 5000
                     });
-                    $('#form_coordination')[0].reset();
-                    $('#form_coordination').parsley().destroy();
-                    $('#coordinations-table').DataTable().ajax.reload();
+                    $('#form_departamentos')[0].reset();
+                    $('#form_departamentos').parsley().destroy();
+                    $('#departments-table').DataTable().ajax.reload();
                     $("#newModal").modal('hide');
                 },
                 error: function(response){
@@ -114,7 +110,7 @@
                 if (e.value === true) {
                     $.ajax({
                         type: 'DELETE',
-                        url: "/coordinaciones/" + id,
+                        url: "/areas/departamentos/" + id,
                         data: {
                             id: id,
                             _token: '{!! csrf_token() !!}'
@@ -129,7 +125,7 @@
                                     icon: "success",
                                     confirmButtonText: "Hecho!",
                                 });
-                                $('#coordinations-table').DataTable().ajax.reload();
+                                $('#departments-table').DataTable().ajax.reload();
                             } else {
                                 Swal.fire({
                                     title: "Error!",

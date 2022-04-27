@@ -17,7 +17,7 @@
                         <div class="text-sm-right">
                             @can('create_requisicion')
                             <a href="{{ route('request.create') }}"
-                                class="btn btn-sm btn-success waves-effect waves-light mb-2 float-right"><i class="fas fa-plus-square" ></i> Nueva requisición</a>
+                                class="btn btn-sm btn-success waves-effect waves-light mb-2 float-left"><i class="fas fa-plus-square" ></i> Nueva requisición</a>
                             @endcan
                         </div>
                     </div><!-- end col-->

@@ -1,7 +1,8 @@
 <?php
 
-namespace HAE\Http\Controllers;
+namespace HAE\Http\Controllers\Compras;
 
+use HAE\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use HAE\PurchaseOrder;
@@ -215,6 +216,6 @@ class PurchaseInvoiceController extends Controller
         }
 
         return redirect()->route('autorizadas.index');
-        
+
     }
 }

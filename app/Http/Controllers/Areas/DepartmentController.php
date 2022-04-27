@@ -27,8 +27,9 @@ class DepartmentController extends Controller
     public function index(Request $request)
     {
         if ($request->ajax()) {
-            $departments = Department::select(['id', 'name', 'slug', 'created_at', 'updated_at']);
+            $departments = Department::all();
             return Datatables::of($departments)
+            ->addIndexColumn()
             ->addColumn('action', function ($departments) {
                 return '
                 <a href="' . route('departamentos.edit', $departments->id) . '"
@@ -47,7 +48,7 @@ class DepartmentController extends Controller
             ->make(true);
             }
 
-        return view('departamentos.index');
+        return view('areas.departamentos.index');
 
     }
 
@@ -58,7 +59,7 @@ class DepartmentController extends Controller
      */
     public function create()
     {
-        return view('departamentos.create');
+        return view('areas.departamentos.create');
     }
 
     /**
@@ -97,7 +98,7 @@ class DepartmentController extends Controller
     {
        $department = Department::find($department);
       //  return response()->json($department);
-     return view('departamentos.edit', compact('department'));
+     return view('areas.departamentos.edit', compact('department'));
     }
 
     /**
@@ -120,13 +121,7 @@ class DepartmentController extends Controller
      *
      * @param  \HAE\Department  $department
      * @return \Illuminate\Http\Response
-
-    public function destroy( $department)
-    {
-        $department = Department::findOrFail($department);
-        $department->delete();
-        return back()->with('destroy','Departamento Eliminado');
-    }*/
+    */
     public function destroy($id)
     {
         // Department::find($id)->delete();

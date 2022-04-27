@@ -3,6 +3,11 @@
 namespace HAE\Providers;
 
 use Carbon\Carbon;
+use HAE\AssignedAreas;
+use HAE\Coordination;
+use HAE\Department;
+use HAE\Dependency;
+use HAE\Providers;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -27,22 +32,17 @@ class AppServiceProvider extends ServiceProvider
     {
         Carbon::setLocale(config('app.locale'));
         view()->composer(['layouts.app','home'], function($view){
-            $hola = 'hola';
-            // $units = Unit::count();
-            // $operators = Operator::count();
-            // $hotels = Hotel::count();
-            // $airlines = Airline::count();
-            // $type_services = TypeService::count();
-            // $agencies = Agency::count();
-            // $sales = Assign
+            $areas = AssignedAreas::count();
+            $dependencies = Dependency::count();
+            $coordinations = Coordination::count();
+            $departments = Department::count();
+            $providers = Providers::count();
             $view->with([
-                'hola' => $hola;
-                // 'units' => $units,
-                // 'operators' => $operators,
-                // 'hotels' => $hotels,
-                // 'airlines' => $airlines,
-                // 'type_services' => $type_services,
-                // 'agencies' => $agencies,
+                'areas' => $areas,
+                'dependencies' => $dependencies,
+                'coordinations' => $coordinations,
+                'departments' => $departments,
+                'providers' => $providers,
             ]);
         });
     }

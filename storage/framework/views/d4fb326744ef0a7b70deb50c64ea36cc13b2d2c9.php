@@ -16,7 +16,7 @@
                         <div class="text-sm-right">
                             <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('create_requisicion')): ?>
                             <a href="<?php echo e(route('request.create')); ?>"
-                                class="btn btn-sm btn-success waves-effect waves-light mb-2 float-right"><i class="fas fa-plus-square" ></i> Nueva requisición</a>
+                                class="btn btn-sm btn-success waves-effect waves-light mb-2 float-left"><i class="fas fa-plus-square" ></i> Nueva requisición</a>
                             <?php endif; ?>
                         </div>
                     </div><!-- end col-->

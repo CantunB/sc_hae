@@ -1,21 +1,13 @@
 <?php
 
-namespace HAE\Http\Controllers;
+namespace HAE\Http\Controllers\Compras;
 
+use HAE\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
-use Intervention\Image\File;
-use NunoMaduro\Collision\Provider;
-use HAE\AssignedRequesteds;
-use HAE\AssignedRequisition;
-use HAE\Providers;
 use HAE\Purchase;
 use HAE\PurchaseOrder;
 use HAE\PurchaseOrderDetail;
-use HAE\Requested;
-use Barryvdh\DomPDF\Facade as PDF;
-use HAE\Requisition;
-use HAE\Storehouse;
 
 class PurchaseController extends Controller
 {
@@ -36,24 +28,20 @@ class PurchaseController extends Controller
      */
     public function index()
     {
-
-      $purchase = Purchase::select('department_id')->distinct(['department_id'])->get();
-      foreach ($purchase as $key => $purchaseorder) {
-          $array = array(
-              $counts[] = Purchase::where('department_id', $purchaseorder->department_id)
-                  ->distinct(['purchase_order_id'])
-                  ->count('purchase_order_id')
-          );
-      }
-      if (empty($counts)) {
-          $counts = 0;
-      } else {
-          $counts;
-      }
-
-      return view('compras.autorizadas.index', compact('purchase','counts'));
-
-
+        $purchase = Purchase::select('department_id')->distinct(['department_id'])->get();
+        foreach ($purchase as $key => $purchaseorder) {
+            $array = array(
+                $counts[] = Purchase::where('department_id', $purchaseorder->department_id)
+                    ->distinct(['purchase_order_id'])
+                    ->count('purchase_order_id')
+            );
+        }
+        if (empty($counts)) {
+            $counts = 0;
+        } else {
+            $counts;
+        }
+        return view('compras.autorizadas.index', compact('purchase','counts'));
     }
 
     public function list($purchaseorders)

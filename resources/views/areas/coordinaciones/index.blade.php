@@ -1,10 +1,11 @@
-<?php $__env->startSection('content'); ?>
+@extends('layouts.app')
+@section('content')
 <!-- start page title -->
-<?php $__env->startComponent('layouts.partials.breadcrumb'); ?>
-<?php $__env->slot('title'); ?> <?php echo e(config('app.name', 'H.A.E')); ?> <?php $__env->endSlot(); ?>
-<?php $__env->slot('subtitle'); ?> Coordinaciones <?php $__env->endSlot(); ?>
-<?php $__env->slot('teme'); ?> Lista <?php $__env->endSlot(); ?>
-<?php echo $__env->renderComponent(); ?>
+@component('layouts.partials.breadcrumb')
+@slot('title') {{ config('app.name', 'H.A.E') }} @endslot
+@slot('subtitle') Coordinaciones @endslot
+@slot('teme') Lista @endslot
+@endcomponent
 <!-- end page title -->
 <div class="row">
     <div class="col-lg-12">
@@ -13,12 +14,13 @@
                 <div class="row mb-2">
                     <div class="col-sm-12">
                         <div class="text-sm-right">
-                            <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('create_coordinaciones')): ?>
+                            @can('create_coordinaciones')
                             <button type="button" class="btn btn-sm btn-success waves-effect waves-light mb-2 float-left" data-toggle="modal" data-target="#newModal">
                                 Nueva coordinacion
                             </button>
-                            
-                            <?php endif; ?>
+                            {{-- <a href="{{ route('coordinaciones.create') }}"
+                                class="btn btn-sm btn-success waves-effect waves-light mb-2 float-right">Crear nueva coordinación</a> --}}
+                            @endcan
                         </div>
                     </div><!-- end col-->
                 </div>
@@ -39,8 +41,8 @@
     </div> <!-- end col -->
 </div>
     <!-- end row -->
-<?php echo $__env->make('coordinaciones.partials.new_modal', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
-<?php $__env->startPush('scripts'); ?>
+@include('areas.coordinaciones.partials.new_modal')
+@push('scripts')
     <script>
         $(document).ready( function () {
             $('#coordinations-table').DataTable( {
@@ -49,9 +51,9 @@
                 language: {
                     "url": "//cdn.datatables.net/plug-ins/1.10.20/i18n/Spanish.json"
                 },
-                ajax: '<?php echo route('coordinaciones.index'); ?>',
+                ajax: '{!! route('coordinaciones.index') !!}',
                 columns:[
-                    {data: 'id', name: 'id'},
+                    {data: 'DT_RowIndex', name: 'DT_RowIndex'},
                     {data: 'name', name: 'name'},
                     {data: 'slug', name: 'slug'},
                     {data: 'action', name: 'action', orderable: false, searchable: false}
@@ -65,7 +67,7 @@
             var formData = new FormData(this);
             $.ajax({
                 type: "POST",
-                url: "<?php echo route('coordinaciones.store'); ?>",
+                url: "{!! route('coordinaciones.store') !!}",
                 data: formData,
                 dataType: "json",
                 processData: false,
@@ -112,10 +114,10 @@
                 if (e.value === true) {
                     $.ajax({
                         type: 'DELETE',
-                        url: "/coordinaciones/" + id,
+                        url: "/areas/coordinaciones/" + id,
                         data: {
                             id: id,
-                            _token: '<?php echo csrf_token(); ?>'
+                            _token: '{!! csrf_token() !!}'
                         },
                         dataType: 'JSON',
                         success: function (response) {
@@ -147,8 +149,6 @@
         }
         /** DESTROY UNIT*/
     </script>
-<?php $__env->stopPush(); ?>
+@endpush
 
-<?php $__env->stopSection(); ?>
-
-<?php echo $__env->make('layouts.app', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH /Users/bernacantun/Documents/Proyectos/Laravel/sc_hae/resources/views/coordinaciones/index.blade.php ENDPATH**/ ?>
+@endsection

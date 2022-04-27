@@ -13,12 +13,27 @@ class CreateCoordinationsTable extends Migration
      */
     public function up()
     {
+        Schema::create('dependencies', function (Blueprint $table) {
+            $table->id();
+            $table->string('name');
+            $table->string('slug')->nullable();
+            $table->string('colony_dependency')->nullable();
+            $table->string('address_dependency')->nullable();
+            $table->string('telephone_dependency')->nullable();
+            $table->string('email_dependency')->nullable()->unique();
+            $table->tinyInteger('status')->default('1');
+        });
         Schema::create('coordinations', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('slug', 128)->default('N/A');
+            $table->string('slug')->nullable();
             $table->tinyInteger('status')->default('1');
-            $table->timestamps();
+        });
+        Schema::create('departments', function (Blueprint $table) {
+            $table->id();
+            $table->string('name');
+            $table->string('slug')->nullable();
+            $table->tinyInteger('status')->default('1');
         });
     }
 
@@ -29,6 +44,8 @@ class CreateCoordinationsTable extends Migration
      */
     public function down()
     {
+        Schema::dropIfExists('dependencies');
         Schema::dropIfExists('coordinations');
+        Schema::dropIfExists('departments');
     }
 }

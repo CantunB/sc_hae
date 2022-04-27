@@ -26,7 +26,7 @@
                         <div class="text-sm-right">
                             @can('create_roles')
                             <a href="{{ route('roles.create') }}"
-                                class="btn btn-sm btn-success waves-effect waves-light mb-2 float-right">Crear nuevo rol</a>
+                                class="btn btn-sm btn-success waves-effect waves-light mb-2 float-left">Crear nuevo rol</a>
                             @endcan
                         </div>
                     </div><!-- end col-->

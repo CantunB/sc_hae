@@ -44,7 +44,7 @@
         <div id="sidebar-menu">
 
             <ul id="side-menu">
-                @if(Auth::user()->hasRole(['super-admin','admin']))
+                @if(Auth::user()->hasRole(['Super-Admin','admin']))
                 <li class="menu-title">Menu</li>
                  <li>
                     <a href="{{ route('home') }}">
@@ -92,7 +92,7 @@
                     <div class="collapse" id="sidebarAreas">
                         <ul class="nav-second-level">
                             <li>
-                                <a href="{{ route('areas.index') }}">Areas</a>
+                                <a href="{{ route('dependencias.index') }}">Dependencias</a>
                             </li>
                             <li>
                                 <a href="{{ route('coordinaciones.index') }}">Coordinaciones</a>
@@ -125,12 +125,12 @@
                         <ul class="nav-second-level">
                             @can('read_requisicion')
                                 <li>
-                                    <a href="{{ route('request.index') }}">Requisiciones</a>
+                                    <a href="{{ route('request.index') }}">Solicitudes</a>
                                 </li>
                             @endcan
                             @can('update_requisicion')
                                 <li>
-                                    <a href="{{ route('authorized.index') }}">Requisiciones Autorizadads</a>
+                                    <a href="{{ route('authorized.index') }}">Autorizadas</a>
                                 </li>
                             @endcan
                         </ul>

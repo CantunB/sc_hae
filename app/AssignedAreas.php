@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class AssignedAreas extends Model
 {
-    protected $table = 'assigned_areas';
+    protected $table = 'dependency_relation';
 
     protected $fillable = [
         'slug'

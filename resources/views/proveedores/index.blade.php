@@ -13,7 +13,7 @@
     <div class="col-12">
         <div class="card-box">
             <div class="row">
-                <div class="col-lg-8">
+                {{--  <div class="col-lg-8">
 <!-- <form class="form-inline">
                         <div class="form-group">
                             <label for="inputPassword2" class="sr-only">Search</label>
@@ -30,11 +30,11 @@
                             </select>
                         </div>
                     </form> -->
-                </div>
+                </div>  --}}
                 <div class="col-lg-4">
-                    <div class="text-lg-right mt-3 mt-lg-0">
+                    <div class="text-lg-left mt-3 mt-lg-0">
                         @can('create_proveedores')
-                        <button type="button" class="btn btn-danger waves-effect waves-light mb-2" data-toggle="modal" data-target="#custom-modal"><i class="mdi mdi-plus mr-1"></i>Nuevo Proveedor</button>
+                        <button type="button" class="btn btn-sm btn-success waves-effect waves-light mb-2" data-toggle="modal" data-target="#custom-modal"><i class="mdi mdi-plus mr-1"></i>Nuevo Proveedor</button>
                         @endcan
                     </div>
                 </div><!-- end col-->

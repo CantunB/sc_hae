@@ -15,7 +15,8 @@
                 <div class="container-fluid">
                     <div class="card shadow mb-4">
                         <div class="card-body">
-                            <form action="{{ action('CoordinationController@update', $coordination->id) }}" method="POST" class="form-group">
+                            {{--  <form action="{{ action('CoordinationController@update', $coordination->id) }}" method="POST" class="form-group">  --}}
+                            <form action="{{ route('coordinaciones.update', $coordination->id) }}" method="POST" class="form-group">
                                 @method('PUT')
                                 @include('coordinaciones.partials.form',
                                 ['btnText' => 'Actualizar'])

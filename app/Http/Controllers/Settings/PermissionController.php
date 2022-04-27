@@ -1,7 +1,8 @@
 <?php
 
-namespace HAE\Http\Controllers;
+namespace HAE\Http\Controllers\Settings;
 
+use HAE\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use HAE\Http\Requests\PermissionRequest;
 use HAE\User;
@@ -9,9 +10,6 @@ use Spatie\Permission\Models\Role;
 use Spatie\Permission\Models\Permission;
 use Illuminate\Support\Facades\Auth;
 use Yajra\DataTables\Facades\DataTables;
-use Jenssegers\Date\Date;
-
-
 
 class PermissionController extends Controller
 {
@@ -49,7 +47,7 @@ class PermissionController extends Controller
                 })
                 ->make(true);
         }
-        return view('permisos.index');
+        return view('settings.permisos.index');
     }
 
     public function anyData()
@@ -63,7 +61,7 @@ class PermissionController extends Controller
      */
     public function create()
     {
-        return view('permisos.create',compact('permisos'));
+        return view('settings.permisos.create',compact('permisos'));
     }
 
     /**
@@ -109,7 +107,7 @@ class PermissionController extends Controller
     {
         $user=  User::findOrFail($id);
         $permisos = Permission::all();
-        return view('permisos.edit', compact('user','permisos'));
+        return view('settings.permisos.edit', compact('user','permisos'));
     }
 
     /**

@@ -1,11 +1,10 @@
 <?php $__env->startSection('content'); ?>
 <!-- start page title -->
-<?php $__env->startComponent('layouts.partials.breadcrumb'); ?>
-<?php $__env->slot('title'); ?> <?php echo e(config('app.name', 'H.A.E')); ?> <?php $__env->endSlot(); ?>
-<?php $__env->slot('subtitle'); ?> Coordinaciones <?php $__env->endSlot(); ?>
-<?php $__env->slot('teme'); ?> Lista <?php $__env->endSlot(); ?>
-<?php echo $__env->renderComponent(); ?>
-<!-- end page title -->
+    <?php $__env->startComponent('layouts.partials.breadcrumb'); ?>
+    <?php $__env->slot('title'); ?> <?php echo e(config('app.name', 'H.A.E')); ?> <?php $__env->endSlot(); ?>
+    <?php $__env->slot('subtitle'); ?> departamentos <?php $__env->endSlot(); ?>
+    <?php $__env->slot('teme'); ?> Lista <?php $__env->endSlot(); ?>
+    <?php echo $__env->renderComponent(); ?>
 <div class="row">
     <div class="col-lg-12">
         <div class="card">
@@ -13,17 +12,16 @@
                 <div class="row mb-2">
                     <div class="col-sm-12">
                         <div class="text-sm-right">
-                            <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('create_coordinaciones')): ?>
-                            <button type="button" class="btn btn-sm btn-success waves-effect waves-light mb-2 float-left" data-toggle="modal" data-target="#newModal">
-                                Nueva coordinacion
-                            </button>
-                            
-                            <?php endif; ?>
+                            <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('create_departamentos')): ?>
+                                <button type="button" class="btn btn-sm btn-success waves-effect waves-light mb-2 float-left" data-toggle="modal" data-target="#newModal">
+                                    Nuevo departamento
+                                </button>
+                            <?php endif; ?></h6>
                         </div>
                     </div><!-- end col-->
                 </div>
                 <div class="table-responsive">
-                    <table id="coordinations-table" class="table dt-responsive nowrap w-100">
+                    <table id="departments-table" class="ui celled table data-table">
                         <thead>
                             <tr>
                                 <th scope="col">#</th>
@@ -38,34 +36,33 @@
         </div> <!-- end card-->
     </div> <!-- end col -->
 </div>
-    <!-- end row -->
-<?php echo $__env->make('coordinaciones.partials.new_modal', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
+<?php echo $__env->make('areas.departamentos.partials.new_modal', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
 <?php $__env->startPush('scripts'); ?>
     <script>
         $(document).ready( function () {
-            $('#coordinations-table').DataTable( {
-                processing: true,
-                serverSide : true,
-                language: {
-                    "url": "//cdn.datatables.net/plug-ins/1.10.20/i18n/Spanish.json"
-                },
-                ajax: '<?php echo route('coordinaciones.index'); ?>',
-                columns:[
-                    {data: 'id', name: 'id'},
-                    {data: 'name', name: 'name'},
-                    {data: 'slug', name: 'slug'},
-                    {data: 'action', name: 'action', orderable: false, searchable: false}
-                ]
-            });
-        });
+    $('#departments-table').DataTable( {
+        processing: true,
+        serverSide : true,
+        language: {
+            "url": "//cdn.datatables.net/plug-ins/1.10.20/i18n/Spanish.json"
+        },
+        ajax: '<?php echo route('departamentos.index'); ?>',
+        columns:[
+            {data: 'DT_RowIndex', name: 'DT_RowIndex'},
+            {data: 'name', name: 'name'},
+            {data: 'slug', name: 'slug'},
+            {data: 'action', name: 'action', orderable: false, searchable: false}
+        ]
+    } );
+    } );
     </script>
     <script>
-        $("#form_coordination").submit(function(stay) {
+        $("#form_departamentos").submit(function(stay) {
             stay.preventDefault();
             var formData = new FormData(this);
             $.ajax({
                 type: "POST",
-                url: "<?php echo route('coordinaciones.store'); ?>",
+                url: "<?php echo route('departamentos.store'); ?>",
                 data: formData,
                 dataType: "json",
                 processData: false,
@@ -78,9 +75,9 @@
                         icon: "success",
                         timer: 5000
                     });
-                    $('#form_coordination')[0].reset();
-                    $('#form_coordination').parsley().destroy();
-                    $('#coordinations-table').DataTable().ajax.reload();
+                    $('#form_departamentos')[0].reset();
+                    $('#form_departamentos').parsley().destroy();
+                    $('#departments-table').DataTable().ajax.reload();
                     $("#newModal").modal('hide');
                 },
                 error: function(response){
@@ -112,7 +109,7 @@
                 if (e.value === true) {
                     $.ajax({
                         type: 'DELETE',
-                        url: "/coordinaciones/" + id,
+                        url: "/areas/departamentos/" + id,
                         data: {
                             id: id,
                             _token: '<?php echo csrf_token(); ?>'
@@ -127,7 +124,7 @@
                                     icon: "success",
                                     confirmButtonText: "Hecho!",
                                 });
-                                $('#coordinations-table').DataTable().ajax.reload();
+                                $('#departments-table').DataTable().ajax.reload();
                             } else {
                                 Swal.fire({
                                     title: "Error!",
@@ -151,4 +148,4 @@
 
 <?php $__env->stopSection(); ?>
 
-<?php echo $__env->make('layouts.app', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH /Users/bernacantun/Documents/Proyectos/Laravel/sc_hae/resources/views/coordinaciones/index.blade.php ENDPATH**/ ?>
+<?php echo $__env->make('layouts.app', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH /Users/bernacantun/Documents/Proyectos/Laravel/sc_hae/resources/views/areas/departamentos/index.blade.php ENDPATH**/ ?>

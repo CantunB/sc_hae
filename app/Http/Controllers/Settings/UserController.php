@@ -1,17 +1,18 @@
 <?php
 
-namespace HAE\Http\Controllers;
-use Illuminate\Support\Facades\DB;
+namespace HAE\Http\Controllers\Settings;
+
+use HAE\Http\Controllers\Controller;
+
 use HAE\AssignedAreas;
-use Illuminate\Http\Request;
-use HAE\AssignedUserAreas;
 use HAE\Coordination;
-use HAE\Department;
-use HAE\User;
+use Illuminate\Http\Request;
 use HAE\Http\Requests\UserRequest;
+use HAE\User;
 use Spatie\Permission\Models\Role;
 use Spatie\Permission\Models\Permission;
 use Yajra\Datatables\Datatables;
+
 class UserController extends Controller
 {
 
@@ -43,13 +44,13 @@ class UserController extends Controller
             })
             ->make(true);
             }
-        return view('users.index');
+        return view('settings.users.index');
     }
     public function create()
     {
         $roles = Role::pluck('name', 'id' );
         $coordinations = Coordination::all();
-        return view('users.create', compact('roles','coordinations'));
+        return view('settings.users.create', compact('roles','coordinations'));
     }
 
     /**
@@ -82,7 +83,7 @@ class UserController extends Controller
     public function show($id)
     {
         $user = User::findOrFail($id);
-        return view('users.show', compact('user'));
+        return view('settings.users.show', compact('user'));
     }
 
     /**
@@ -97,7 +98,7 @@ class UserController extends Controller
         $user = User::findOrFail($id);
         $roles = Role::pluck('name', 'id' );
         $coordinations = Coordination::all();
-        return view('users.edit', compact('user','roles','coordinations'));
+        return view('settings.users.edit', compact('user','roles','coordinations'));
     }
 
     /**

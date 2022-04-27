@@ -44,7 +44,7 @@
         <div id="sidebar-menu">
 
             <ul id="side-menu">
-                <?php if(Auth::user()->hasRole(['super-admin','admin'])): ?>
+                <?php if(Auth::user()->hasRole(['Super-Admin','admin'])): ?>
                 <li class="menu-title">Menu</li>
                  <li>
                     <a href="<?php echo e(route('home')); ?>">
@@ -92,7 +92,7 @@
                     <div class="collapse" id="sidebarAreas">
                         <ul class="nav-second-level">
                             <li>
-                                <a href="<?php echo e(route('areas.index')); ?>">Areas</a>
+                                <a href="<?php echo e(route('dependencias.index')); ?>">Dependencias</a>
                             </li>
                             <li>
                                 <a href="<?php echo e(route('coordinaciones.index')); ?>">Coordinaciones</a>
@@ -125,12 +125,12 @@
                         <ul class="nav-second-level">
                             <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('read_requisicion')): ?>
                                 <li>
-                                    <a href="<?php echo e(route('request.index')); ?>">Requisiciones</a>
+                                    <a href="<?php echo e(route('request.index')); ?>">Solicitudes</a>
                                 </li>
                             <?php endif; ?>
                             <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('update_requisicion')): ?>
                                 <li>
-                                    <a href="<?php echo e(route('authorized.index')); ?>">Requisiciones Autorizadads</a>
+                                    <a href="<?php echo e(route('authorized.index')); ?>">Autorizadas</a>
                                 </li>
                             <?php endif; ?>
                         </ul>

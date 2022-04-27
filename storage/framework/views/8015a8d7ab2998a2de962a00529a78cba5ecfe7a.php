@@ -36,6 +36,40 @@
                                 <div class="widget-rounded-circle card-box">
                                     <div class="row">
                                         <div class="col-6">
+                                            <div class="avatar-lg rounded-circle bg-soft-blue border-blue border">
+                                                <i class="fe-bookmark font-22 avatar-title text-blue"></i>
+                                            </div>
+                                        </div>
+                                        <div class="col-6">
+                                            <div class="text-right">
+                                                <h3 class="mt-1"> <?php echo e($providers); ?></span></h3>
+                                                <p class="text-muted mb-1 text-truncate">Proveedores</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-xl-3">
+                                <div class="widget-rounded-circle card-box">
+                                    <div class="row">
+                                        <div class="col-6">
+                                            <div class="avatar-lg rounded-circle bg-soft-warning border-warning border">
+                                                <i class="fe-dollar-sign font-22 avatar-title text-warning"></i>
+                                            </div>
+                                        </div>
+                                        <div class="col-6">
+                                            <div class="text-right">
+                                                <h3 class="mt-1">$<span data-plugin="counterup"></span></h3>
+                                                <p class="text-muted mb-1 text-truncate">Total Salida</p>
+                                            </div>
+                                        </div>
+                                    </div> <!-- end row-->
+                                </div> <!-- end widget-rounded-circle-->
+                            </div> <!-- end col-->
+                            <div class="col-md-6 col-xl-3">
+                                <div class="widget-rounded-circle card-box">
+                                    <div class="row">
+                                        <div class="col-6">
                                             <div class="avatar-lg rounded-circle bg-soft-warning border-warning border">
                                                 <i class="fe-dollar-sign font-22 avatar-title text-warning"></i>
                                             </div>
@@ -121,41 +155,6 @@
                     </div> <!-- container -->
 <?php $__env->startPush('scripts'); ?>
 <script>
-    $("#dash-daterange").flatpickr(
-        {
-            altInput:!0,
-            mode:"range",
-            altFormat:"F j, y",
-            defaultDate:"today",
-            locale: {
-                firstDayOfWeek: 1,
-                weekdays: {
-                    shorthand: ['Do', 'Lu', 'Ma', 'Mi', 'Ju', 'Vi', 'Sa'],
-                    longhand: ['Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado'],
-                },
-                months: {
-                    shorthand: ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Оct', 'Nov', 'Dic'],
-                    longhand: ['Enero', 'Febrero', 'Мarzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'],
-                },
-            },
-            onChange: function(selectedDates, dateStr, instance)     {
-               // alert(dateStr);
-                console.log(dateStr);
-                var url="<?php echo route('home.daterange'); ?>";
-                    $.ajax({
-                        type:"POST",
-                        url: url,
-                        data:dateStr,
-                        success: function(result){
-                            $("#prueba").html(result);
-                            //location.reload();
-                        }});
-                    return false;
-            }
-        });
-</script>
-<script>
-
     var $refresh = $("button[name='data-show-refresh']")
     //var select= []
     function idTotal() {

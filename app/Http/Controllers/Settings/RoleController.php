@@ -1,11 +1,13 @@
 <?php
 
-namespace HAE\Http\Controllers;
+namespace HAE\Http\Controllers\Settings;
 
+use HAE\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Spatie\Permission\Models\Role;
 use Spatie\Permission\Models\Permission;
 use Yajra\Datatables\Datatables;
+
 class RoleController extends Controller
 {
     // public function __construct()
@@ -47,7 +49,7 @@ class RoleController extends Controller
             })
             ->make(true);
             }
-        return view('roles.index');
+        return view('settings.roles.index');
     }
     /**
      * Show the form for creating a new resource.
@@ -58,7 +60,7 @@ class RoleController extends Controller
     {
         $permisos = Permission::all();
         //$permissions = Permission::pluck('name', 'id');
-        return view('roles.create', compact('permisos'));
+        return view('settings.roles.create', compact('permisos'));
     }
 
     /**
@@ -99,7 +101,7 @@ class RoleController extends Controller
         $roles = Role::findOrFail($id);
         $permisos = Permission::all();
 
-        return view('roles.edit', compact('roles','permisos'));
+        return view('settings.roles.edit', compact('roles','permisos'));
     }
 
     /**

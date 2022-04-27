@@ -10,6 +10,7 @@ use HAE\Requested;
 use HAE\Requisition;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+
 class RequestController extends Controller
 {
     // public function __construct()

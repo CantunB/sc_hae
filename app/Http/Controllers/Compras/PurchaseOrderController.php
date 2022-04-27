@@ -1,15 +1,12 @@
 <?php
 
-namespace HAE\Http\Controllers;
+namespace HAE\Http\Controllers\Compras;
 
-use Illuminate\Support\Facades\DB;
+use HAE\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use HAE\AssignedRequesteds;
-use HAE\AssignedUserAreas;
-use HAE\AssignedAreas;
 use HAE\Coordination;
 use HAE\Providers;
-use HAE\Purchase;
 use HAE\PurchaseOrder;
 use HAE\PurchaseOrderDetail;
 use HAE\PurchaseOrderFeauture;
@@ -17,7 +14,6 @@ use HAE\PurchaseOrderMaterial;
 use Spatie\Permission\Models\Role;
 use Spatie\Permission\Models\Permission;
 use Barryvdh\DomPDF\Facade as PDF;
-use Illuminate\Support\Facades\Storage;
 use HAE\Quotesrequisitions;
 
 class PurchaseOrderController extends Controller

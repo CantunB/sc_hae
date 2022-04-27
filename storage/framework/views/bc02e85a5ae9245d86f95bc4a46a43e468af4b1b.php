@@ -12,28 +12,11 @@
     <div class="col-12">
         <div class="card-box">
             <div class="row">
-                <div class="col-lg-8">
-<!-- <form class="form-inline">
-                        <div class="form-group">
-                            <label for="inputPassword2" class="sr-only">Search</label>
-                            <input type="search" class="form-control" id="inputPassword2" placeholder="Search...">
-                        </div>
-                        <div class="form-group mx-sm-3">
-                            <label for="status-select" class="mr-2">Sort By</label>
-                            <select class="custom-select" id="status-select">
-                                <option>Select</option>
-                                <option>Date</option>
-                                <option selected>Name</option>
-                                <option>Revenue</option>
-                                <option>Employees</option>
-                            </select>
-                        </div>
-                    </form> -->
-                </div>
+                
                 <div class="col-lg-4">
-                    <div class="text-lg-right mt-3 mt-lg-0">
+                    <div class="text-lg-left mt-3 mt-lg-0">
                         <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('create_proveedores')): ?>
-                        <button type="button" class="btn btn-danger waves-effect waves-light mb-2" data-toggle="modal" data-target="#custom-modal"><i class="mdi mdi-plus mr-1"></i>Nuevo Proveedor</button>
+                        <button type="button" class="btn btn-sm btn-success waves-effect waves-light mb-2" data-toggle="modal" data-target="#custom-modal"><i class="mdi mdi-plus mr-1"></i>Nuevo Proveedor</button>
                         <?php endif; ?>
                     </div>
                 </div><!-- end col-->
