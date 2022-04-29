@@ -2,6 +2,7 @@
 
 namespace HAE\Http\Controllers\Requisiciones;
 
+use Carbon\Carbon;
 use HAE\AssignedRequesteds;
 use HAE\AssignedRequisition;
 use HAE\Coordination;
@@ -10,6 +11,7 @@ use HAE\Requested;
 use HAE\Requisition;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Yajra\Datatables\Datatables;
 
 class RequestController extends Controller
 {
@@ -28,17 +30,81 @@ class RequestController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        if(Auth::user()->hasPermissionTo('update_requisicion')){
-                $requisitions = AssignedRequisition::all();
-                return view('requisitions.request.index', compact('requisitions'));
-            }
-        else{
-            $requisitions = AssignedRequisition::where('user_id', '=', auth()->user()->id)->paginate(10);
+        // if(Auth::user()->hasPermissionTo('update_requisicion')){
+        //         $requisitions = AssignedRequisition::all();
+        //         return view('requisitions.request.index', compact('requisitions'));
+        //     }
+        // else{
+        //     $requisitions = AssignedRequisition::where('user_id', '=', auth()->user()->id)->paginate(10);
+        // }
+        if ($request->ajax()) {
+            $requisitions = AssignedRequisition::with(['requisition'])->get();
+            return Datatables::of($requisitions)
+            ->addIndexColumn()
+            ->addColumn('required_on', function($requisitions){
+                return Carbon::parse($requisitions->requisition->required_on)->format('M d Y');
+            })
+            ->addColumn('department_id', function($requisitions){
+                return $requisitions->requisition->departments->fullname;
+            })
+            ->addColumn('added_on', function($requisitions){
+                return Carbon::parse($requisitions->requisition->added_on)->format('M d Y');
+            })
+            ->addColumn('status', function ($requisitions){
+                $status = '';
+                    if ($requisitions->requisition->status <= 0){
+                        $status .= '<span class="badge badge-secondary">Por autorizar</span>';
+                    }elseif ($requisitions->requisition->status <= 1){
+                        $status .= '<span class="badge badge-success">Autorizada</span>';
+                    }elseif ($requisitions->requisition->status <= 2){
+                        $status .= '<span class="badge badge-outline-danger">No autorizada</span>';
+                    }
+                return $status;
+            })
+            ->addColumn('options', function ($requisitions){
+                $opciones = '';
+                    if ($requisitions->requisition->status <= 0){
+                        $opciones .= '
+                        <a href="'. route('request.edit',$requisitions->id) .'"
+                                title="Editar Requisicion"
+                                class="action-icon icon-dual-warning">
+                                <i class="mdi mdi-square-edit-outline"></i></a>
+                        <a href="'.route('requisiciones.upload',$requisitions->id) .'"
+                                title="Subir Firmada"
+                                class="action-icon icon-dual-pink">
+                                <i class="mdi mdi-file-upload"></i></a>
+                        <a href=" '. route('request.show',$requisitions->id) .' "
+                                title="Ver requisicion" class="action-icon icon-dual-info">
+                                <i class="mdi mdi-monitor-eye"></i></a>
+                        ';
+                    }elseif ($requisitions->requisition->status <= 1){
+                        $opciones .= '
+                        <a href=" '. route('authorized.show',$requisitions->id) .'"
+                                class="action-icon  icon-dual-info">
+                                <i  class="mdi mdi-monitor-eye"></i></a>
+                        ';
+                    }elseif ($requisitions->requisition->status <= 2){
+                        $opciones .= '
+                        <a href="'.route('request.edit',$requisitions->id).'"
+                                title="Editar Requisicion"
+                                class="action-icon icon-dual-warning">
+                        <i class="mdi mdi-square-edit-outline"></i></a>
+                        <a href=" '. route('request.show',$requisitions->id) .' "
+                                class="action-icon icon-dual-info"> <i class="mdi mdi-monitor-eye"></i></a>
+                        ';
+                    }
+                    // if (Auth::user()->can('delete_operators')){
+                        $opciones .= '<button type="button" onclick="btnDelete('.$requisitions->id.')" class="btn btn-sm action-icon icon-dual-secondary"><i class="mdi mdi-delete-empty"></i></button>';
+                    // }
+                return $opciones;
+            })
+            ->rawColumns(['options','status'])
+            ->toJson();
         }
-        return view('requisitions.request.list', compact('requisitions'));
 
+        return view('requisitions.request.index');
     }
 
     /**
@@ -180,11 +246,21 @@ class RequestController extends Controller
      */
     public function destroy($id)
     {
-        $requesteds = AssignedRequesteds::where('requisition_id', $id)->get();
+        $requesteds = Requisition::findOrFail($id);
         foreach ($requesteds as $i => $requested){
             Requested::where('id', $requested->requested_id)->delete();
         }
         $requisition = Requisition::findOrFail($id)->delete();
-        return back()->with('destroy','Se han eliminado todos los registros de la requisición');
+        if ($requisition == 1){
+            $success = true;
+            $message = "Requisicion eliminada";
+        } else {
+            $success = true;
+            $message = "Requisicion no eliminada";
+        }
+        return response()->json([
+            'success' => $success,
+            'message' => $message
+        ], 200);
     }
 }

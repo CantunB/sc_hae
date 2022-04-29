@@ -26,8 +26,9 @@
                                 @if( $requisition[0]->requisition->status <= 0)
                                     @can('create_requisicion')
                                     <a class="btn btn-sm btn-soft-danger waves-effect waves-light mb-2"
-                                       href="{{route('requisiciones.reqpdf',$requisition[0]->id)}}"
-                                       target="_blank"><i class="fas fa-file-pdf"></i> Generar PDF</a>
+                                        href="{{route('pdf.request_gt',$requisition[0]->id)}}"
+                                        target="_blank"><i class="fas fa-file-pdf"></i> Generar PDF</a>
+                                    {{--  <button type="button" id="generatePDF" class="btn btn-sm btn-soft-danger waves-effect waves-light mb-2"><i class="fas fa-file-pdf"></i> Generar PDF</button>  --}}
                                         @endcan
                                     @can('update_requisicion')
                                         <a  class="btn btn-sm btn-info waves-effect waves-light mb-2"
@@ -158,5 +159,7 @@
         </div> <!-- end card-->
     </div> <!-- end col -->
 </div>
-    <!-- end row -->
+@push('scripts')
+
+@endpush
 @endsection

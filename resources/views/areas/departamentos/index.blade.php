@@ -27,7 +27,6 @@
                             <tr>
                                 <th scope="col">#</th>
                                 <th scope="col">Nombre</th>
-                                <th scope="col">Slug</th>
                                 <th>Accciones</th>
                             </tr>
                         </thead>
@@ -50,8 +49,7 @@
         ajax: '{!! route('departamentos.index') !!}',
         columns:[
             {data: 'DT_RowIndex', name: 'DT_RowIndex'},
-            {data: 'name', name: 'name'},
-            {data: 'slug', name: 'slug'},
+            {data: 'fullname', name: 'fullname'},
             {data: 'action', name: 'action', orderable: false, searchable: false}
         ]
     } );

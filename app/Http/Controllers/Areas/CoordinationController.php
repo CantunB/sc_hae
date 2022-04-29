@@ -2,10 +2,12 @@
 
 namespace HAE\Http\Controllers\Areas;
 
+use HAE\AssignedCoordinations;
 use HAE\Http\Controllers\Controller;
 use HAE\Coordination;
 use HAE\Department;
-use HAE\AssignedAreas;
+use HAE\AssignedDepartments;
+use HAE\Dependency;
 use Illuminate\Http\Request;
 use Yajra\Datatables\Datatables;
 class CoordinationController extends Controller
@@ -45,7 +47,9 @@ class CoordinationController extends Controller
             })
             ->make(true);
             }
-        return view('areas.coordinaciones.index');
+        $dependencies = Dependency::all();
+
+        return view('areas.coordinaciones.index', compact('dependencies'));
     }
 
     /**
@@ -55,8 +59,7 @@ class CoordinationController extends Controller
      */
     public function create()
     {
-        $deps = Department::all();
-        return view('areas.coordinaciones.create', compact('deps'));
+        // return view('areas.coordinaciones.create', compact('dependencies'));
         //  $departments = Department::pluck('name', 'id');
     }
 
@@ -68,12 +71,10 @@ class CoordinationController extends Controller
      */
     public function store(Request $request)
     {
-     //   return  $request->all();
-        $coordinations = Coordination::create($request->all());
-        // $coordinations->departments()->sync( $request->get('departments') );
-      //  $coordinations->save();
+        $coordination = Coordination::create($request->all());
+        $dependency = Dependency::findOrFail($request->dependency_id);
+        $dependency->coordinations()->attach($coordination->id);
         return response()->json(['data' => 'Nueva coordinacion'], 201);
-        // return redirect()->route('coordinaciones.index')->with('success','Coordinacion Creada');
     }
 
     /**
@@ -93,59 +94,18 @@ class CoordinationController extends Controller
      * @param  \HAE\Coordination  $coordination
      * @return \Illuminate\Http\Response
      */
-    public function edit( $coordination)
+    public function edit($id)
     {
-        $coordination = Coordination::findorFail($coordination);
-        $c_id = AssignedAreas::distinct()->get(['coordination_id']);
-        $array = array();
-        foreach($c_id as $c){
-            $array[] = $c->coordination_id;
-        }
-   //     return  $array;
-        if($coordination->id != $array)
-        {
-           // $departments = Department::where('id','!=', $array->department_id);
-        }
-        else
-        {
-         return   $departments = Department::
-            join('assigned_areas', 'assigned_areas.department_id','=','departments.id')
-                ->where('assigned_areas.coordination_id','=',$coordination->id)
-                ->get();
-        }
-          //return $departments = Department::
-            //join('assigned_areas', 'assigned_areas.department_id','=','departments.id')
-            //->join('coordinations','coordinations.id','=','assigned_areas.coordination_id')
-           // ->select('name')
-           // ->where('assigned_areas.coordination_id','=',$coordination->id)
-            //->pluck('name', 'id')
-             // ->get();
-           //$dep_asignados = AssignedAreas::all();
-        /*
-         *
-         *
-          $departments_asignados = AssignedAreas::
-            join('departments','departments.id', '=', 'assigned_areas.department_id')
-            ->join('coordinations','coordinations.id','=','assigned_areas.coordination_id')
-            ->where('coordination_id','=',$coordination->id)
-            ->get();
-        $key = $departments_asignados->modelKeys();
-        return   $departments = Department::where('id','!=', $key)->pluck('name', 'id');
-
-
-         **/
-
-
-        ///$departments = Department::pluck('name', 'id');
-        $deps = Department::all();
-        return view('areas.coordinaciones.edit', compact('coordination','deps'));
+        $coordination = Coordination::with(['dependency'])->findorFail($id);
+        $departments = Department::all();
+        return view('areas.coordinaciones.edit', compact('coordination','departments'));
     }
 
     function getDepartments(Request $request)
     {
         $coordination = $request->coordinacion;
       //  return $departments = Coordination::getDepartments($coordination);
-        $departments = AssignedAreas::with('departments')->select('department_id')
+        $departments = AssignedDepartments::with('departments')->select('department_id')
                   ->where('coordination_id', $coordination)
                   ->orderBy('department_id','ASC')
                   ->get();

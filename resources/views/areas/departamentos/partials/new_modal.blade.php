@@ -15,6 +15,21 @@
                 <div class="container">
                     <div class="form-row">
                         <div class="form-group col-md-12">
+                            <label for="">Dependencia</label>
+                            {{--  <input type="text" name="" class="form-control" value="{{ old('name')}}">  --}}
+                            <select class="form-control select2" name="coordination_id">
+                                <option value="" selected disabled >Selecciona una coordinacion</option>
+                                @foreach ($coordinations as $item => $coordination)
+                                    <option value=" {{$coordination->id}} "> {{$coordination->fullname}} </option>
+                                @endforeach
+                            </select>
+                            @if ($errors->has('name'))
+                                <p style="color:red">  {{$errors->first('name')}} </p>
+                            @endif
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-12">
                             <label for="">Nombre(s)</label>
                             <input type="text" name="name" class="form-control" value="{{ old('name')}}">
                             @if ($errors->has('name'))

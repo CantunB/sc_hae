@@ -67,17 +67,19 @@
                             <h5>Lista de coordinaciones</h5>
                             <div class="form-group">
                                 <ul class="list-unstyled">
-                                    {{--  @foreach ($departments as $item => $val )
+                                    @forelse($coordinations as $item => $val )
                                         <li>
                                             <label>
                                                 <input type="checkbox"
-                                                    name="departments[]"
-                                                    value="{{ $val->id  }}" {{ $coordination->departments->pluck('id')->contains($val->id) ? 'checked' : '' }}
+                                                    name="coordinations[]"
+                                                    value="{{ $val->id  }}" {{ $dependency->coordinations->pluck('id')->contains($val->id) ? 'checked' : 'disabled' }}
                                                 > {{ $val->name  }}
                                                 <em><strong>( {{ $val->slug ?: 'N/A'}} )</strong></em>
                                             </label>
                                         </li>
-                                    @endforeach  --}}
+                                        @empty
+                                        <h4><span class="badge badge-warning">No se han registrado coordinaciones</span></h4>
+                                    @endforelse
                                 </ul>
                             </div>
                             <div class="col-md-6 offset-md-4">

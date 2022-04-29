@@ -22,9 +22,10 @@
                     </div><!-- end col-->
                 </div>
                 <div class="table-responsive">
-                    <table id="requi-table" class="table dt-responsive nowrap w-100">
+                    <table id="requi_table" class="table dt-responsive nowrap w-100">
                         <thead>
                             <tr>
+                                <th scope="col" style="text-align: center; width: 15px">#</th>
                                 <th scope="col" style="text-align: center; width: 15px"> Folio de requisiciones </th>
                                 <th scope="col" style="text-align: center;">Fecha de registro</th>
                                 <th scope="col" style="text-align: center;">Departamento</th>
@@ -33,70 +34,7 @@
                                 <th scope="col" style="text-align: center; width: 10px">Opciones</th>
                             </tr>
                             </thead>
-                            <?php $__currentLoopData = $requisitions; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $key => $r): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                                <tbody>
-                                <td style="text-align: center"><strong><?php echo e($r->requisition->folio); ?></strong></td>
-                                <td style="text-align: center"><strong><?php echo e($r->requisition->added_on); ?></strong></td>
-                                <td style="text-align: center"><strong><?php echo e($r->requisition->departments->name); ?></strong></td>
-                                <td style="text-align: center"><strong><?php echo e($r->requisition->required_on); ?></strong></td>
-                                <td style="text-align: center">
-                                    <?php if( $r->requisition->status === 0): ?>
-                                        <span class="badge badge-secondary">Por autorizar</span>
-                                    <?php elseif($r->requisition->status <= 1): ?>
-                                        <span class="badge badge-info">Autorizada</span>
-                                    <?php elseif($r->requisition->status <= 2): ?>
-                                        <span class="badge badge-danger">No autorizada</span>
-                                    <?php endif; ?>
-                                </td>
-                                <td style="text-align: center">
-                                    <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('update_requisicion')): ?>
-                                        <?php if( $r->requisition->status <= 0): ?>
-                                            <a href="<?php echo e(route('request.edit',$r->id)); ?>"
-                                               title="Editar Requisicion"
-                                               class="action-icon">
-                                                <i class="mdi mdi-square-edit-outline"></i></a>
-                                            <a href="<?php echo e(route('requisiciones.upload',$r->requisition->id)); ?>"
-                                               title="Subir Firmada"
-                                               class="action-icon">
-                                                <i class="mdi mdi-file-upload"></i></a>
-                                            </a>
-                                        <?php elseif($r->requisition->status === 2): ?>
-                                            <a href="<?php echo e(route('request.edit',$r->id)); ?>"
-                                               title="Editar Requisicion"
-                                               class="action-icon">
-                                                <i class="mdi mdi-square-edit-outline"></i></a>
-                                        <?php endif; ?>
-                                    <?php endif; ?>
-                                    <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('read_requisicion')): ?>
-                                        <?php if( $r->requisition->status <= 0): ?>
-                                            <a href="<?php echo e(route('request.show',$r->id)); ?>"
-                                               title="Ver requisicion"
-                                               class="action-icon">
-                                                <i class="mdi mdi-monitor-eye"></i></a>
-                                            </a>
-                                        <?php elseif($r->requisition->status <= 1): ?>
-                                            <a href="<?php echo e(route('authorized.show',$r->id)); ?>"
-                                               class="action-icon">
-                                                <i  class="mdi mdi-monitor-eye"></i></a>
-                                        <?php elseif($r->requisition->status <= 2): ?>
-                                            <a href="<?php echo e(route('request.show',$r->id)); ?>"
-                                               class="action-icon">
-                                                <i class="mdi mdi-monitor-eye"></i></a>
-                                        <?php endif; ?>
-                                    <?php endif; ?>
-                                    <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('delete_requisicion')): ?>
-                                        <a href="<?php echo e(route('request.destroy',$r->requisition->id)); ?>" class="action-icon" onclick="event.preventDefault();
-                                        document.getElementById('delete-form').submit();">
-                                            <i class="mdi mdi-trash-can"></i>
-                                        </a>
-                                        <form id="delete-form" action="<?php echo e(route('request.destroy', $r->requisition->id)); ?>" method="POST" style="display: none;">
-                                            <?php echo csrf_field(); ?>
-                                            <?php echo method_field('DELETE'); ?>
-                                        </form>
-                                    <?php endif; ?>
-                                </td>
-                                </tbody>
-                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                            
                     </table>
                 </div>
             </div> <!-- end card-body-->
@@ -107,12 +45,74 @@
 <?php $__env->startPush('scripts'); ?>
     <script>
         $(document).ready(function() {
-            $('#requi-table').DataTable({
+            $('#requi_table').DataTable({
+                processing: true,
+                serverSide : true,
                 language: {
                     "url": "//cdn.datatables.net/plug-ins/1.10.20/i18n/Spanish.json"
                 },
+                ajax: '<?php echo route('request.index'); ?>',
+            columns:[
+                {data: 'DT_RowIndex', name: 'DT_RowIndex'},
+                {data: 'requisition.folio', name: 'requisition.folio'},
+                {data: 'added_on', name: 'added_on'},
+                {data: 'department_id', name: 'department_id'},
+                {data: 'required_on', name: 'required_on'},
+                {data: 'status', name: 'status'},
+                {data: 'options', name: 'options', orderable: false, searchable: false}
+            ]
             });
         } );
+    </script>
+    <script>
+        /** DESTROY UNIT*/
+        function btnDelete(id) {
+            Swal.fire({
+                title: "Desea eliminar?",
+                text: "Por favor asegúrese y luego confirme!",
+                icon: 'warning',
+                showCancelButton: !0,
+                confirmButtonText: "¡Sí, borrar!",
+                cancelButtonText: "¡No, cancelar!",
+                reverseButtons: !0
+            }).then(function (e) {
+                if (e.value === true) {
+                    $.ajax({
+                        type: 'DELETE',
+                        url: "/requisiciones/request/" + id,
+                        data: {
+                            id: id,
+                            _token: '<?php echo csrf_token(); ?>'
+                        },
+                        dataType: 'JSON',
+                        success: function (response) {
+                            console.log(response);
+                            if (response.success === true) {
+                                Swal.fire({
+                                    title: "Hecho!",
+                                    text: response.message,
+                                    icon: "success",
+                                    confirmButtonText: "Hecho!",
+                                });
+                                $('#requi_table').DataTable().ajax.reload();
+                            } else {
+                                Swal.fire({
+                                    title: "Error!",
+                                    text: response.message,
+                                    icon: "error",
+                                    confirmButtonText: "Cancelar!",
+                                });
+                            }
+                        }
+                    });
+                } else {
+                    e.dismiss;
+                }
+            }, function (dismiss) {
+                return false;
+            })
+        }
+        /** DESTROY UNIT*/
     </script>
 <?php $__env->stopPush(); ?>
 <?php $__env->stopSection(); ?>

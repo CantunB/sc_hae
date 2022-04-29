@@ -14,7 +14,6 @@ return [
     */
 
     config('app.name', 'Laravel'),
-    config('app.name', 'smapac'),
 
     /*
     |--------------------------------------------------------------------------
@@ -180,7 +179,9 @@ return [
         Spatie\Permission\PermissionServiceProvider::class,
         Jenssegers\Date\DateServiceProvider::class,
         Intervention\Image\ImageServiceProvider::class,
-        Yoeunes\Toastr\ToastrServiceProvider::class
+        Yoeunes\Toastr\ToastrServiceProvider::class,
+        SimpleSoftwareIO\QrCode\QrCodeServiceProvider::class
+
 
     ],
 
@@ -235,7 +236,10 @@ return [
         'PDF' => Barryvdh\DomPDF\Facade::class,
         'DataTables' => Yajra\DataTables\Facades\DataTables::class,
         'Date' => Jenssegers\Date\Date::class,
-        'Image' => Intervention\Image\Facades\Image::class
+        'Image' => Intervention\Image\Facades\Image::class,
+        'QrCode' => SimpleSoftwareIO\QrCode\Facades\QrCode::class
+
+
     ],
 
 ];

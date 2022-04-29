@@ -15,8 +15,8 @@ class CreateAssignedRequestedsTable extends Migration
     {
         Schema::create('assigned_requesteds', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('requisition_id')->references('id')->on('requisitions');
-            $table->foreignId('requested_id')->references('id')->on('requesteds');
+            $table->foreignId('requisition_id')->references('id')->on('requisitions')->onDelete('cascade');
+            $table->foreignId('requested_id')->references('id')->on('requesteds')->onDelete('cascade');
             $table->tinyInteger('status')->default('0');
             $table->timestamps();
         });

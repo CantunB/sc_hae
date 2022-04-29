@@ -226,27 +226,6 @@
                 toastr.error("No se ha registrado ningun departamento");
             </script>
         <?php endif; ?>
-        <?php if($areas <= 0): ?>
-            <script type="text/javascript">
-                toastr.options = {
-                    "closeButton": true,
-                    "debug": true,
-                    "newestOnTop": false,
-                    "progressBar": false,
-                    "preventDuplicates": true,
-                    "onclick": false,
-                    "showDuration": 0,
-                    "hideDuration": 0,
-                    "timeOut": 0,
-                    "extendedTimeOut": 0,
-                    "showEasing": "swing",
-                    "hideEasing": "linear",
-                    "showMethod": "show",
-                    "hideMethod": "hide"
-                }
-                toastr.error("No se han asignado las areas");
-            </script>
-        <?php endif; ?>
         <?php if($providers <= 0): ?>
             <script type="text/javascript">
                 toastr.options = {
@@ -265,7 +244,7 @@
                     "showMethod": "show",
                     "hideMethod": "hide"
                 }
-                toastr.error("No hay proveedores");
+                toastr.error("No se ha registrado ningun proveedor");
             </script>
         <?php endif; ?>
     <script>

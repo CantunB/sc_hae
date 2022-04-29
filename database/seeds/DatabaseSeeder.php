@@ -1,5 +1,6 @@
 <?php
 
+use Database\Seeders\DependencySeeder;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -12,8 +13,9 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         $this->call(PermissionsTableSeeder::class);
-        $this->call(DepartmentSeeder::class);
+        $this->call(DependencySeeder::class);
         $this->call(CoordinationSeeder::class);
+        $this->call(DepartmentSeeder::class);
         $this->call(RequisitionSeeder::class);
         $this->call(QuotesrequisitionsSeeder::class);
         $this->call(ProvidersSeeder::class);

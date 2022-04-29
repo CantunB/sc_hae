@@ -23,12 +23,12 @@
     <h5>Lista de departamentos</h5>
     <div class="form-group">
         <ul class="list-unstyled">
-            @foreach ($deps as $item => $val )
+            @foreach ($departments as $item => $val )
                 <li>
                     <label>
                         <input type="checkbox"
                                name="departments[]"
-                               value="{{ $val->id  }}" {{ $coordination->departments->pluck('id')->contains($val->id) ? 'checked' : '' }}
+                               value="{{ $val->id  }}" {{ $coordination->departments->pluck('id')->contains($val->id) ? 'checked' : 'disabled' }}
                         > {{ $val->name  }}
                         <em><strong>( {{ $val->slug ?: 'N/A'}} )</strong></em>
                     </label>

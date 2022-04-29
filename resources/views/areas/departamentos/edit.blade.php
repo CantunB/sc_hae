@@ -13,7 +13,7 @@
                 <div class="card-body">
                     <form action="{{ route('departamentos.update',$department->id ) }}" method="POST" class="form-group">
                         @method('PUT')
-                        @include('departamentos.partials.form',
+                        @include('areas.departamentos.partials.form',
                         ['department',
                         'btnText' => 'Guardar'])
                     </form>

@@ -4,7 +4,7 @@ namespace HAE;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 class Dependency extends Model
 {
     use HasFactory;
@@ -29,13 +29,13 @@ class Dependency extends Model
         return "{$this->name} ({$this->slug})";
     }
 
-    public function coordinations()
+    /**
+     * The roles that belong to the Dependency
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
+    public function coordinations(): BelongsToMany
     {
-        return $this->belongsToMany(Coordination::class, 'dependency_relation');
-    }
-
-    public function departments()
-    {
-        return $this->belongsToMany(Department::class, 'dependency_relation');
+        return $this->belongsToMany(Coordination::class, 'dependency_coordination');
     }
 }

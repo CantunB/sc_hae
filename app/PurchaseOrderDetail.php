@@ -12,18 +12,17 @@ class PurchaseOrderDetail extends Model
     {
         return $this->belongsTo(Providers::class,'provider_id');
     }
-    public function area()
-    {
-        return $this->belongsTo(AssignedAreas::class,'department_id','department_id');
-    }
     public function requisition()
     {
         return $this->belongsTo(Requisition::class);
     }
-
     public function department()
     {
-        return $this->belongsTo(Department::class);
+        return $this->belongsTo(Department::class,'department');
+    }
+    public function coordination()
+    {
+        return $this->belongsTo(Coordination::class,'coordination');
     }
 
 }

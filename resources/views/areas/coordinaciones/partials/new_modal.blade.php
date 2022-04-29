@@ -15,7 +15,22 @@
                 <div class="container">
                     <div class="form-row">
                         <div class="form-group col-md-12">
-                            <label for="">Nombre(s)</label>
+                            <label for="">Dependencia</label>
+                            {{--  <input type="text" name="" class="form-control" value="{{ old('name')}}">  --}}
+                            <select class="form-control select2" name="dependency_id">
+                                <option value="" selected disabled >Selecciona una dependencia</option>
+                                @foreach ($dependencies as $item => $dependency)
+                                    <option value=" {{$dependency->id}} "> {{$dependency->fullname}} </option>
+                                @endforeach
+                            </select>
+                            @if ($errors->has('name'))
+                                <p style="color:red">  {{$errors->first('name')}} </p>
+                            @endif
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-12">
+                            <label for="">Nombre</label>
                             <input type="text" name="name" class="form-control" value="{{ old('name')}}">
                             @if ($errors->has('name'))
                                 <p style="color:red">  {{$errors->first('name')}} </p>

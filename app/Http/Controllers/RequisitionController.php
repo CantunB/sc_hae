@@ -55,7 +55,7 @@ class RequisitionController extends Controller
         if ($request->hasFile('file_req')){
             $file = $request->file("file_req");
            //$nombrearchivo  = str_slug($request->slug).".".$file->getClientOriginalExtension();
-            $nombrearchivo  =  $requisition->folio .'.'.$file->getClientOriginalExtension();
+            $nombrearchivo  =  $requisition->folio .'_autorizada.'.$file->getClientOriginalExtension();
             $nombrearchivo = str_replace ( '/' , '_' , $nombrearchivo );
             $file->move(public_path("requisitions/autorizadas/"),$nombrearchivo);
             $requisition->file_req      = $nombrearchivo;
@@ -68,22 +68,6 @@ class RequisitionController extends Controller
             $req->status = 1;
             $req->save();
         }
-        return redirect()->route('requisiciones.autorizadas')->with('success', 'Requisición autorizada');
-    }
-
-        /*
-        *Expor PDF
-        * @param  \HAE\Requisition  $requisition
-        * Barryvdh\DomPDF\Facade as PDF
-        */
-    public  function requisitionspdf( $id)
-    {
-        /** Consulta para obtener el director**/
-        $director = 'Ing. Nicolas Hernandez Ynurreta Mancera';
-        $coordinador = 'L.A.E Bianca Eugenia Saenz Ortega';
-        $requisition = AssignedRequisition::where('id',$id)->get();
-        $requesteds = AssignedRequesteds::orderBy('requested_id','ASC')->with('requested')->where('requisition_id','=',$requisition[0]->requisition_id)->get();
-        $pdf = PDF::loadView('requisitions.requisition-pdf', compact('requisition','requesteds','director','coordinador'));
-        return $pdf->stream('REQ.'.$requisition[0]->requisition->folio.'.pdf');
+        return redirect()->route('requisiciones.authoirzed.index')->with('success', 'Requisición autorizada');
     }
 }

@@ -25,8 +25,9 @@
                                 <?php if( $requisition[0]->requisition->status <= 0): ?>
                                     <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('create_requisicion')): ?>
                                     <a class="btn btn-sm btn-soft-danger waves-effect waves-light mb-2"
-                                       href="<?php echo e(route('requisiciones.reqpdf',$requisition[0]->id)); ?>"
-                                       target="_blank"><i class="fas fa-file-pdf"></i> Generar PDF</a>
+                                        href="<?php echo e(route('pdf.request_gt',$requisition[0]->id)); ?>"
+                                        target="_blank"><i class="fas fa-file-pdf"></i> Generar PDF</a>
+                                    
                                         <?php endif; ?>
                                     <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('update_requisicion')): ?>
                                         <a  class="btn btn-sm btn-info waves-effect waves-light mb-2"
@@ -159,7 +160,9 @@
         </div> <!-- end card-->
     </div> <!-- end col -->
 </div>
-    <!-- end row -->
+<?php $__env->startPush('scripts'); ?>
+
+<?php $__env->stopPush(); ?>
 <?php $__env->stopSection(); ?>
 
 <?php echo $__env->make('layouts.app', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH /Users/bernacantun/Documents/Proyectos/Laravel/sc_hae/resources/views/requisitions/request/show.blade.php ENDPATH**/ ?>

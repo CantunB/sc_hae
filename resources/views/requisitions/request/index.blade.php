@@ -23,9 +23,10 @@
                     </div><!-- end col-->
                 </div>
                 <div class="table-responsive">
-                    <table id="requi-table" class="table dt-responsive nowrap w-100">
+                    <table id="requi_table" class="table dt-responsive nowrap w-100">
                         <thead>
                             <tr>
+                                <th scope="col" style="text-align: center; width: 15px">#</th>
                                 <th scope="col" style="text-align: center; width: 15px"> Folio de requisiciones </th>
                                 <th scope="col" style="text-align: center;">Fecha de registro</th>
                                 <th scope="col" style="text-align: center;">Departamento</th>
@@ -34,7 +35,7 @@
                                 <th scope="col" style="text-align: center; width: 10px">Opciones</th>
                             </tr>
                             </thead>
-                            @foreach($requisitions as $key => $r)
+                            {{--  @foreach($requisitions as $key => $r)
                                 <tbody>
                                 <td style="text-align: center"><strong>{{ $r->requisition->folio}}</strong></td>
                                 <td style="text-align: center"><strong>{{ $r->requisition->added_on}}</strong></td>
@@ -97,7 +98,7 @@
                                     @endcan
                                 </td>
                                 </tbody>
-                            @endforeach
+                            @endforeach  --}}
                     </table>
                 </div>
             </div> <!-- end card-body-->
@@ -108,12 +109,74 @@
 @push('scripts')
     <script>
         $(document).ready(function() {
-            $('#requi-table').DataTable({
+            $('#requi_table').DataTable({
+                processing: true,
+                serverSide : true,
                 language: {
                     "url": "//cdn.datatables.net/plug-ins/1.10.20/i18n/Spanish.json"
                 },
+                ajax: '{!! route('request.index') !!}',
+            columns:[
+                {data: 'DT_RowIndex', name: 'DT_RowIndex'},
+                {data: 'requisition.folio', name: 'requisition.folio'},
+                {data: 'added_on', name: 'added_on'},
+                {data: 'department_id', name: 'department_id'},
+                {data: 'required_on', name: 'required_on'},
+                {data: 'status', name: 'status'},
+                {data: 'options', name: 'options', orderable: false, searchable: false}
+            ]
             });
         } );
+    </script>
+    <script>
+        /** DESTROY UNIT*/
+        function btnDelete(id) {
+            Swal.fire({
+                title: "Desea eliminar?",
+                text: "Por favor asegúrese y luego confirme!",
+                icon: 'warning',
+                showCancelButton: !0,
+                confirmButtonText: "¡Sí, borrar!",
+                cancelButtonText: "¡No, cancelar!",
+                reverseButtons: !0
+            }).then(function (e) {
+                if (e.value === true) {
+                    $.ajax({
+                        type: 'DELETE',
+                        url: "/requisiciones/request/" + id,
+                        data: {
+                            id: id,
+                            _token: '{!! csrf_token() !!}'
+                        },
+                        dataType: 'JSON',
+                        success: function (response) {
+                            console.log(response);
+                            if (response.success === true) {
+                                Swal.fire({
+                                    title: "Hecho!",
+                                    text: response.message,
+                                    icon: "success",
+                                    confirmButtonText: "Hecho!",
+                                });
+                                $('#requi_table').DataTable().ajax.reload();
+                            } else {
+                                Swal.fire({
+                                    title: "Error!",
+                                    text: response.message,
+                                    icon: "error",
+                                    confirmButtonText: "Cancelar!",
+                                });
+                            }
+                        }
+                    });
+                } else {
+                    e.dismiss;
+                }
+            }, function (dismiss) {
+                return false;
+            })
+        }
+        /** DESTROY UNIT*/
     </script>
 @endpush
 @endsection

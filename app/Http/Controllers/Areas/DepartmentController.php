@@ -2,6 +2,7 @@
 
 namespace HAE\Http\Controllers\Areas;
 
+use HAE\Coordination;
 use HAE\Http\Controllers\Controller;
 use HAE\Department;
 use Illuminate\Http\Request;
@@ -47,8 +48,8 @@ class DepartmentController extends Controller
             })
             ->make(true);
             }
-
-        return view('areas.departamentos.index');
+        $coordinations = Coordination::all();
+        return view('areas.departamentos.index', compact('coordinations') );
 
     }
 
@@ -70,11 +71,10 @@ class DepartmentController extends Controller
      */
     public function store(Request $request)
     {
-
-        $departamento = Department::create($request->all());
-        //  $coordinations->save();
+        $departament = Department::create($request->all());
+        $coordination = Coordination::findOrFail($request->coordination_id);
+        $coordination->departments()->attach($departament->id);
         return response()->json(['data'=>'Departamento creado!']);
-        // return redirect()->route('departamentos.index')->with('success','Departamento Creado');
     }
 
     /**

@@ -14,6 +14,12 @@ class Department extends Model
     ];
 
     public $timestamps = false;
+    protected $appends = ['fullname'];
+
+    public function getFullNameAttribute()
+    {
+        return "{$this->name} ({$this->slug})";
+    }
 
     public function area()
     {

@@ -11,7 +11,6 @@ Route::get('/', function () {
 });
 /* Ruta auth */
 Auth::routes(['register' => false]);
-
 Route::get('/home', 'HomeController@index')->name('home');
 
 /** DEPENDENCIAS - AREAS - COORDINACIONES - DEPARTAMENTOS */
@@ -28,8 +27,6 @@ Route::group(['prefix' => 'areas'], function() {
 Route::group(['prefix' => 'requisiciones'], function() {
     Route::resource('request', Requisiciones\RequestController::class);
     Route::resource('authorized', Requisiciones\AuthorizeController::class)->only(['index','show','destroy']);
-    //Generar PDF de requiscion
-    Route::get('/{requisicione}/requisition-pdf', 'RequisitionController@requisitionspdf')->name('requisiciones.reqpdf');
     //Subir Autorizacion (view)
     Route::get('/{requisicione}/upload', 'RequisitionController@upload')->name('requisiciones.upload');
     //Guardar Autorizacion
@@ -89,6 +86,28 @@ Route::group(['prefix' => 'settings'], function() {
     Route::resource('permisos', Settings\PermissionController::class    );
     Route::resource('roles',    Settings\RoleController::class  );
 });
+
+Route::group(['prefix' => 'pdf'], function() {
+    Route::get('test_request', 'PDF\PDFController@requisition_pdf');
+    Route::get('test_order', 'PDF\PDFController@order_pdf');
+
+    Route::group(['prefix' => 'generate'], function() {
+        Route::get('request/{request}', 'PDF\PDFController@generate_pdf_request')->name('pdf.request_gt');
+        Route::get('order/{order}', 'PDF\PDFController@generate_pdf_order')->name('pdf.order_gt');
+    });
+    Route::group(['prefix' => 'download'], function() {
+        Route::get('download', 'PDF\PDFController@download_pdf_request')->name('pdf.request_dl');
+
+    });
+});
+
+// Route::get('usuarios/data', 'Settings\UserController@anyData')->name('usuarios.data');
+// Route::get('permisos/data', 'Settings\PermissionController@anyData')->name('permisos.data');
+// Route::post('coordinaciones/departamentos', 'Areas\CoordinationController@getDepartments')->name('coordinaciones.getDepartments');
+// Route::get('departamentos/data', 'Areas\DepartmentController@anyData')->name('departamentos.data');
+// Route::get('roles/data', 'Settings\RoleController@anyData')->name('roles.data');
+// Route::get('proveedores/data', 'ProvidersController@anyData')->name('proveedores.data');
+// Route::get('cotizaciones/data', 'QuotesrequisitionsController@anyData')->name('cotizaciones.data');
 
 Route::resources([
     //'empleados' => 'EmpleadosController',

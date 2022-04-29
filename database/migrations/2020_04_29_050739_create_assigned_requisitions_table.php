@@ -21,7 +21,7 @@ class CreateAssignedRequisitionsTable extends Migration
             $table->foreignId('user_id')->references('id')->on('users');
            // $table->integer('coordination_id')->unsigned();
            // $table->integer('department_id')->unsigned();
-            $table->foreignId('requisition_id')->references('id')->on('requisitions');
+            $table->foreignId('requisition_id')->references('id')->on('requisitions') ->onDelete('cascade');
             $table->tinyInteger('status')->default('0');
             $table->timestamps();
         });

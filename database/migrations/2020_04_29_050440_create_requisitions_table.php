@@ -25,7 +25,6 @@ class CreateRequisitionsTable extends Migration
             $table->mediumText('issue')->nullable();
             $table->string('remark')->nullable();
             $table->string('file_req')->nullable();
-            // $table->longText('file_req')->nullable();
             $table->tinyInteger('status')->default('0');
             $table->timestamps();
 

@@ -17,6 +17,7 @@ class CreateUsersTable extends Migration
             $table->id();
             $table->string('NoEmpleado')->unique();
             $table->string('name');
+            $table->string('grado')->nullable();
             $table->string('no_seg_soc')->nullable();
             $table->string('categoria')->nullable();
             $table->string('nivel')->nullable();
@@ -24,7 +25,7 @@ class CreateUsersTable extends Migration
             $table->string('curp')->nullable();
             $table->string('fe_nacimiento')->nullable();
             $table->string('fe_ingreso')->nullable();
-            $table->string('email')->unique();
+            $table->string('email')->unique()->nullable();
             $table->timestamp('email_verified_at');
             $table->string('password');
             $table->string('file_user')->default('default.png');

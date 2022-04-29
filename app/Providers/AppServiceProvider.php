@@ -32,13 +32,11 @@ class AppServiceProvider extends ServiceProvider
     {
         Carbon::setLocale(config('app.locale'));
         view()->composer(['layouts.app','home'], function($view){
-            $areas = AssignedAreas::count();
             $dependencies = Dependency::count();
             $coordinations = Coordination::count();
             $departments = Department::count();
             $providers = Providers::count();
             $view->with([
-                'areas' => $areas,
                 'dependencies' => $dependencies,
                 'coordinations' => $coordinations,
                 'departments' => $departments,

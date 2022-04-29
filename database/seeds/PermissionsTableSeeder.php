@@ -35,7 +35,8 @@ class PermissionsTableSeeder extends Seeder
 
     // create roles and assign existing permissions
 
-    $administrador = Role::create(['name' => 'Super-Admin']);
+    $superadmin = Role::create(['name' => 'Super-Admin']);
+    $administrador = Role::create(['name' => 'Administrado']);
     $administrador->givePermissionTo(Permission::all());
     // gets all permissions via Gate::before rule; see AuthServiceProvider
 
@@ -43,17 +44,81 @@ class PermissionsTableSeeder extends Seeder
     $user_berna = User::create([
         'NoEmpleado' => 'HAE000',
         'name' => 'Bernabe Cantun Dominguez',
-        'no_seg_soc' => 'N/A',
-        'categoria' => 'N/A',
-        'nivel' => 'N/A',
-        'rfc' => 'N/A',
-        'curp' => 'N/A',
-        'fe_nacimiento' => 'N/A',
-        'fe_ingreso' => 'N/A',
         'email' => 'cantunberna@gmail.com',
         'password' => bcrypt('Cantun97.-'),
         'status' => '2'
     ]);
-    $user_berna->assignRole($administrador);
+    $user_berna = User::create([
+        'NoEmpleado' => 'HAE001',
+        'name' => 'Victor Jose Cantun Dominguez',
+        'email' => 'cantundominguez@gmail.com',
+        'password' => bcrypt('StigmaCode2022'),
+        'status' => '2'
+    ]);
+    $user = User::create([
+        'NoEmpleado' => 'HAE100',
+        'grado' => 'Lic.',
+        'name' => 'Víctor Manuel Pérez Ascencio',
+        'password' => bcrypt('StigmaCode2022'),
+        'status' => '2'
+    ]);
+    $user = User::create([
+        'NoEmpleado' => 'HAE101',
+        'grado' => 'Lic.',
+        'name' => 'Damaris Naal Espinoza',
+        'password' => bcrypt('StigmaCode2022'),
+        'status' => '2'
+    ]);
+    $user = User::create([
+        'NoEmpleado' => 'HAE102',
+        'grado' => 'Lic.',
+        'name' => 'Manuel de Jesús Escobar Suárez',
+        'password' => bcrypt('StigmaCode2022'),
+        'status' => '2'
+    ]);
+    $user = User::create([
+        'NoEmpleado' => 'HAE103',
+        'grado' => 'Lic.',
+        'name' => ' Manuel Jesús Escobar Piña',
+        'password' => bcrypt('StigmaCode2022'),
+        'status' => '2'
+    ]);
+    $user = User::create([
+        'NoEmpleado' => 'HAE104',
+        'grado' => 'Br.',
+        'name' => 'Sergio Enrique Luna Gómez',
+        'password' => bcrypt('StigmaCode2022'),
+        'status' => '2'
+    ]);
+    $user = User::create([
+        'NoEmpleado' => 'HAE105',
+        'grado' => 'Ing.',
+        'name' => 'Carlos Mario Segovia Torres',
+        'password' => bcrypt('StigmaCode2022'),
+        'status' => '2'
+    ]);
+    $user = User::create([
+        'NoEmpleado' => 'HAE106',
+        'grado' => 'Lic.',
+        'name' => ' María Guadalupe González Rodríguez',
+        'password' => bcrypt('StigmaCode2022'),
+        'status' => '2'
+    ]);
+    $user = User::create([
+        'NoEmpleado' => 'HAE105',
+        'grado' => 'Ing.',
+        'name' => 'Carlos Mario Segovia Torres',
+        'password' => bcrypt('StigmaCode2022'),
+        'status' => '2'
+    ]);
+    $user = User::create([
+        'NoEmpleado' => 'HAE106',
+        'grado' => 'Lic.',
+        'name' => ' María Guadalupe González Rodríguez',
+        'password' => bcrypt('StigmaCode2022'),
+        'status' => '2'
+    ]);
+
+    $user_berna->assignRole($superadmin);
     }
 }

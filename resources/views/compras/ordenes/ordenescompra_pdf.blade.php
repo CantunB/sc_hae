@@ -55,7 +55,8 @@
         .tg .tg-7btt{border-color:inherit;font-weight:bold;text-align:center;vertical-align:top}
         .tg .tg-0pky{border-color:inherit;text-align:left;vertical-align:top}
         .tg .tg-fymr{border-color:inherit;font-weight:bold;text-align:left;vertical-align:top}
-        @media screen and (max-width: 767px) {.tg {width: auto !important;}.tg col {width: auto !important;}.tg-wrap {overflow-x: auto;-webkit-overflow-scrolling: touch;margin: auto 0px;}}</style>
+        @media screen and (max-width: 767px) {.tg {width: auto !important;}.tg col {width: auto !important;}.tg-wrap {overflow-x: auto;-webkit-overflow-scrolling: touch;margin: auto 0px;}}
+    </style>
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     {{-- <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous"> --}}
@@ -147,10 +148,10 @@
                                 {{$purchaseorder->purchasorder->detail->provider->name}} <br>
                             </strong>
                             <strong>
-                                {{$purchaseorder->purchasorder->department->area->coordinations->name}} <br>
+                                {{$purchaseorder->purchasorder->detail->coordination}} <br>
                             </strong>
                             <strong>
-                                {{$purchaseorder->purchasorder->department->area->departments->name}} <br>
+                                {{$purchaseorder->purchasorder->detail->department}} <br>
                             </strong>
                         </p>
                     </div>

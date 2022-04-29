@@ -24,7 +24,8 @@
                     <div class="col-sm-6">
                         <div class="text-sm-left">
                             @if($purchaseorder->status <= 1)
-                                <a class="btn btn-sm btn-soft-danger waves-effect waves-light mb-2" href="{{route('ordenes.pdf',$purchaseorder->id)}}" target="_blank"><i class="mdi mdi-printer" ></i> Imprimir</a>
+                                {{--  <a class="btn btn-sm btn-soft-danger waves-effect waves-light mb-2" href="{{route('ordenes.pdf',$purchaseorder->id)}}" target="_blank"><i class="mdi mdi-printer" ></i> Imprimir</a>  --}}
+                                <a class="btn btn-sm btn-soft-danger waves-effect waves-light mb-2" href="{{route('pdf.order_gt', $purchaseorder->id)}}" target="_blank"><i class="mdi mdi-printer" ></i> Imprimir</a>
                                 @can('update_compras')
                                 <a class="btn btn-sm btn-info waves-effect waves-light mb-2" href="{{route('autorizadas.edit', $purchaseorder->id)}}"><i class="mdi mdi-clipboard-alert-outline" ></i> Subir Orden(es) Firmada(s)</a>
                                 @endcan
@@ -87,7 +88,7 @@
                                 <div class="row justify-content-start">
                                     <div class="col-md-6">
                                         <label for=""><strong>Coordinacion: </strong></label>
-                                        &nbsp;&nbsp;&nbsp;<span>{{$purchaseorder->detail->area->coordinations->name}}</span>
+                                        &nbsp;&nbsp;&nbsp;<span>{{$purchaseorder->detail->coordination}}</span>
                                     </div>
                                     <div class="col-md-6">
                                         <label for=""><strong>Unidad Administrativa: </strong></label>
@@ -97,7 +98,7 @@
                                 <div class="row justify-content-start">
                                     <div class="col-md-6">
                                         <label for=""><strong>Departamento: </strong></label>
-                                        &nbsp;&nbsp;&nbsp;<span>{{$purchaseorder->detail->area->departments->name}}</span>
+                                        &nbsp;&nbsp;&nbsp;<span>{{$purchaseorder->detail->department}}</span>
                                     </div>
                                     <div class="col-md-6">
                                         <label for=""><strong>No. De Requisicion: </strong></label>

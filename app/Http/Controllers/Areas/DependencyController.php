@@ -48,18 +48,16 @@ class DependencyController extends Controller
     {
 
         $dependencias = Dependency::create($request->all());
-        return response()->json(['data'=>'Departamento creado!'], 200);
+        return response()->json(['data'=>'Dependencia registrada!'], 200);
     }
 
     public function edit($id)
     {
         $dependency = Dependency::findorFail($id);
         $coordinations = Coordination::all();
-        $departments = Department::all();
         return view('areas.dependencias.edit', compact(
             'dependency',
             'coordinations',
-            'departments'
         ));
     }
     /**
@@ -73,8 +71,8 @@ class DependencyController extends Controller
     {
         $dependency = Dependency::findOrFail($id);
         $dependency->update($request->all());
-        // $coordination->departments()->sync($request->get('departments'));
-        return redirect()->route('dependencias.index')->with('update', 'Coordinacion Actualizada');
+        $dependency->coordinations()->sync($request->get('coordinations'));
+        return redirect()->route('dependencias.index')->with('update', 'Dependencia actualizada');
     }
 
 }

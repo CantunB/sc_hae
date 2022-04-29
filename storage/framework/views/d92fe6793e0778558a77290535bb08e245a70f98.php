@@ -1,5 +1,4 @@
 <?php echo csrf_field(); ?>
-<input type="hidden" name="caption" value="<?php echo e("2018, Año del Sesenta y Cinco Aniversario del Reconocimiento al Ejercicio del Derecho a Voto de las Mujeres Mexicanas"); ?>">
 <div class="row">
     <div class="form-group row col-md-12">
         <label for="folio" class="col-md-2 offset-md-7 col-form-label"><strong>REQ. NO.</strong></label>

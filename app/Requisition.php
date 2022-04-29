@@ -2,12 +2,13 @@
 
 namespace HAE;
 
+use Dompdf\Dompdf;
 use Illuminate\Database\Eloquent\Model;
-
+use SimpleSoftwareIO\QrCode\Facades\QrCode;
+use PDF;
 class Requisition extends Model
 {
     protected $fillable = [
-        'caption',
         'folio',
         'added_on',
         'management',
@@ -19,10 +20,6 @@ class Requisition extends Model
         'remark',
         'dep_use'
     ];
-    // public function getCreatedAtAttribute($value)
-    // {
-    //     return $value->format('M d Y');
-    // }
 
     public  function asignado()
     {
@@ -60,6 +57,51 @@ class Requisition extends Model
     public function departments()
     {
         return $this->belongsTo(Department::class,'department_id');
+    }
+
+
+    /** VERSION H.A.E correcciones, implementaciones y actualizaciones */
+
+    /**
+     * public static function total(): float{
+     * return self::products()->sum(function(Product $product){
+     *  return $product->total();
+     * })}
+     */
+
+    /**
+     * public static function qrCode(){
+     *  $code = QrCode::format('png)->size(150)->generate('invoice-unique-code');
+     *  return base64_encode($code);
+     * }
+     */
+
+    public static function attributes($inBackground = false): array
+    {
+        return [
+            'requesteds' => self::requesteds(),
+            'inBackground' => $inBackground
+        ];
+    }
+
+    public static function generatePdf($inBackground = false): PDF
+    {
+        return Dompdf::loadView('pdf.requisition_request', self::attributes($inBackground));
+    }
+
+    public static function download(): Response
+    {
+        $filename = self::filename();
+        return self::generatePdf(true)->download($filename);
+    }
+
+    public static function outputAsBinary(): string
+    {
+        return self::generatePdf(true)->output();
+    }
+
+    public static function filename(){
+        return "{$this->folio}" . ".pdf";
     }
 
 }
