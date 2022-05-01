@@ -35,9 +35,9 @@
                         <thead>
                             <tr>
                                 <th scope="col">#</th>
-                                <th scope="col">Nombre</th>
-                                <th scope="col">Fecha de registro</th>
-                                <th scope="col">Fecha de actualizacion</th>
+                                <th scope="col">Rol</th>
+                                <th scope="col">Activos</th>
+                                <th scope="col">Permisos</th>
                                 <th>Accciones</th>
                             </tr>
                         </thead>
@@ -58,11 +58,11 @@
         },
         ajax: '{!! route('roles.index') !!}',
         columns:[
-            {data: 'id', name : 'id'},
-            {data: 'name', name : 'name'},
-            {data: 'created_at', name : 'created_at'},
-            {data: 'updated_at', name : 'updated_at'},
-            {data: 'action', name: 'action', orderable: false, searchable: false}
+            {data: 'DT_RowIndex', name: 'DT_RowIndex', className:'text-center'},
+            {data: 'name', name : 'name',className: 'text-center'},
+            {data: 'actives', name : 'actives', className: 'text-center'},
+            {data: 'permissions', name : 'permissions', className: 'text-center'},
+            {data: 'action', name: 'action', orderable: false, searchable: false, className: 'text-center'}
         ]
       } );
     } );

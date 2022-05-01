@@ -21,16 +21,17 @@ class CreateAssignedUserAreasTable extends Migration
         //     $table->timestamps();
         // });
         Schema::create('user_dependencies', function (Blueprint $table) {
-            $table->foreignId('director_id')->constrained('users');
-            $table->foreignId('dependency_id')->constrained('dependencies');
+            $table->foreignId('director_id')->references('id')->on('users');
+            $table->foreignId('dependency_id')->references('id')->on('dependencies');
         });
         Schema::create('user_coordination', function (Blueprint $table) {
-            $table->foreignId('titular_id')->constrained('users');
-            $table->foreignId('coordination_id')->constrained('coordinations');
+            $table->foreignId('titular_id')->references('id')->on('users');
+            $table->foreignId('coordination_id')->references('id')->on('coordinations');
+
         });
         Schema::create('user_department', function (Blueprint $table) {
-            $table->foreignId('employee_id')->constrained('users');
-            $table->foreignId('department_id')->constrained('departments');
+            $table->foreignId('jefe_id')->references('id')->on('users');
+            $table->foreignId('department_id')->references('id')->on('departments');
         });
     }
 

@@ -191,15 +191,16 @@ class PurchaseOrderController extends Controller
         //folio analisis de precio
         $analysis_folio = $request->folio_analysis  . $request->type_analysis . $request->count_analysis . $request->date_analysis;
 
-        $detalles = new PurchaseOrderDetail();
+        $detalles =new PurchaseOrderDetail($request->all());
+        // $detalles = new PurchaseOrderDetail();
         $detalles->order_folio = $order_folio;
         $detalles->analysis_folio = $analysis_folio;
-        $detalles->coordination = $request->coordination;
-        $detalles->department = $request->department;
-        $detalles->unit_administrative= $request->unit_admnistrative;
-        $detalles->provider_id = $request->provider_id;
-        $detalles->department_id = $request->department;
-        $detalles->requisition_id = $request->requisition_id;
+        // $detalles->coordination = $request->coordination;
+        // $detalles->department = $request->department;
+        // $detalles->unit_administrative= $request->unit_admnistrative;
+        // $detalles->provider_id = $request->provider_id;
+        // $detalles->department_id = $request->department;
+        // $detalles->requisition_id = $request->requisition_id;
         $detalles->save();
 
         $detalles = $detalles->id;

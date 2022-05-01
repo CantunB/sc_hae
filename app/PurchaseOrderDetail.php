@@ -8,6 +8,17 @@ class PurchaseOrderDetail extends Model
 {
     protected $table = 'pur_order_details';
 
+    protected $fillable = [
+        'order_folio',
+        'analysis_folio',
+        'coordination',
+        'department',
+        'unit_administrative',
+        'provider_id',
+        'department_id',
+        'requisition_id'
+    ];
+
     public function provider()
     {
         return $this->belongsTo(Providers::class,'provider_id');

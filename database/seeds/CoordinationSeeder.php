@@ -1,9 +1,13 @@
 <?php
 
+use HAE\Coordination as HAECoordination;
+use HAE\User;
 use Illuminate\Database\Seeder;
-use Smapac\Coordination;
 use Spatie\Permission\Models\Permission;
 use Spatie\Permission\Models\Role;
+use Faker\Factory as Faker;
+use HAE\UserCoordination;
+
 class CoordinationSeeder extends Seeder
 {
     /**
@@ -25,5 +29,7 @@ class CoordinationSeeder extends Seeder
                         'read_coordinaciones',
                         'update_coordinaciones',
                         'delete_coordinaciones']);
+
+        $coordinations = factory( HAECoordination::class, 15 )->create();
     }
 }

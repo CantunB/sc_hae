@@ -7,6 +7,8 @@ use Faker\Generator as Faker;
 
 $factory->define(Department::class, function (Faker $faker) {
     return [
-        //
+        'name' => $faker->jobTitle(),
+        'slug' => $faker->word(),
+        'status' => $faker->randomElement([0, 1]),
     ];
 });

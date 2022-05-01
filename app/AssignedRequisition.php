@@ -8,11 +8,6 @@ class AssignedRequisition extends Model
 {
     protected $table = 'assigned_requisitions';
 
-    public function areas()
-    {
-        return $this->hasMany(AssignedUserAreas::class);
-    }
-
     public function requisition()
     {
         return $this->belongsTo(Requisition::class);

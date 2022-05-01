@@ -25,10 +25,7 @@ class Requisition extends Model
     {
         return $this->HasMany(AssignedRequisition::class);
     }
-    public function area()
-    {
-        return $this->belongsToMany(AssignedUserAreas::class);
-    }
+
     public function providers()
     {
         return $this->belongsTo(Quotesrequisitions::class);

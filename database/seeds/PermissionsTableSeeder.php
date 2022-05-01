@@ -36,7 +36,10 @@ class PermissionsTableSeeder extends Seeder
     // create roles and assign existing permissions
 
     $superadmin = Role::create(['name' => 'Super-Admin']);
-    $administrador = Role::create(['name' => 'Administrado']);
+    $administrador = Role::create(['name' => 'Administrador']);
+    $director = Role::create(['name' => 'Director']);
+    $titular = Role::create(['name' => 'Titular']);
+    $jefe = Role::create(['name' => 'Jefe']);
     $administrador->givePermissionTo(Permission::all());
     // gets all permissions via Gate::before rule; see AuthServiceProvider
 
@@ -48,77 +51,105 @@ class PermissionsTableSeeder extends Seeder
         'password' => bcrypt('Cantun97.-'),
         'status' => '2'
     ]);
-    $user_berna = User::create([
+    $user_berna->assignRole($superadmin);
+
+    $user = User::create([
         'NoEmpleado' => 'HAE001',
         'name' => 'Victor Jose Cantun Dominguez',
         'email' => 'cantundominguez@gmail.com',
         'password' => bcrypt('StigmaCode2022'),
         'status' => '2'
     ]);
+    $user->assignRole($administrador);
+
     $user = User::create([
         'NoEmpleado' => 'HAE100',
         'grado' => 'Lic.',
         'name' => 'Víctor Manuel Pérez Ascencio',
         'password' => bcrypt('StigmaCode2022'),
-        'status' => '2'
+        'status' => 1
     ]);
+    $user->assignRole($director);
+
     $user = User::create([
         'NoEmpleado' => 'HAE101',
         'grado' => 'Lic.',
         'name' => 'Damaris Naal Espinoza',
         'password' => bcrypt('StigmaCode2022'),
-        'status' => '2'
+        'status' => 1
     ]);
+    $user->assignRole($director);
+
     $user = User::create([
         'NoEmpleado' => 'HAE102',
         'grado' => 'Lic.',
         'name' => 'Manuel de Jesús Escobar Suárez',
         'password' => bcrypt('StigmaCode2022'),
-        'status' => '2'
+        'status' => 1
     ]);
+    $user->assignRole($director);
+
     $user = User::create([
         'NoEmpleado' => 'HAE103',
         'grado' => 'Lic.',
         'name' => ' Manuel Jesús Escobar Piña',
         'password' => bcrypt('StigmaCode2022'),
-        'status' => '2'
+        'status' => 1
     ]);
+    $user->assignRole($director);
+
     $user = User::create([
         'NoEmpleado' => 'HAE104',
         'grado' => 'Br.',
         'name' => 'Sergio Enrique Luna Gómez',
         'password' => bcrypt('StigmaCode2022'),
-        'status' => '2'
+        'status' => 1
     ]);
-    $user = User::create([
-        'NoEmpleado' => 'HAE105',
-        'grado' => 'Ing.',
-        'name' => 'Carlos Mario Segovia Torres',
-        'password' => bcrypt('StigmaCode2022'),
-        'status' => '2'
-    ]);
-    $user = User::create([
-        'NoEmpleado' => 'HAE106',
-        'grado' => 'Lic.',
-        'name' => ' María Guadalupe González Rodríguez',
-        'password' => bcrypt('StigmaCode2022'),
-        'status' => '2'
-    ]);
-    $user = User::create([
-        'NoEmpleado' => 'HAE105',
-        'grado' => 'Ing.',
-        'name' => 'Carlos Mario Segovia Torres',
-        'password' => bcrypt('StigmaCode2022'),
-        'status' => '2'
-    ]);
-    $user = User::create([
-        'NoEmpleado' => 'HAE106',
-        'grado' => 'Lic.',
-        'name' => ' María Guadalupe González Rodríguez',
-        'password' => bcrypt('StigmaCode2022'),
-        'status' => '2'
-    ]);
+    $user->assignRole($director);
 
-    $user_berna->assignRole($superadmin);
+    $user = User::create([
+        'NoEmpleado' => 'HAE105',
+        'grado' => 'Ing.',
+        'name' => 'Carlos Mario Segovia Torres',
+        'password' => bcrypt('StigmaCode2022'),
+        'status' => 1
+    ]);
+    $user->assignRole($director);
+
+    $user = User::create([
+        'NoEmpleado' => 'HAE106',
+        'grado' => 'Lic.',
+        'name' => ' María Guadalupe González Rodríguez',
+        'password' => bcrypt('StigmaCode2022'),
+        'status' => 1
+    ]);
+    $user->assignRole($director);
+
+    $user = User::create([
+        'NoEmpleado' => 'HAE107',
+        'grado' => 'Ing.',
+        'name' => 'Carlos Mario Segovia Torres',
+        'password' => bcrypt('StigmaCode2022'),
+        'status' => 1
+    ]);
+    $user->assignRole($director);
+
+    $user = User::create([
+        'NoEmpleado' => 'HAE108',
+        'grado' => 'Lic.',
+        'name' => ' María Guadalupe González Rodríguez',
+        'password' => bcrypt('StigmaCode2022'),
+        'status' => 1
+    ]);
+    $user->assignRole($director);
+
+    $usuarios = factory(User::class,80)->create();
+
+    // $usuarios = factory(User::class, 0)->create()->each(function ($user) {
+    //         $user->posts()->save(factory(App\Post::class)->make());
+    //     })
+    // }
+
     }
 }
+

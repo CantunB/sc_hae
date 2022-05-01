@@ -21,8 +21,4 @@ class Department extends Model
         return "{$this->name} ({$this->slug})";
     }
 
-    public function area()
-    {
-        return $this->hasOne(AssignedAreas::class);
-    }
 }

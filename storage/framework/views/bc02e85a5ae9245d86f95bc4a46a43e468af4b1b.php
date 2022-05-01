@@ -1,13 +1,9 @@
 <?php $__env->startSection('content'); ?>
-<!-- start page title -->
     <?php $__env->startComponent('layouts.partials.breadcrumb'); ?>
         <?php $__env->slot('title'); ?> <?php echo e(config('app.name', 'H.A.E')); ?> <?php $__env->endSlot(); ?>
-        <?php $__env->slot('subtitle'); ?> <?php echo e(Request::path()); ?> <?php $__env->endSlot(); ?>
+        <?php $__env->slot('subtitle'); ?> proovedores <?php $__env->endSlot(); ?>
         <?php $__env->slot('teme'); ?> Lista <?php $__env->endSlot(); ?>
     <?php echo $__env->renderComponent(); ?>
-<!-- end page title -->
-
-
 <div class="row">
     <div class="col-12">
         <div class="card-box">

@@ -24,10 +24,11 @@
                     <table id="users-table" class="table dt-responsive nowrap w-100">
                         <thead>
                             <tr>
-                                <th style="text-align: center" >ID</th>
+                                <th style="text-align: center" >#</th>
                                 <th style="text-align: center">No.Empleado</NoEmpleadoth>
                                 <th style="text-align: center">Nombre</th>
-                                <th style="text-align: center">Correo</th>
+                                <th style="text-align: center">Rol</th>
+                                <th style="text-align: center">Estado</th>
                                 <th style="text-align: center">&nbsp;</th>
                             </tr>
                         </thead>
@@ -48,11 +49,12 @@
         },
         ajax: '{!! route('usuarios.index') !!}',
         columns:[
-            {data: 'id', name : 'id'},
-            {data: 'NoEmpleado', name : 'NoEmpleado'},
-            {data: 'name', name : 'name'},
-            {data: 'email', name : 'email'},
-            {data: 'action', name: 'action', orderable: false, searchable: false}
+            {data: 'DT_RowIndex', name: 'DT_RowIndex', className:'text-center'},
+            {data: 'NoEmpleado', name : 'NoEmpleado',  className:'text-center'},
+            {data: 'gname', name : 'gname'},
+            {data: 'rol', name : 'rol', className:'text-center'},
+            {data: 'status', name : 'status', className:'text-center'},
+            {data: 'options', name: 'options', orderable: false, searchable: false}
         ]
       } );
     } );

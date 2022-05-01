@@ -25,7 +25,8 @@ class UserRequest extends FormRequest
     {
         return [
             'NoEmpleado' => 'required|unique:users,NoEmpleado,'.$this->route('usuario'),
-            'name' => 'required|regex:/^[\pL\s\-]+$/u',
+            'name' => 'required',
+            // 'name' => 'required|regex:/^[\pL\s\-]+$/u',
             'email' => 'email|unique:users,email,'.$this->route('usuario'),
             //'paterno' => 'required|regex:/^[\pL\s\-]+$/u',
             // 'materno' => 'required|regex:/^[\pL\s\-]+$/u',

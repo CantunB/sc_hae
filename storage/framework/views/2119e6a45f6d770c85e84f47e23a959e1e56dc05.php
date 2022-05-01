@@ -26,7 +26,7 @@
                                                         <div class="form-group">
                                                             <label for=""><strong>ORDEN DE COMPRA</strong></label>
                                                             <div class="input-group" >
-                                                                <input name="folio_or" id="folio_or" type="text" required class="form-control" value="<?php echo e(config('app.name', 'H.A.E')); ?>">
+                                                                <input name="folio_or" id="folio_or" type="text" required class="form-control" value="<?php echo e(config('app.name', 'H-A-E')); ?>">
                                                                 <select name="type_or" id="type_or" type="text" required class="form-control" >
                                                                     <option value="OC1">OC1</option>
                                                                     <option value="OC2">OC2</option>

@@ -12,7 +12,7 @@ if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
 unset($__errorArgs, $__bag); ?>" id="folio"
             value="<?php echo e(config('app.name', 'H.A.E') .
-                '/'.$countreq.'/'.date('Y')); ?>">
+                '-'.$countreq.'-'.date('Y')); ?>">
             <?php $__errorArgs = ['folio'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :

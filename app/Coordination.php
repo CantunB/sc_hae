@@ -21,11 +21,6 @@ class Coordination extends Model
         return "{$this->name} ({$this->slug })";
     }
 
-    /**
-     * Get all of the comments for the Coordination
-     *
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
-     */
     public function dependency(): HasOne
     {
         return $this->hasOne(AssignedCoordinations::class, 'coordination_id');

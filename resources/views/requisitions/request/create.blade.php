@@ -35,14 +35,16 @@
             var maxField = 20; //Limitación de incremento de campos de entrada
             var addButton = $('.add_button'); //Agregar selector de botones
             var wrapper = $('.field_wrapper'); //Contenedor de campo de entrada
+
+            var x = 1; //El contador de campo inicial es 1
+
             var fieldHTML = '<tr>'+
-                '<td><input type="number" min="0" name="departure[]" class="form-control depart" required></td>'+
+                '<td><input type="number" min="0" name="departure[]" class="form-control depart" value="" required></td>'+
                 '<td><input type="number" min="0" name="quantity[]" class="form-control" required></td>'+
                 '<td><input type="text" name="unit[]" class="form-control" required></td>'+
                 '<td><textarea type="text" name="concept[]" class="form-control" required></textarea></td>'+
                 '<td><button type="button" class="remove_button btn btn-danger btn-sm"><i class="fas fa-minus-circle"></td></tr>';
 
-            var x = 1; //El contador de campo inicial es 1
 
             document.getElementById("cont").value = x;
             document.getElementById("departure").value = x;
@@ -54,7 +56,6 @@
                     x++; //Contador de campo de incremento
                     $(wrapper).append(fieldHTML); //Agregar campo html
                     document.getElementById("cont").value = x;
-                    document.getElementsByClassName("depart").value = x++;
 
 
                 }

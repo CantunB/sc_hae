@@ -1,22 +1,11 @@
 <?php $__env->startSection('title', 'Editar Proveedor'); ?>
 <?php $__env->startSection('content'); ?>
-<!-- start page title -->
-                        <div class="row">
-                            <div class="col-12">
-                                <div class="page-title-box">
-                                    <div class="page-title-right">
-                                        <ol class="breadcrumb m-0">
-                                            <li class="breadcrumb-item"><a href="javascript: void(0);"><?php echo e(config('app.name', 'SMAPAC')); ?></a></li>
-                                            <li class="breadcrumb-item"><a href="javascript: void(0);">PROVEEDOR</a></li>
-                                            <li class="breadcrumb-item active">EDITAR</li>
-                                        </ol>
-                                    </div>
-                                    <h4 class="page-title">INFORMACION DEL PROVEEDOR
-                                    </h4>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- end page title -->
+
+<?php $__env->startComponent('layouts.partials.breadcrumb'); ?>
+    <?php $__env->slot('title'); ?> <?php echo e(config('app.name', 'H.A.E')); ?> <?php $__env->endSlot(); ?>
+    <?php $__env->slot('subtitle'); ?> proovedores <?php $__env->endSlot(); ?>
+    <?php $__env->slot('teme'); ?> actualizar <?php $__env->endSlot(); ?>
+<?php echo $__env->renderComponent(); ?>
 
                         <div class="row">
                             <div class="col-lg-4 col-xl-4">

@@ -25,7 +25,7 @@
             -->
 
             <div class="table-responsive">
-                <form action="{{ action('RoleController@update', $roles->id) }}" method="POST" class="form-group">
+                <form action="{{ route('roles.update', $roles->id) }}" method="POST" class="form-group">
                     @csrf
                     @method('PUT')
                     <table class="table table-borderless mb-0">

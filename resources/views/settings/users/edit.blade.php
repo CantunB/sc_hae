@@ -62,41 +62,6 @@
                                 </div>
                             </div> <!-- end col -->
                         </div> <!-- end row -->
-                        <div class="row">
-                            <div class="col-6">
-                                <div class="form-group">
-                                    <label for="no_seg_soc">Coordinacion</label>
-                                    <select id="coordinacion" name="coordinacion" class="form-control" required>
-                                        @if(true === ($user->asignado->areas->coordinations->id ?? null))
-                                            <option value="{{ $user->asignado->areas->coordinations->id}}" selected>
-                                                {{$user->asignado->areas->coordinations->name}}</option>
-                                        @else
-                                            <option disabled selected> Selecciona una coordinacion</option>
-                                            @foreach ($coordinations as $i => $coordination )
-                                                <option value="{{$coordination->id}}"
-                                                @if($coordination->id === ($user->asignado->areas->coordinations->id ?? null)) selected
-                                                @endif
-                                                >{{$coordination->name}}</option>
-                                            @endforeach
-                                        @endif
-
-                                </select>
-                                </div>
-                            </div> <!-- end col -->
-                            <div class="col-6">
-                                <div class="form-group">
-                                    <label for="userbio">Departamento</label>
-                                    <select  id="departamento" name="departamento" class="form-control" required>
-                                        @if(($user->asignado->areas->departments->id ?? null))
-                                        <option value="{{$user->asignado->areas->departments->id}}" selected >
-                                            {{ $user->asignado->areas->departments->name}}</option>
-                                        @else
-                                            <option selected disabled> Selecciona un departamento</option>
-                                        @endif
-                                    </select>
-                                </div>
-                            </div> <!-- end col -->
-                        </div> <!-- end row -->
 
                         <div class="row">
                             <div class="col-md-4">

@@ -1,23 +1,12 @@
 @extends('layouts.app')
 @section('title', 'Editar Proveedor')
 @section('content')
-<!-- start page title -->
-                        <div class="row">
-                            <div class="col-12">
-                                <div class="page-title-box">
-                                    <div class="page-title-right">
-                                        <ol class="breadcrumb m-0">
-                                            <li class="breadcrumb-item"><a href="javascript: void(0);">{{  config('app.name', 'SMAPAC') }}</a></li>
-                                            <li class="breadcrumb-item"><a href="javascript: void(0);">PROVEEDOR</a></li>
-                                            <li class="breadcrumb-item active">EDITAR</li>
-                                        </ol>
-                                    </div>
-                                    <h4 class="page-title">INFORMACION DEL PROVEEDOR
-                                    </h4>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- end page title -->
+
+@component('layouts.partials.breadcrumb')
+    @slot('title') {{ config('app.name', 'H.A.E') }} @endslot
+    @slot('subtitle') proovedores @endslot
+    @slot('teme') actualizar @endslot
+@endcomponent
 
                         <div class="row">
                             <div class="col-lg-4 col-xl-4">

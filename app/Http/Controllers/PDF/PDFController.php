@@ -30,7 +30,10 @@ class PDFController extends Controller
     {
         $order = PurchaseOrder::where('id',$id)->first();
         $materials = PurchaseOrder::where('pur_order_details_id',$order->pur_order_details_id)->orderBy('id','DESC')->get();
-        return PDF::loadView('pdf.purchase_order',compact('materials', 'order'))->stream('Orden-'.$order->detail->order_folio.'.pdf');;
+        $order_pdf =  PDF::loadView('pdf.purchase_order',compact('materials', 'order'));
+        $path = public_path('requisitions/requesteds/'. $order->detail->order_folio. '.pdf');
+        $order_pdf->save($path);
+        return $order_pdf->stream('Orden-'.$order->detail->order_folio.'.pdf');
     }
     public function download_pdf_request(Request $request)
     {

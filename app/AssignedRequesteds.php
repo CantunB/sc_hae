@@ -17,9 +17,4 @@ class AssignedRequesteds extends Model
     {
         return $this->belongsTo(Requested::class);
     }
-
-    public function area()
-    {
-        return $this->belongsTo(AssignedUserAreas::class);
-    }
 }

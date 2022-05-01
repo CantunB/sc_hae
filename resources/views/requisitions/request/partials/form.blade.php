@@ -6,7 +6,7 @@
             <input type="text" name="folio" required readonly class="form-control text-right @error('folio') is-invalid @enderror" id="folio"
             value="{{
                 config('app.name', 'H.A.E') .
-                '/'.$countreq.'/'.date('Y')
+                '-'.$countreq.'-'.date('Y')
             }}">
             @error('folio')
             <span class="invalid-feedback" role="alert">

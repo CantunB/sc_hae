@@ -4,6 +4,7 @@ namespace HAE\Http\Controllers\Settings;
 
 use HAE\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Spatie\Permission\Models\Role;
 use Spatie\Permission\Models\Permission;
 use Yajra\Datatables\Datatables;
@@ -27,8 +28,15 @@ class RoleController extends Controller
     public function index(Request $request)
     {
         if ($request->ajax()) {
-            $roles = Role::select(['id','name','created_at','updated_at']);
+            $roles = Role::where('name', '!=' ,'Super-Admin')->get();
             return Datatables::of($roles)
+            ->addIndexColumn()
+            ->addColumn('actives', function($roles){
+                return $roles = DB::table('model_has_roles')->where('role_id',$roles->id)->count();
+            })
+            ->addColumn('permissions', function($roles){
+                return count($roles->permissions);
+            })
             ->addColumn('action', function ($roles) {
                 return '
                 <a href="' . route('roles.edit', $roles->id) . '"

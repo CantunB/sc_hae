@@ -1,7 +1,7 @@
 <?php
 
+use HAE\Department as HAEDepartment;
 use Illuminate\Database\Seeder;
-use Smapac\Department;
 use Spatie\Permission\Models\Permission;
 use Spatie\Permission\Models\Role;
 
@@ -26,5 +26,8 @@ class DepartmentSeeder extends Seeder
                         'read_departamentos',
                         'update_departamentos',
                         'delete_departamentos']);
+
+        $departments = factory(HAEDepartment::class,35)->create();
+
     }
 }

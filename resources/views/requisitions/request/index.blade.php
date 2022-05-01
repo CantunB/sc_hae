@@ -118,11 +118,11 @@
                 ajax: '{!! route('request.index') !!}',
             columns:[
                 {data: 'DT_RowIndex', name: 'DT_RowIndex'},
-                {data: 'requisition.folio', name: 'requisition.folio'},
-                {data: 'added_on', name: 'added_on'},
-                {data: 'department_id', name: 'department_id'},
-                {data: 'required_on', name: 'required_on'},
-                {data: 'status', name: 'status'},
+                {data: 'requisition.folio', name: 'requisition.folio', className:'text-center'},
+                {data: 'added_on', name: 'added_on', className:'text-center'},
+                {data: 'department_id', name: 'department_id', className:'text-center'},
+                {data: 'required_on', name: 'required_on', className:'text-center'},
+                {data: 'status', name: 'status', className:'text-center'},
                 {data: 'options', name: 'options', orderable: false, searchable: false}
             ]
             });

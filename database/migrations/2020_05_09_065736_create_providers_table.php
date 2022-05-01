@@ -18,12 +18,12 @@ class CreateProvidersTable extends Migration
             $table->string('name');
             $table->string('email');
             $table->string('rfc');
-            $table->string('address');
-            $table->string('phone')->default('N/A');
-            $table->string('website')->nullable()->default('N/A');
-            $table->string('description')->nullable()->default('N/A');
+            $table->string('address')->nullable();
+            $table->string('phone')->nullable();
+            $table->string('website')->nullable();
+            $table->string('description')->nullable();
             $table->string('provider_file')->default('providers.png');
-            $table->tinyInteger('status')->default('0');
+            $table->tinyInteger('status')->default('1');
             $table->timestamps();
         });
     }

@@ -96,7 +96,7 @@ class RequestController extends Controller
                         ';
                     }
                     // if (Auth::user()->can('delete_operators')){
-                        $opciones .= '<button type="button" onclick="btnDelete('.$requisitions->id.')" class="btn btn-sm action-icon icon-dual-secondary"><i class="mdi mdi-delete-empty"></i></button>';
+                        $opciones .= '<a onclick="btnDelete('.$requisitions->id.')" class="action-icon icon-dual-secondary"><i class="mdi mdi-delete-empty"></i></a>';
                     // }
                 return $opciones;
             })
@@ -246,12 +246,9 @@ class RequestController extends Controller
      */
     public function destroy($id)
     {
-        $requesteds = Requisition::findOrFail($id);
-        foreach ($requesteds as $i => $requested){
-            Requested::where('id', $requested->requested_id)->delete();
-        }
-        $requisition = Requisition::findOrFail($id)->delete();
-        if ($requisition == 1){
+        $request = Requisition::findOrFail($id);
+        $request = Requisition::findOrFail($id)->delete();
+        if ($request == 1){
             $success = true;
             $message = "Requisicion eliminada";
         } else {

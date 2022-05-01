@@ -68,6 +68,6 @@ class RequisitionController extends Controller
             $req->status = 1;
             $req->save();
         }
-        return redirect()->route('requisiciones.authoirzed.index')->with('success', 'Requisición autorizada');
+        return redirect()->route('authorized.index')->with('success', 'Requisición autorizada');
     }
 }

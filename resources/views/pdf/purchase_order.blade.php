@@ -1,5 +1,6 @@
 <html>
 <head>
+    <title> {{$order->detail->order_folio ?? 'Orden de Compra'}} </title>
     <style>
         @page {
             margin: 0cm 0cm;
@@ -33,6 +34,24 @@
             text-align: center;
             line-height: 30px;
         }
+        #watermark {
+            position: fixed;
+            opacity: 0.3;
+
+            /**
+                Establece una posición en la página para tu imagen
+                Esto debería centrarlo verticalmente
+            **/
+            bottom:   5cm;
+            left:     0.5cm;
+
+            /** Cambiar las dimensiones de la imagen **/
+            width:    20cm;
+            height:   20cm;
+
+            /** Tu marca de agua debe estar detrás de cada contenido **/
+            z-index:  -1000;
+        }
         .linea {
             border-top: 1px solid rgb(0, 0, 0);
             height: 2px;
@@ -49,6 +68,9 @@
 
 </head>
 <body>
+    <div id="watermark">
+        <img src="{{ public_path('assets/images/logo_ayuntamiento.png') }}" height="100%" width="100%" />
+    </div>
 <header>
     <table style="border-collapse: collapse; width: 100%; height: 67px;">
         <tbody>

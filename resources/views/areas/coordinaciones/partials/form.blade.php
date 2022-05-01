@@ -27,8 +27,8 @@
                 <li>
                     <label>
                         <input type="checkbox"
-                               name="departments[]"
-                               value="{{ $val->id  }}" {{ $coordination->departments->pluck('id')->contains($val->id) ? 'checked' : 'disabled' }}
+                            name="departments[]"
+                            value="{{ $val->id  }}" {{ $coordination->departments->pluck('id')->contains($val->id) ? 'checked' : '' }}
                         > {{ $val->name  }}
                         <em><strong>( {{ $val->slug ?: 'N/A'}} )</strong></em>
                     </label>

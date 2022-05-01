@@ -5,11 +5,15 @@ namespace HAE;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Support\Facades\Auth;
 use Spatie\Permission\Traits\HasRoles;
 class User extends Authenticatable
 {
     use Notifiable;
     use HasRoles;
+
+    const usuario_activo = '1';
+    const usuario_inactivo = '3';
     /**
      * The attributes that are mass assignable.
      *
@@ -17,6 +21,7 @@ class User extends Authenticatable
      */
     protected $fillable = [
         'NoEmpleado',
+        'grado',
         'name',
         'no_seg_soc',
         'categoria',
@@ -28,24 +33,25 @@ class User extends Authenticatable
         'email',
         'file_user'
     ];
-    /**
-     * The attributes that should be hidden for arrays.
-     *
-     * @var array
-     */
+
     protected $hidden = [
         'password', 'remember_token',
     ];
 
-    /**
-     * The attributes that should be cast to native types.
-     *
-     * @var array
-     */
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+    protected $appends = ['gname'];
 
+
+    public function scopeActive($query){
+        return $query->where('status', '!=',2);
+    }
+
+    public function getGNameAttribute()
+    {
+        return "{$this->grado} {$this->name }";
+    }
 
     public function asignado()
     {
@@ -55,10 +61,10 @@ class User extends Authenticatable
     {
         return $this->belongsToMany(AssignedAreas::class,'assigned_user_areas','user_id','areas_id');
     }
-    public function areas()
-    {
-        return $this->belongsTo(AssignedAreas::class, 'areas_id');
-    }
+    // public function areas()
+    // {
+    //     return $this->belongsTo(AssignedAreas::class, 'areas_id');
+    // }
     public function departments()
     {
         return $this->belongsTo(Department::class, 'department_id');

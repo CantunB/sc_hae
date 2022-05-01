@@ -1,5 +1,6 @@
 <?php
 
+use HAE\Providers;
 use Illuminate\Database\Seeder;
 use Spatie\Permission\Models\Permission;
 use Spatie\Permission\Models\Role;
@@ -23,5 +24,8 @@ class ProvidersSeeder extends Seeder
                         'read_proveedores',
                         'update_proveedores',
                         'delete_proveedores']);
+
+        $providers = factory(Providers::class,25)->create();
+
     }
 }

@@ -1,14 +1,10 @@
 @extends('layouts.app')
 @section('content')
-<!-- start page title -->
     @component('layouts.partials.breadcrumb')
         @slot('title') {{ config('app.name', 'H.A.E') }} @endslot
-        @slot('subtitle') {{Request::path()}} @endslot
+        @slot('subtitle') proovedores @endslot
         @slot('teme') Lista @endslot
     @endcomponent
-<!-- end page title -->
-
-
 <div class="row">
     <div class="col-12">
         <div class="card-box">

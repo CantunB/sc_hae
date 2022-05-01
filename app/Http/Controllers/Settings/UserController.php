@@ -32,9 +32,10 @@ class UserController extends Controller
     public function index(Request $request)
     {
         if ($request->ajax()) {
-            $users = User::select(['id','NoEmpleado','name','rfc','email']);
+            $users = User::active()->get();
             return Datatables::of($users)
-            ->addColumn('action', function ($users) {
+            ->addIndexColumn()
+            ->addColumn('options', function ($users) {
                 return '
                 <a href="' . route('usuarios.edit', $users->id) . '"
                  class="action icon"
@@ -42,7 +43,27 @@ class UserController extends Controller
                  <i class="mdi mdi-pencil"></i>
                  </a>';
             })
-            ->make(true);
+            ->addColumn('rol', function($users){
+                $roles = $users->getRoleNames();
+                    $rol = '<ul>';
+                    for( $i = 0; $i < count($roles); $i++){
+                        $rol .= '<li>'.$roles[$i].'</li>';
+                    }
+                    $rol .= '</ul>';
+                return $rol;
+            })
+            ->editColumn('status', function ($users){
+                $status = '';
+                    if ($users->status == 1){
+                        $status .= '<span class="badge badge-outline-success">ACTIVO</span>';
+                    }
+                    else{
+                        $status .= '<span class="badge badge-outline-danger">INACTIVO</span>';
+                    }
+                return $status;
+            })
+            ->rawColumns(['options','status','rol'])
+            ->toJson();
             }
         return view('settings.users.index');
     }
@@ -63,14 +84,15 @@ class UserController extends Controller
     {
         //return $request->all();
         $users = User::create($request->all());
-        if($users->save())
-        {
-            $users->roles()->attach($request->get('roles'));
-            $area = AssignedAreas::where('coordination_id','=',$request->coordinacion)
-            ->where('department_id','=',$request->departamento)
-            ->first();
-            $users->asignar()->attach($area->id);
-        }
+        $users->roles()->attach($request->get('roles'));
+
+        // if($users->save())
+        // {
+        //     $area = AssignedAreas::where('coordination_id','=',$request->coordinacion)
+        //     ->where('department_id','=',$request->departamento)
+        //     ->first();
+        //     $users->asignar()->attach($area->id);
+        // }
         return redirect()->route('usuarios.index')->with('success','Usuario creado correctamente');
     }
 
@@ -112,14 +134,13 @@ class UserController extends Controller
     {
         $user = User::findOrFail($id);
         $user->update($request->all());
-        $user->save();
 
         $user->roles()->sync($request->get('roles'));
-        $area = AssignedAreas::where('coordination_id','=',$request->coordinacion)
-            ->where('department_id','=',$request->departamento)
-            ->first();
-        $user->asignar()->sync($area->id);
-            return redirect('usuarios')->with('update', 'Usuario actualizado');
+        // $area = AssignedAreas::where('coordination_id','=',$request->coordinacion)
+        //     ->where('department_id','=',$request->departamento)
+        //     ->first();
+        // $user->asignar()->sync($area->id);
+            return redirect()->route('usuarios.index')->with('update', 'Usuario actualizado');
     }
 
     /**

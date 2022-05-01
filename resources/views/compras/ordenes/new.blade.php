@@ -35,7 +35,7 @@
                                                         <div class="form-group">
                                                             <label for=""><strong>ORDEN DE COMPRA</strong></label>
                                                             <div class="input-group" >
-                                                                <input name="folio_or" id="folio_or" type="text" required class="form-control" value="SMAPAC-CAF/">
+                                                                <input name="folio_or" id="folio_or" type="text" required class="form-control" value="HAE-CAF-">
                                                                 <select name="type_or" id="type_or" type="text" required class="form-control" >
                                                                     <option value="OC1">OC1</option>
                                                                     <option value="OC2">OC2</option>
@@ -62,7 +62,7 @@
                                                             <br>
                                                             <br>
                                                             <div class="input-group" >
-                                                                <input  name="folio_analysis" id="folio_analysis" type="text"  class="form-control analysis" placeholder="SMAPAC-CAF/" style="display:none">
+                                                                <input  name="folio_analysis" id="folio_analysis" type="text"  class="form-control analysis" placeholder="HAE-" style="display:none">
                                                                 <input  name="type_anaylysis" id="type_anaylysis" type="text" class="form-control analysis" value="" style="display:none">
                                                                 <span class="input-group-addon">-</span>
                                                                 <input   name="count_analysis" id="count_analysis" type="number" class="form-control analysis" style="display:none" >
@@ -76,7 +76,7 @@
                                                 <div class="col-md-6">
                                                     <label class="col-form-label">
                                                         <strong>Proveedor:
-                                                            <select class="form-control col sel" id="prov1"  name="provider_id" required>
+                                                            <select class="form-control col select2" id="prov1"  name="provider_id" required>
                                                                 <option selected disabled>Selecciona un proveedor</option>
                                                                 @foreach($providers as $i => $provider)
                                                                 <option data-rfc="{{$provider->rfc}}" value="{{$provider->id}}">{{$provider->name}}</option>
@@ -97,7 +97,7 @@
                                                     <label>
                                                         <strong>Coordinacion:  </strong>
                                                     </label>
-                                                    <select required class="form-control" id="coordinacion" name="coordination">
+                                                    <select required class="form-control select2" id="coordinacion" name="coordination">
                                                         <option selected disabled>Selecciona una coordinación</option>
                                                         @foreach($coordinations as $i => $coordination)
                                                             <option value="{{$coordination->id}}">{{ $coordination->name  }}</option>
@@ -117,7 +117,7 @@
                                                     <label>
                                                         <strong>Departamento:  </strong>
                                                     </label>
-                                                    <select required class="form-control" id="departamento" name="department">
+                                                    <select required class="form-control select2" id="departamento" name="department">
                                                         <option selected disabled>Selecciona un departamento</option>
                                                     </select>
                                                 </div>
